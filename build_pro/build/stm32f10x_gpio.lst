@@ -1,0 +1,1639 @@
+ARM GAS  /tmp/ccOVGJZ7.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_gpio.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.GPIO_DeInit,"ax",%progbits
+  19              		.align	2
+  20              		.global	GPIO_DeInit
+  21              		.thumb
+  22              		.thumb_func
+  24              	GPIO_DeInit:
+  25              	.LFB29:
+  26              		.file 1 "FWLIB/src/stm32f10x_gpio.c"
+   1:FWLIB/src/stm32f10x_gpio.c **** /**
+   2:FWLIB/src/stm32f10x_gpio.c ****   ******************************************************************************
+   3:FWLIB/src/stm32f10x_gpio.c ****   * @file    stm32f10x_gpio.c
+   4:FWLIB/src/stm32f10x_gpio.c ****   * @author  MCD Application Team
+   5:FWLIB/src/stm32f10x_gpio.c ****   * @version V3.5.0
+   6:FWLIB/src/stm32f10x_gpio.c ****   * @date    11-March-2011
+   7:FWLIB/src/stm32f10x_gpio.c ****   * @brief   This file provides all the GPIO firmware functions.
+   8:FWLIB/src/stm32f10x_gpio.c ****   ******************************************************************************
+   9:FWLIB/src/stm32f10x_gpio.c ****   * @attention
+  10:FWLIB/src/stm32f10x_gpio.c ****   *
+  11:FWLIB/src/stm32f10x_gpio.c ****   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  12:FWLIB/src/stm32f10x_gpio.c ****   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  13:FWLIB/src/stm32f10x_gpio.c ****   * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  14:FWLIB/src/stm32f10x_gpio.c ****   * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  15:FWLIB/src/stm32f10x_gpio.c ****   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  16:FWLIB/src/stm32f10x_gpio.c ****   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  17:FWLIB/src/stm32f10x_gpio.c ****   *
+  18:FWLIB/src/stm32f10x_gpio.c ****   * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  19:FWLIB/src/stm32f10x_gpio.c ****   ******************************************************************************
+  20:FWLIB/src/stm32f10x_gpio.c ****   */
+  21:FWLIB/src/stm32f10x_gpio.c **** 
+  22:FWLIB/src/stm32f10x_gpio.c **** /* Includes ------------------------------------------------------------------*/
+  23:FWLIB/src/stm32f10x_gpio.c **** #include "stm32f10x_gpio.h"
+  24:FWLIB/src/stm32f10x_gpio.c **** #include "stm32f10x_rcc.h"
+  25:FWLIB/src/stm32f10x_gpio.c **** 
+  26:FWLIB/src/stm32f10x_gpio.c **** /** @addtogroup STM32F10x_StdPeriph_Driver
+  27:FWLIB/src/stm32f10x_gpio.c ****   * @{
+  28:FWLIB/src/stm32f10x_gpio.c ****   */
+  29:FWLIB/src/stm32f10x_gpio.c **** 
+  30:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO 
+  31:FWLIB/src/stm32f10x_gpio.c ****   * @brief GPIO driver modules
+  32:FWLIB/src/stm32f10x_gpio.c ****   * @{
+ARM GAS  /tmp/ccOVGJZ7.s 			page 2
+
+
+  33:FWLIB/src/stm32f10x_gpio.c ****   */ 
+  34:FWLIB/src/stm32f10x_gpio.c **** 
+  35:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO_Private_TypesDefinitions
+  36:FWLIB/src/stm32f10x_gpio.c ****   * @{
+  37:FWLIB/src/stm32f10x_gpio.c ****   */
+  38:FWLIB/src/stm32f10x_gpio.c **** 
+  39:FWLIB/src/stm32f10x_gpio.c **** /**
+  40:FWLIB/src/stm32f10x_gpio.c ****   * @}
+  41:FWLIB/src/stm32f10x_gpio.c ****   */
+  42:FWLIB/src/stm32f10x_gpio.c **** 
+  43:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO_Private_Defines
+  44:FWLIB/src/stm32f10x_gpio.c ****   * @{
+  45:FWLIB/src/stm32f10x_gpio.c ****   */
+  46:FWLIB/src/stm32f10x_gpio.c **** 
+  47:FWLIB/src/stm32f10x_gpio.c **** /* ------------ RCC registers bit address in the alias region ----------------*/
+  48:FWLIB/src/stm32f10x_gpio.c **** #define AFIO_OFFSET                 (AFIO_BASE - PERIPH_BASE)
+  49:FWLIB/src/stm32f10x_gpio.c **** 
+  50:FWLIB/src/stm32f10x_gpio.c **** /* --- EVENTCR Register -----*/
+  51:FWLIB/src/stm32f10x_gpio.c **** 
+  52:FWLIB/src/stm32f10x_gpio.c **** /* Alias word address of EVOE bit */
+  53:FWLIB/src/stm32f10x_gpio.c **** #define EVCR_OFFSET                 (AFIO_OFFSET + 0x00)
+  54:FWLIB/src/stm32f10x_gpio.c **** #define EVOE_BitNumber              ((uint8_t)0x07)
+  55:FWLIB/src/stm32f10x_gpio.c **** #define EVCR_EVOE_BB                (PERIPH_BB_BASE + (EVCR_OFFSET * 32) + (EVOE_BitNumber * 4))
+  56:FWLIB/src/stm32f10x_gpio.c **** 
+  57:FWLIB/src/stm32f10x_gpio.c **** 
+  58:FWLIB/src/stm32f10x_gpio.c **** /* ---  MAPR Register ---*/ 
+  59:FWLIB/src/stm32f10x_gpio.c **** /* Alias word address of MII_RMII_SEL bit */ 
+  60:FWLIB/src/stm32f10x_gpio.c **** #define MAPR_OFFSET                 (AFIO_OFFSET + 0x04) 
+  61:FWLIB/src/stm32f10x_gpio.c **** #define MII_RMII_SEL_BitNumber      ((u8)0x17) 
+  62:FWLIB/src/stm32f10x_gpio.c **** #define MAPR_MII_RMII_SEL_BB        (PERIPH_BB_BASE + (MAPR_OFFSET * 32) + (MII_RMII_SEL_BitNumber 
+  63:FWLIB/src/stm32f10x_gpio.c **** 
+  64:FWLIB/src/stm32f10x_gpio.c **** 
+  65:FWLIB/src/stm32f10x_gpio.c **** #define EVCR_PORTPINCONFIG_MASK     ((uint16_t)0xFF80)
+  66:FWLIB/src/stm32f10x_gpio.c **** #define LSB_MASK                    ((uint16_t)0xFFFF)
+  67:FWLIB/src/stm32f10x_gpio.c **** #define DBGAFR_POSITION_MASK        ((uint32_t)0x000F0000)
+  68:FWLIB/src/stm32f10x_gpio.c **** #define DBGAFR_SWJCFG_MASK          ((uint32_t)0xF0FFFFFF)
+  69:FWLIB/src/stm32f10x_gpio.c **** #define DBGAFR_LOCATION_MASK        ((uint32_t)0x00200000)
+  70:FWLIB/src/stm32f10x_gpio.c **** #define DBGAFR_NUMBITS_MASK         ((uint32_t)0x00100000)
+  71:FWLIB/src/stm32f10x_gpio.c **** /**
+  72:FWLIB/src/stm32f10x_gpio.c ****   * @}
+  73:FWLIB/src/stm32f10x_gpio.c ****   */
+  74:FWLIB/src/stm32f10x_gpio.c **** 
+  75:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO_Private_Macros
+  76:FWLIB/src/stm32f10x_gpio.c ****   * @{
+  77:FWLIB/src/stm32f10x_gpio.c ****   */
+  78:FWLIB/src/stm32f10x_gpio.c **** 
+  79:FWLIB/src/stm32f10x_gpio.c **** /**
+  80:FWLIB/src/stm32f10x_gpio.c ****   * @}
+  81:FWLIB/src/stm32f10x_gpio.c ****   */
+  82:FWLIB/src/stm32f10x_gpio.c **** 
+  83:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO_Private_Variables
+  84:FWLIB/src/stm32f10x_gpio.c ****   * @{
+  85:FWLIB/src/stm32f10x_gpio.c ****   */
+  86:FWLIB/src/stm32f10x_gpio.c **** 
+  87:FWLIB/src/stm32f10x_gpio.c **** /**
+  88:FWLIB/src/stm32f10x_gpio.c ****   * @}
+  89:FWLIB/src/stm32f10x_gpio.c ****   */
+ARM GAS  /tmp/ccOVGJZ7.s 			page 3
+
+
+  90:FWLIB/src/stm32f10x_gpio.c **** 
+  91:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO_Private_FunctionPrototypes
+  92:FWLIB/src/stm32f10x_gpio.c ****   * @{
+  93:FWLIB/src/stm32f10x_gpio.c ****   */
+  94:FWLIB/src/stm32f10x_gpio.c **** 
+  95:FWLIB/src/stm32f10x_gpio.c **** /**
+  96:FWLIB/src/stm32f10x_gpio.c ****   * @}
+  97:FWLIB/src/stm32f10x_gpio.c ****   */
+  98:FWLIB/src/stm32f10x_gpio.c **** 
+  99:FWLIB/src/stm32f10x_gpio.c **** /** @defgroup GPIO_Private_Functions
+ 100:FWLIB/src/stm32f10x_gpio.c ****   * @{
+ 101:FWLIB/src/stm32f10x_gpio.c ****   */
+ 102:FWLIB/src/stm32f10x_gpio.c **** 
+ 103:FWLIB/src/stm32f10x_gpio.c **** /**
+ 104:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Deinitializes the GPIOx peripheral registers to their default reset values.
+ 105:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 106:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 107:FWLIB/src/stm32f10x_gpio.c ****   */
+ 108:FWLIB/src/stm32f10x_gpio.c **** void GPIO_DeInit(GPIO_TypeDef* GPIOx)
+ 109:FWLIB/src/stm32f10x_gpio.c **** {
+  27              		.loc 1 109 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+ 110:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 111:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 112:FWLIB/src/stm32f10x_gpio.c ****   
+ 113:FWLIB/src/stm32f10x_gpio.c ****   if (GPIOx == GPIOA)
+  37              		.loc 1 113 0
+  38 0002 2B4B     		ldr	r3, .L10
+  39 0004 9842     		cmp	r0, r3
+  40 0006 08D1     		bne	.L2
+ 114:FWLIB/src/stm32f10x_gpio.c ****   {
+ 115:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOA, ENABLE);
+  41              		.loc 1 115 0
+  42 0008 0420     		movs	r0, #4
+  43              	.LVL1:
+  44 000a 0121     		movs	r1, #1
+  45 000c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  46              	.LVL2:
+ 116:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOA, DISABLE);
+  47              		.loc 1 116 0
+  48 0010 0420     		movs	r0, #4
+  49 0012 0021     		movs	r1, #0
+  50 0014 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  51              	.LVL3:
+  52 0018 08BD     		pop	{r3, pc}
+  53              	.LVL4:
+  54              	.L2:
+ 117:FWLIB/src/stm32f10x_gpio.c ****   }
+ 118:FWLIB/src/stm32f10x_gpio.c ****   else if (GPIOx == GPIOB)
+ARM GAS  /tmp/ccOVGJZ7.s 			page 4
+
+
+  55              		.loc 1 118 0
+  56 001a 264B     		ldr	r3, .L10+4
+  57 001c 9842     		cmp	r0, r3
+  58 001e 08D1     		bne	.L4
+ 119:FWLIB/src/stm32f10x_gpio.c ****   {
+ 120:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOB, ENABLE);
+  59              		.loc 1 120 0
+  60 0020 0820     		movs	r0, #8
+  61              	.LVL5:
+  62 0022 0121     		movs	r1, #1
+  63 0024 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  64              	.LVL6:
+ 121:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOB, DISABLE);
+  65              		.loc 1 121 0
+  66 0028 0820     		movs	r0, #8
+  67 002a 0021     		movs	r1, #0
+  68 002c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  69              	.LVL7:
+  70 0030 08BD     		pop	{r3, pc}
+  71              	.LVL8:
+  72              	.L4:
+ 122:FWLIB/src/stm32f10x_gpio.c ****   }
+ 123:FWLIB/src/stm32f10x_gpio.c ****   else if (GPIOx == GPIOC)
+  73              		.loc 1 123 0
+  74 0032 214B     		ldr	r3, .L10+8
+  75 0034 9842     		cmp	r0, r3
+  76 0036 08D1     		bne	.L5
+ 124:FWLIB/src/stm32f10x_gpio.c ****   {
+ 125:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOC, ENABLE);
+  77              		.loc 1 125 0
+  78 0038 1020     		movs	r0, #16
+  79              	.LVL9:
+  80 003a 0121     		movs	r1, #1
+  81 003c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  82              	.LVL10:
+ 126:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOC, DISABLE);
+  83              		.loc 1 126 0
+  84 0040 1020     		movs	r0, #16
+  85 0042 0021     		movs	r1, #0
+  86 0044 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  87              	.LVL11:
+  88 0048 08BD     		pop	{r3, pc}
+  89              	.LVL12:
+  90              	.L5:
+ 127:FWLIB/src/stm32f10x_gpio.c ****   }
+ 128:FWLIB/src/stm32f10x_gpio.c ****   else if (GPIOx == GPIOD)
+  91              		.loc 1 128 0
+  92 004a 1C4B     		ldr	r3, .L10+12
+  93 004c 9842     		cmp	r0, r3
+  94 004e 08D1     		bne	.L6
+ 129:FWLIB/src/stm32f10x_gpio.c ****   {
+ 130:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOD, ENABLE);
+  95              		.loc 1 130 0
+  96 0050 2020     		movs	r0, #32
+  97              	.LVL13:
+  98 0052 0121     		movs	r1, #1
+  99 0054 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ARM GAS  /tmp/ccOVGJZ7.s 			page 5
+
+
+ 100              	.LVL14:
+ 131:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOD, DISABLE);
+ 101              		.loc 1 131 0
+ 102 0058 2020     		movs	r0, #32
+ 103 005a 0021     		movs	r1, #0
+ 104 005c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 105              	.LVL15:
+ 106 0060 08BD     		pop	{r3, pc}
+ 107              	.LVL16:
+ 108              	.L6:
+ 132:FWLIB/src/stm32f10x_gpio.c ****   }    
+ 133:FWLIB/src/stm32f10x_gpio.c ****   else if (GPIOx == GPIOE)
+ 109              		.loc 1 133 0
+ 110 0062 174B     		ldr	r3, .L10+16
+ 111 0064 9842     		cmp	r0, r3
+ 112 0066 08D1     		bne	.L7
+ 134:FWLIB/src/stm32f10x_gpio.c ****   {
+ 135:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOE, ENABLE);
+ 113              		.loc 1 135 0
+ 114 0068 4020     		movs	r0, #64
+ 115              	.LVL17:
+ 116 006a 0121     		movs	r1, #1
+ 117 006c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 118              	.LVL18:
+ 136:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOE, DISABLE);
+ 119              		.loc 1 136 0
+ 120 0070 4020     		movs	r0, #64
+ 121 0072 0021     		movs	r1, #0
+ 122 0074 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 123              	.LVL19:
+ 124 0078 08BD     		pop	{r3, pc}
+ 125              	.LVL20:
+ 126              	.L7:
+ 137:FWLIB/src/stm32f10x_gpio.c ****   } 
+ 138:FWLIB/src/stm32f10x_gpio.c ****   else if (GPIOx == GPIOF)
+ 127              		.loc 1 138 0
+ 128 007a 124B     		ldr	r3, .L10+20
+ 129 007c 9842     		cmp	r0, r3
+ 130 007e 08D1     		bne	.L8
+ 139:FWLIB/src/stm32f10x_gpio.c ****   {
+ 140:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOF, ENABLE);
+ 131              		.loc 1 140 0
+ 132 0080 8020     		movs	r0, #128
+ 133              	.LVL21:
+ 134 0082 0121     		movs	r1, #1
+ 135 0084 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 136              	.LVL22:
+ 141:FWLIB/src/stm32f10x_gpio.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOF, DISABLE);
+ 137              		.loc 1 141 0
+ 138 0088 8020     		movs	r0, #128
+ 139 008a 0021     		movs	r1, #0
+ 140 008c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 141              	.LVL23:
+ 142 0090 08BD     		pop	{r3, pc}
+ 143              	.LVL24:
+ 144              	.L8:
+ 142:FWLIB/src/stm32f10x_gpio.c ****   }
+ARM GAS  /tmp/ccOVGJZ7.s 			page 6
+
+
+ 143:FWLIB/src/stm32f10x_gpio.c ****   else
+ 144:FWLIB/src/stm32f10x_gpio.c ****   {
+ 145:FWLIB/src/stm32f10x_gpio.c ****     if (GPIOx == GPIOG)
+ 145              		.loc 1 145 0
+ 146 0092 0D4B     		ldr	r3, .L10+24
+ 147 0094 9842     		cmp	r0, r3
+ 148 0096 09D1     		bne	.L1
+ 146:FWLIB/src/stm32f10x_gpio.c ****     {
+ 147:FWLIB/src/stm32f10x_gpio.c ****       RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOG, ENABLE);
+ 149              		.loc 1 147 0
+ 150 0098 4FF48070 		mov	r0, #256
+ 151              	.LVL25:
+ 152 009c 0121     		movs	r1, #1
+ 153 009e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 154              	.LVL26:
+ 148:FWLIB/src/stm32f10x_gpio.c ****       RCC_APB2PeriphResetCmd(RCC_APB2Periph_GPIOG, DISABLE);
+ 155              		.loc 1 148 0
+ 156 00a2 4FF48070 		mov	r0, #256
+ 157 00a6 0021     		movs	r1, #0
+ 158 00a8 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 159              	.LVL27:
+ 160              	.L1:
+ 161 00ac 08BD     		pop	{r3, pc}
+ 162              	.L11:
+ 163 00ae 00BF     		.align	2
+ 164              	.L10:
+ 165 00b0 00080140 		.word	1073809408
+ 166 00b4 000C0140 		.word	1073810432
+ 167 00b8 00100140 		.word	1073811456
+ 168 00bc 00140140 		.word	1073812480
+ 169 00c0 00180140 		.word	1073813504
+ 170 00c4 001C0140 		.word	1073814528
+ 171 00c8 00200140 		.word	1073815552
+ 172              		.cfi_endproc
+ 173              	.LFE29:
+ 175              		.section	.text.GPIO_AFIODeInit,"ax",%progbits
+ 176              		.align	2
+ 177              		.global	GPIO_AFIODeInit
+ 178              		.thumb
+ 179              		.thumb_func
+ 181              	GPIO_AFIODeInit:
+ 182              	.LFB30:
+ 149:FWLIB/src/stm32f10x_gpio.c ****     }
+ 150:FWLIB/src/stm32f10x_gpio.c ****   }
+ 151:FWLIB/src/stm32f10x_gpio.c **** }
+ 152:FWLIB/src/stm32f10x_gpio.c **** 
+ 153:FWLIB/src/stm32f10x_gpio.c **** /**
+ 154:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Deinitializes the Alternate Functions (remap, event control
+ 155:FWLIB/src/stm32f10x_gpio.c ****   *   and EXTI configuration) registers to their default reset values.
+ 156:FWLIB/src/stm32f10x_gpio.c ****   * @param  None
+ 157:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 158:FWLIB/src/stm32f10x_gpio.c ****   */
+ 159:FWLIB/src/stm32f10x_gpio.c **** void GPIO_AFIODeInit(void)
+ 160:FWLIB/src/stm32f10x_gpio.c **** {
+ 183              		.loc 1 160 0
+ 184              		.cfi_startproc
+ 185              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccOVGJZ7.s 			page 7
+
+
+ 186              		@ frame_needed = 0, uses_anonymous_args = 0
+ 187 0000 08B5     		push	{r3, lr}
+ 188              	.LCFI1:
+ 189              		.cfi_def_cfa_offset 8
+ 190              		.cfi_offset 3, -8
+ 191              		.cfi_offset 14, -4
+ 161:FWLIB/src/stm32f10x_gpio.c ****   RCC_APB2PeriphResetCmd(RCC_APB2Periph_AFIO, ENABLE);
+ 192              		.loc 1 161 0
+ 193 0002 0120     		movs	r0, #1
+ 194 0004 0146     		mov	r1, r0
+ 195 0006 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 196              	.LVL28:
+ 162:FWLIB/src/stm32f10x_gpio.c ****   RCC_APB2PeriphResetCmd(RCC_APB2Periph_AFIO, DISABLE);
+ 197              		.loc 1 162 0
+ 198 000a 0120     		movs	r0, #1
+ 199 000c 0021     		movs	r1, #0
+ 200 000e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 201              	.LVL29:
+ 202 0012 08BD     		pop	{r3, pc}
+ 203              		.cfi_endproc
+ 204              	.LFE30:
+ 206              		.section	.text.GPIO_Init,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	GPIO_Init
+ 209              		.thumb
+ 210              		.thumb_func
+ 212              	GPIO_Init:
+ 213              	.LFB31:
+ 163:FWLIB/src/stm32f10x_gpio.c **** }
+ 164:FWLIB/src/stm32f10x_gpio.c **** 
+ 165:FWLIB/src/stm32f10x_gpio.c **** /**
+ 166:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Initializes the GPIOx peripheral according to the specified
+ 167:FWLIB/src/stm32f10x_gpio.c ****   *         parameters in the GPIO_InitStruct.
+ 168:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 169:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_InitStruct: pointer to a GPIO_InitTypeDef structure that
+ 170:FWLIB/src/stm32f10x_gpio.c ****   *         contains the configuration information for the specified GPIO peripheral.
+ 171:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 172:FWLIB/src/stm32f10x_gpio.c ****   */
+ 173:FWLIB/src/stm32f10x_gpio.c **** void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
+ 174:FWLIB/src/stm32f10x_gpio.c **** {
+ 214              		.loc 1 174 0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218              	.LVL30:
+ 219 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 220              	.LCFI2:
+ 221              		.cfi_def_cfa_offset 20
+ 222              		.cfi_offset 4, -20
+ 223              		.cfi_offset 5, -16
+ 224              		.cfi_offset 6, -12
+ 225              		.cfi_offset 7, -8
+ 226              		.cfi_offset 14, -4
+ 227              	.LVL31:
+ 175:FWLIB/src/stm32f10x_gpio.c ****   uint32_t currentmode = 0x00, currentpin = 0x00, pinpos = 0x00, pos = 0x00;
+ 176:FWLIB/src/stm32f10x_gpio.c ****   uint32_t tmpreg = 0x00, pinmask = 0x00;
+ 177:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ARM GAS  /tmp/ccOVGJZ7.s 			page 8
+
+
+ 178:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 179:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_MODE(GPIO_InitStruct->GPIO_Mode));
+ 180:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_InitStruct->GPIO_Pin));  
+ 181:FWLIB/src/stm32f10x_gpio.c ****   
+ 182:FWLIB/src/stm32f10x_gpio.c **** /*---------------------------- GPIO Mode Configuration -----------------------*/
+ 183:FWLIB/src/stm32f10x_gpio.c ****   currentmode = ((uint32_t)GPIO_InitStruct->GPIO_Mode) & ((uint32_t)0x0F);
+ 228              		.loc 1 183 0
+ 229 0002 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 230 0004 03F00F02 		and	r2, r3, #15
+ 231 0008 1546     		mov	r5, r2
+ 232              	.LVL32:
+ 184:FWLIB/src/stm32f10x_gpio.c ****   if ((((uint32_t)GPIO_InitStruct->GPIO_Mode) & ((uint32_t)0x10)) != 0x00)
+ 233              		.loc 1 184 0
+ 234 000a 13F0100F 		tst	r3, #16
+ 235 000e 01D0     		beq	.L15
+ 185:FWLIB/src/stm32f10x_gpio.c ****   { 
+ 186:FWLIB/src/stm32f10x_gpio.c ****     /* Check the parameters */
+ 187:FWLIB/src/stm32f10x_gpio.c ****     assert_param(IS_GPIO_SPEED(GPIO_InitStruct->GPIO_Speed));
+ 188:FWLIB/src/stm32f10x_gpio.c ****     /* Output mode */
+ 189:FWLIB/src/stm32f10x_gpio.c ****     currentmode |= (uint32_t)GPIO_InitStruct->GPIO_Speed;
+ 236              		.loc 1 189 0
+ 237 0010 8D78     		ldrb	r5, [r1, #2]	@ zero_extendqisi2
+ 238 0012 1543     		orrs	r5, r5, r2
+ 239              	.LVL33:
+ 240              	.L15:
+ 190:FWLIB/src/stm32f10x_gpio.c ****   }
+ 191:FWLIB/src/stm32f10x_gpio.c **** /*---------------------------- GPIO CRL Configuration ------------------------*/
+ 192:FWLIB/src/stm32f10x_gpio.c ****   /* Configure the eight low port pins */
+ 193:FWLIB/src/stm32f10x_gpio.c ****   if (((uint32_t)GPIO_InitStruct->GPIO_Pin & ((uint32_t)0x00FF)) != 0x00)
+ 241              		.loc 1 193 0
+ 242 0014 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 243 0016 E3B1     		cbz	r3, .L16
+ 194:FWLIB/src/stm32f10x_gpio.c ****   {
+ 195:FWLIB/src/stm32f10x_gpio.c ****     tmpreg = GPIOx->CRL;
+ 244              		.loc 1 195 0
+ 245 0018 0668     		ldr	r6, [r0]
+ 246              	.LVL34:
+ 196:FWLIB/src/stm32f10x_gpio.c ****     for (pinpos = 0x00; pinpos < 0x08; pinpos++)
+ 247              		.loc 1 196 0
+ 248 001a 0022     		movs	r2, #0
+ 249 001c 16E0     		b	.L17
+ 250              	.LVL35:
+ 251              	.L20:
+ 197:FWLIB/src/stm32f10x_gpio.c ****     {
+ 198:FWLIB/src/stm32f10x_gpio.c ****       pos = ((uint32_t)0x01) << pinpos;
+ 252              		.loc 1 198 0
+ 253 001e 0123     		movs	r3, #1
+ 254 0020 9340     		lsls	r3, r3, r2
+ 255              	.LVL36:
+ 199:FWLIB/src/stm32f10x_gpio.c ****       /* Get the port pins position */
+ 200:FWLIB/src/stm32f10x_gpio.c ****       currentpin = (GPIO_InitStruct->GPIO_Pin) & pos;
+ 256              		.loc 1 200 0
+ 257 0022 0C88     		ldrh	r4, [r1]
+ 258 0024 1C40     		ands	r4, r4, r3
+ 259              	.LVL37:
+ 201:FWLIB/src/stm32f10x_gpio.c ****       if (currentpin == pos)
+ 260              		.loc 1 201 0
+ARM GAS  /tmp/ccOVGJZ7.s 			page 9
+
+
+ 261 0026 9C42     		cmp	r4, r3
+ 262 0028 0FD1     		bne	.L18
+ 202:FWLIB/src/stm32f10x_gpio.c ****       {
+ 203:FWLIB/src/stm32f10x_gpio.c ****         pos = pinpos << 2;
+ 263              		.loc 1 203 0
+ 264 002a 9700     		lsls	r7, r2, #2
+ 265              	.LVL38:
+ 204:FWLIB/src/stm32f10x_gpio.c ****         /* Clear the corresponding low control register bits */
+ 205:FWLIB/src/stm32f10x_gpio.c ****         pinmask = ((uint32_t)0x0F) << pos;
+ 266              		.loc 1 205 0
+ 267 002c 0F24     		movs	r4, #15
+ 268              	.LVL39:
+ 269 002e BC40     		lsls	r4, r4, r7
+ 270              	.LVL40:
+ 206:FWLIB/src/stm32f10x_gpio.c ****         tmpreg &= ~pinmask;
+ 271              		.loc 1 206 0
+ 272 0030 26EA0406 		bic	r6, r6, r4
+ 273              	.LVL41:
+ 207:FWLIB/src/stm32f10x_gpio.c ****         /* Write the mode configuration in the corresponding bits */
+ 208:FWLIB/src/stm32f10x_gpio.c ****         tmpreg |= (currentmode << pos);
+ 274              		.loc 1 208 0
+ 275 0034 05FA07F4 		lsl	r4, r5, r7
+ 276              	.LVL42:
+ 277 0038 2643     		orrs	r6, r6, r4
+ 278              	.LVL43:
+ 209:FWLIB/src/stm32f10x_gpio.c ****         /* Reset the corresponding ODR bit */
+ 210:FWLIB/src/stm32f10x_gpio.c ****         if (GPIO_InitStruct->GPIO_Mode == GPIO_Mode_IPD)
+ 279              		.loc 1 210 0
+ 280 003a CC78     		ldrb	r4, [r1, #3]	@ zero_extendqisi2
+ 281 003c 282C     		cmp	r4, #40
+ 282 003e 01D1     		bne	.L19
+ 211:FWLIB/src/stm32f10x_gpio.c ****         {
+ 212:FWLIB/src/stm32f10x_gpio.c ****           GPIOx->BRR = (((uint32_t)0x01) << pinpos);
+ 283              		.loc 1 212 0
+ 284 0040 4361     		str	r3, [r0, #20]
+ 285              	.LVL44:
+ 286 0042 02E0     		b	.L18
+ 287              	.LVL45:
+ 288              	.L19:
+ 213:FWLIB/src/stm32f10x_gpio.c ****         }
+ 214:FWLIB/src/stm32f10x_gpio.c ****         else
+ 215:FWLIB/src/stm32f10x_gpio.c ****         {
+ 216:FWLIB/src/stm32f10x_gpio.c ****           /* Set the corresponding ODR bit */
+ 217:FWLIB/src/stm32f10x_gpio.c ****           if (GPIO_InitStruct->GPIO_Mode == GPIO_Mode_IPU)
+ 289              		.loc 1 217 0
+ 290 0044 482C     		cmp	r4, #72
+ 291 0046 00D1     		bne	.L18
+ 218:FWLIB/src/stm32f10x_gpio.c ****           {
+ 219:FWLIB/src/stm32f10x_gpio.c ****             GPIOx->BSRR = (((uint32_t)0x01) << pinpos);
+ 292              		.loc 1 219 0
+ 293 0048 0361     		str	r3, [r0, #16]
+ 294              	.LVL46:
+ 295              	.L18:
+ 196:FWLIB/src/stm32f10x_gpio.c ****     {
+ 296              		.loc 1 196 0 discriminator 2
+ 297 004a 0132     		adds	r2, r2, #1
+ 298              	.LVL47:
+ARM GAS  /tmp/ccOVGJZ7.s 			page 10
+
+
+ 299              	.L17:
+ 196:FWLIB/src/stm32f10x_gpio.c ****     {
+ 300              		.loc 1 196 0 is_stmt 0 discriminator 1
+ 301 004c 072A     		cmp	r2, #7
+ 302 004e E6D9     		bls	.L20
+ 220:FWLIB/src/stm32f10x_gpio.c ****           }
+ 221:FWLIB/src/stm32f10x_gpio.c ****         }
+ 222:FWLIB/src/stm32f10x_gpio.c ****       }
+ 223:FWLIB/src/stm32f10x_gpio.c ****     }
+ 224:FWLIB/src/stm32f10x_gpio.c ****     GPIOx->CRL = tmpreg;
+ 303              		.loc 1 224 0 is_stmt 1
+ 304 0050 0660     		str	r6, [r0]
+ 305              	.LVL48:
+ 306              	.L16:
+ 225:FWLIB/src/stm32f10x_gpio.c ****   }
+ 226:FWLIB/src/stm32f10x_gpio.c **** /*---------------------------- GPIO CRH Configuration ------------------------*/
+ 227:FWLIB/src/stm32f10x_gpio.c ****   /* Configure the eight high port pins */
+ 228:FWLIB/src/stm32f10x_gpio.c ****   if (GPIO_InitStruct->GPIO_Pin > 0x00FF)
+ 307              		.loc 1 228 0
+ 308 0052 0B88     		ldrh	r3, [r1]
+ 309 0054 FF2B     		cmp	r3, #255
+ 310 0056 20D9     		bls	.L14
+ 229:FWLIB/src/stm32f10x_gpio.c ****   {
+ 230:FWLIB/src/stm32f10x_gpio.c ****     tmpreg = GPIOx->CRH;
+ 311              		.loc 1 230 0
+ 312 0058 4768     		ldr	r7, [r0, #4]
+ 313              	.LVL49:
+ 231:FWLIB/src/stm32f10x_gpio.c ****     for (pinpos = 0x00; pinpos < 0x08; pinpos++)
+ 314              		.loc 1 231 0
+ 315 005a 0024     		movs	r4, #0
+ 316 005c 1AE0     		b	.L22
+ 317              	.LVL50:
+ 318              	.L25:
+ 232:FWLIB/src/stm32f10x_gpio.c ****     {
+ 233:FWLIB/src/stm32f10x_gpio.c ****       pos = (((uint32_t)0x01) << (pinpos + 0x08));
+ 319              		.loc 1 233 0
+ 320 005e 04F10802 		add	r2, r4, #8
+ 321 0062 0123     		movs	r3, #1
+ 322 0064 9340     		lsls	r3, r3, r2
+ 323              	.LVL51:
+ 234:FWLIB/src/stm32f10x_gpio.c ****       /* Get the port pins position */
+ 235:FWLIB/src/stm32f10x_gpio.c ****       currentpin = ((GPIO_InitStruct->GPIO_Pin) & pos);
+ 324              		.loc 1 235 0
+ 325 0066 0A88     		ldrh	r2, [r1]
+ 326 0068 1A40     		ands	r2, r2, r3
+ 327              	.LVL52:
+ 236:FWLIB/src/stm32f10x_gpio.c ****       if (currentpin == pos)
+ 328              		.loc 1 236 0
+ 329 006a 9A42     		cmp	r2, r3
+ 330 006c 11D1     		bne	.L23
+ 237:FWLIB/src/stm32f10x_gpio.c ****       {
+ 238:FWLIB/src/stm32f10x_gpio.c ****         pos = pinpos << 2;
+ 331              		.loc 1 238 0
+ 332 006e 4FEA840E 		lsl	lr, r4, #2
+ 333              	.LVL53:
+ 239:FWLIB/src/stm32f10x_gpio.c ****         /* Clear the corresponding high control register bits */
+ 240:FWLIB/src/stm32f10x_gpio.c ****         pinmask = ((uint32_t)0x0F) << pos;
+ARM GAS  /tmp/ccOVGJZ7.s 			page 11
+
+
+ 334              		.loc 1 240 0
+ 335 0072 0F22     		movs	r2, #15
+ 336              	.LVL54:
+ 337 0074 02FA0EF6 		lsl	r6, r2, lr
+ 338              	.LVL55:
+ 241:FWLIB/src/stm32f10x_gpio.c ****         tmpreg &= ~pinmask;
+ 339              		.loc 1 241 0
+ 340 0078 27EA0602 		bic	r2, r7, r6
+ 341              	.LVL56:
+ 242:FWLIB/src/stm32f10x_gpio.c ****         /* Write the mode configuration in the corresponding bits */
+ 243:FWLIB/src/stm32f10x_gpio.c ****         tmpreg |= (currentmode << pos);
+ 342              		.loc 1 243 0
+ 343 007c 05FA0EF7 		lsl	r7, r5, lr
+ 344 0080 1743     		orrs	r7, r7, r2
+ 345              	.LVL57:
+ 244:FWLIB/src/stm32f10x_gpio.c ****         /* Reset the corresponding ODR bit */
+ 245:FWLIB/src/stm32f10x_gpio.c ****         if (GPIO_InitStruct->GPIO_Mode == GPIO_Mode_IPD)
+ 346              		.loc 1 245 0
+ 347 0082 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 348 0084 282A     		cmp	r2, #40
+ 349 0086 00D1     		bne	.L24
+ 246:FWLIB/src/stm32f10x_gpio.c ****         {
+ 247:FWLIB/src/stm32f10x_gpio.c ****           GPIOx->BRR = (((uint32_t)0x01) << (pinpos + 0x08));
+ 350              		.loc 1 247 0
+ 351 0088 4361     		str	r3, [r0, #20]
+ 352              	.LVL58:
+ 353              	.L24:
+ 248:FWLIB/src/stm32f10x_gpio.c ****         }
+ 249:FWLIB/src/stm32f10x_gpio.c ****         /* Set the corresponding ODR bit */
+ 250:FWLIB/src/stm32f10x_gpio.c ****         if (GPIO_InitStruct->GPIO_Mode == GPIO_Mode_IPU)
+ 354              		.loc 1 250 0
+ 355 008a CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 356 008c 482A     		cmp	r2, #72
+ 357 008e 00D1     		bne	.L23
+ 251:FWLIB/src/stm32f10x_gpio.c ****         {
+ 252:FWLIB/src/stm32f10x_gpio.c ****           GPIOx->BSRR = (((uint32_t)0x01) << (pinpos + 0x08));
+ 358              		.loc 1 252 0
+ 359 0090 0361     		str	r3, [r0, #16]
+ 360              	.LVL59:
+ 361              	.L23:
+ 231:FWLIB/src/stm32f10x_gpio.c ****     {
+ 362              		.loc 1 231 0 discriminator 2
+ 363 0092 0134     		adds	r4, r4, #1
+ 364              	.LVL60:
+ 365              	.L22:
+ 231:FWLIB/src/stm32f10x_gpio.c ****     {
+ 366              		.loc 1 231 0 is_stmt 0 discriminator 1
+ 367 0094 072C     		cmp	r4, #7
+ 368 0096 E2D9     		bls	.L25
+ 253:FWLIB/src/stm32f10x_gpio.c ****         }
+ 254:FWLIB/src/stm32f10x_gpio.c ****       }
+ 255:FWLIB/src/stm32f10x_gpio.c ****     }
+ 256:FWLIB/src/stm32f10x_gpio.c ****     GPIOx->CRH = tmpreg;
+ 369              		.loc 1 256 0 is_stmt 1
+ 370 0098 4760     		str	r7, [r0, #4]
+ 371              	.LVL61:
+ 372              	.L14:
+ARM GAS  /tmp/ccOVGJZ7.s 			page 12
+
+
+ 373 009a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 374              		.cfi_endproc
+ 375              	.LFE31:
+ 377              		.section	.text.GPIO_StructInit,"ax",%progbits
+ 378              		.align	2
+ 379              		.global	GPIO_StructInit
+ 380              		.thumb
+ 381              		.thumb_func
+ 383              	GPIO_StructInit:
+ 384              	.LFB32:
+ 257:FWLIB/src/stm32f10x_gpio.c ****   }
+ 258:FWLIB/src/stm32f10x_gpio.c **** }
+ 259:FWLIB/src/stm32f10x_gpio.c **** 
+ 260:FWLIB/src/stm32f10x_gpio.c **** /**
+ 261:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Fills each GPIO_InitStruct member with its default value.
+ 262:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_InitStruct : pointer to a GPIO_InitTypeDef structure which will
+ 263:FWLIB/src/stm32f10x_gpio.c ****   *         be initialized.
+ 264:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 265:FWLIB/src/stm32f10x_gpio.c ****   */
+ 266:FWLIB/src/stm32f10x_gpio.c **** void GPIO_StructInit(GPIO_InitTypeDef* GPIO_InitStruct)
+ 267:FWLIB/src/stm32f10x_gpio.c **** {
+ 385              		.loc 1 267 0
+ 386              		.cfi_startproc
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+ 390              	.LVL62:
+ 268:FWLIB/src/stm32f10x_gpio.c ****   /* Reset GPIO init structure parameters values */
+ 269:FWLIB/src/stm32f10x_gpio.c ****   GPIO_InitStruct->GPIO_Pin  = GPIO_Pin_All;
+ 391              		.loc 1 269 0
+ 392 0000 4FF6FF73 		movw	r3, #65535
+ 393 0004 0380     		strh	r3, [r0]	@ movhi
+ 270:FWLIB/src/stm32f10x_gpio.c ****   GPIO_InitStruct->GPIO_Speed = GPIO_Speed_2MHz;
+ 394              		.loc 1 270 0
+ 395 0006 0223     		movs	r3, #2
+ 396 0008 8370     		strb	r3, [r0, #2]
+ 271:FWLIB/src/stm32f10x_gpio.c ****   GPIO_InitStruct->GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 397              		.loc 1 271 0
+ 398 000a 0423     		movs	r3, #4
+ 399 000c C370     		strb	r3, [r0, #3]
+ 400 000e 7047     		bx	lr
+ 401              		.cfi_endproc
+ 402              	.LFE32:
+ 404              		.section	.text.GPIO_ReadInputDataBit,"ax",%progbits
+ 405              		.align	2
+ 406              		.global	GPIO_ReadInputDataBit
+ 407              		.thumb
+ 408              		.thumb_func
+ 410              	GPIO_ReadInputDataBit:
+ 411              	.LFB33:
+ 272:FWLIB/src/stm32f10x_gpio.c **** }
+ 273:FWLIB/src/stm32f10x_gpio.c **** 
+ 274:FWLIB/src/stm32f10x_gpio.c **** /**
+ 275:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Reads the specified input port pin.
+ 276:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 277:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Pin:  specifies the port bit to read.
+ 278:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be GPIO_Pin_x where x can be (0..15).
+ARM GAS  /tmp/ccOVGJZ7.s 			page 13
+
+
+ 279:FWLIB/src/stm32f10x_gpio.c ****   * @retval The input port pin value.
+ 280:FWLIB/src/stm32f10x_gpio.c ****   */
+ 281:FWLIB/src/stm32f10x_gpio.c **** uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 282:FWLIB/src/stm32f10x_gpio.c **** {
+ 412              		.loc 1 282 0
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              		@ link register save eliminated.
+ 417              	.LVL63:
+ 283:FWLIB/src/stm32f10x_gpio.c ****   uint8_t bitstatus = 0x00;
+ 284:FWLIB/src/stm32f10x_gpio.c ****   
+ 285:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 286:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 287:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GET_GPIO_PIN(GPIO_Pin)); 
+ 288:FWLIB/src/stm32f10x_gpio.c ****   
+ 289:FWLIB/src/stm32f10x_gpio.c ****   if ((GPIOx->IDR & GPIO_Pin) != (uint32_t)Bit_RESET)
+ 418              		.loc 1 289 0
+ 419 0000 8368     		ldr	r3, [r0, #8]
+ 420 0002 0B42     		tst	r3, r1
+ 421 0004 01D0     		beq	.L30
+ 290:FWLIB/src/stm32f10x_gpio.c ****   {
+ 291:FWLIB/src/stm32f10x_gpio.c ****     bitstatus = (uint8_t)Bit_SET;
+ 422              		.loc 1 291 0
+ 423 0006 0120     		movs	r0, #1
+ 424              	.LVL64:
+ 425 0008 7047     		bx	lr
+ 426              	.LVL65:
+ 427              	.L30:
+ 292:FWLIB/src/stm32f10x_gpio.c ****   }
+ 293:FWLIB/src/stm32f10x_gpio.c ****   else
+ 294:FWLIB/src/stm32f10x_gpio.c ****   {
+ 295:FWLIB/src/stm32f10x_gpio.c ****     bitstatus = (uint8_t)Bit_RESET;
+ 428              		.loc 1 295 0
+ 429 000a 0020     		movs	r0, #0
+ 430              	.LVL66:
+ 296:FWLIB/src/stm32f10x_gpio.c ****   }
+ 297:FWLIB/src/stm32f10x_gpio.c ****   return bitstatus;
+ 298:FWLIB/src/stm32f10x_gpio.c **** }
+ 431              		.loc 1 298 0
+ 432 000c 7047     		bx	lr
+ 433              		.cfi_endproc
+ 434              	.LFE33:
+ 436 000e 00BF     		.section	.text.GPIO_ReadInputData,"ax",%progbits
+ 437              		.align	2
+ 438              		.global	GPIO_ReadInputData
+ 439              		.thumb
+ 440              		.thumb_func
+ 442              	GPIO_ReadInputData:
+ 443              	.LFB34:
+ 299:FWLIB/src/stm32f10x_gpio.c **** 
+ 300:FWLIB/src/stm32f10x_gpio.c **** /**
+ 301:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Reads the specified GPIO input data port.
+ 302:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 303:FWLIB/src/stm32f10x_gpio.c ****   * @retval GPIO input data port value.
+ 304:FWLIB/src/stm32f10x_gpio.c ****   */
+ 305:FWLIB/src/stm32f10x_gpio.c **** uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
+ARM GAS  /tmp/ccOVGJZ7.s 			page 14
+
+
+ 306:FWLIB/src/stm32f10x_gpio.c **** {
+ 444              		.loc 1 306 0
+ 445              		.cfi_startproc
+ 446              		@ args = 0, pretend = 0, frame = 0
+ 447              		@ frame_needed = 0, uses_anonymous_args = 0
+ 448              		@ link register save eliminated.
+ 449              	.LVL67:
+ 307:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 308:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 309:FWLIB/src/stm32f10x_gpio.c ****   
+ 310:FWLIB/src/stm32f10x_gpio.c ****   return ((uint16_t)GPIOx->IDR);
+ 450              		.loc 1 310 0
+ 451 0000 8068     		ldr	r0, [r0, #8]
+ 452              	.LVL68:
+ 311:FWLIB/src/stm32f10x_gpio.c **** }
+ 453              		.loc 1 311 0
+ 454 0002 80B2     		uxth	r0, r0
+ 455 0004 7047     		bx	lr
+ 456              		.cfi_endproc
+ 457              	.LFE34:
+ 459 0006 00BF     		.section	.text.GPIO_ReadOutputDataBit,"ax",%progbits
+ 460              		.align	2
+ 461              		.global	GPIO_ReadOutputDataBit
+ 462              		.thumb
+ 463              		.thumb_func
+ 465              	GPIO_ReadOutputDataBit:
+ 466              	.LFB35:
+ 312:FWLIB/src/stm32f10x_gpio.c **** 
+ 313:FWLIB/src/stm32f10x_gpio.c **** /**
+ 314:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Reads the specified output data port bit.
+ 315:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 316:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Pin:  specifies the port bit to read.
+ 317:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be GPIO_Pin_x where x can be (0..15).
+ 318:FWLIB/src/stm32f10x_gpio.c ****   * @retval The output port pin value.
+ 319:FWLIB/src/stm32f10x_gpio.c ****   */
+ 320:FWLIB/src/stm32f10x_gpio.c **** uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 321:FWLIB/src/stm32f10x_gpio.c **** {
+ 467              		.loc 1 321 0
+ 468              		.cfi_startproc
+ 469              		@ args = 0, pretend = 0, frame = 0
+ 470              		@ frame_needed = 0, uses_anonymous_args = 0
+ 471              		@ link register save eliminated.
+ 472              	.LVL69:
+ 322:FWLIB/src/stm32f10x_gpio.c ****   uint8_t bitstatus = 0x00;
+ 323:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 324:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 325:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GET_GPIO_PIN(GPIO_Pin)); 
+ 326:FWLIB/src/stm32f10x_gpio.c ****   
+ 327:FWLIB/src/stm32f10x_gpio.c ****   if ((GPIOx->ODR & GPIO_Pin) != (uint32_t)Bit_RESET)
+ 473              		.loc 1 327 0
+ 474 0000 C368     		ldr	r3, [r0, #12]
+ 475 0002 0B42     		tst	r3, r1
+ 476 0004 01D0     		beq	.L34
+ 328:FWLIB/src/stm32f10x_gpio.c ****   {
+ 329:FWLIB/src/stm32f10x_gpio.c ****     bitstatus = (uint8_t)Bit_SET;
+ 477              		.loc 1 329 0
+ 478 0006 0120     		movs	r0, #1
+ARM GAS  /tmp/ccOVGJZ7.s 			page 15
+
+
+ 479              	.LVL70:
+ 480 0008 7047     		bx	lr
+ 481              	.LVL71:
+ 482              	.L34:
+ 330:FWLIB/src/stm32f10x_gpio.c ****   }
+ 331:FWLIB/src/stm32f10x_gpio.c ****   else
+ 332:FWLIB/src/stm32f10x_gpio.c ****   {
+ 333:FWLIB/src/stm32f10x_gpio.c ****     bitstatus = (uint8_t)Bit_RESET;
+ 483              		.loc 1 333 0
+ 484 000a 0020     		movs	r0, #0
+ 485              	.LVL72:
+ 334:FWLIB/src/stm32f10x_gpio.c ****   }
+ 335:FWLIB/src/stm32f10x_gpio.c ****   return bitstatus;
+ 336:FWLIB/src/stm32f10x_gpio.c **** }
+ 486              		.loc 1 336 0
+ 487 000c 7047     		bx	lr
+ 488              		.cfi_endproc
+ 489              	.LFE35:
+ 491 000e 00BF     		.section	.text.GPIO_ReadOutputData,"ax",%progbits
+ 492              		.align	2
+ 493              		.global	GPIO_ReadOutputData
+ 494              		.thumb
+ 495              		.thumb_func
+ 497              	GPIO_ReadOutputData:
+ 498              	.LFB36:
+ 337:FWLIB/src/stm32f10x_gpio.c **** 
+ 338:FWLIB/src/stm32f10x_gpio.c **** /**
+ 339:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Reads the specified GPIO output data port.
+ 340:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 341:FWLIB/src/stm32f10x_gpio.c ****   * @retval GPIO output data port value.
+ 342:FWLIB/src/stm32f10x_gpio.c ****   */
+ 343:FWLIB/src/stm32f10x_gpio.c **** uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
+ 344:FWLIB/src/stm32f10x_gpio.c **** {
+ 499              		.loc 1 344 0
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 0
+ 502              		@ frame_needed = 0, uses_anonymous_args = 0
+ 503              		@ link register save eliminated.
+ 504              	.LVL73:
+ 345:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 346:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 347:FWLIB/src/stm32f10x_gpio.c ****     
+ 348:FWLIB/src/stm32f10x_gpio.c ****   return ((uint16_t)GPIOx->ODR);
+ 505              		.loc 1 348 0
+ 506 0000 C068     		ldr	r0, [r0, #12]
+ 507              	.LVL74:
+ 349:FWLIB/src/stm32f10x_gpio.c **** }
+ 508              		.loc 1 349 0
+ 509 0002 80B2     		uxth	r0, r0
+ 510 0004 7047     		bx	lr
+ 511              		.cfi_endproc
+ 512              	.LFE36:
+ 514 0006 00BF     		.section	.text.GPIO_SetBits,"ax",%progbits
+ 515              		.align	2
+ 516              		.global	GPIO_SetBits
+ 517              		.thumb
+ 518              		.thumb_func
+ARM GAS  /tmp/ccOVGJZ7.s 			page 16
+
+
+ 520              	GPIO_SetBits:
+ 521              	.LFB37:
+ 350:FWLIB/src/stm32f10x_gpio.c **** 
+ 351:FWLIB/src/stm32f10x_gpio.c **** /**
+ 352:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Sets the selected data port bits.
+ 353:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 354:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Pin: specifies the port bits to be written.
+ 355:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 356:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 357:FWLIB/src/stm32f10x_gpio.c ****   */
+ 358:FWLIB/src/stm32f10x_gpio.c **** void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 359:FWLIB/src/stm32f10x_gpio.c **** {
+ 522              		.loc 1 359 0
+ 523              		.cfi_startproc
+ 524              		@ args = 0, pretend = 0, frame = 0
+ 525              		@ frame_needed = 0, uses_anonymous_args = 0
+ 526              		@ link register save eliminated.
+ 527              	.LVL75:
+ 360:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 361:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 362:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 363:FWLIB/src/stm32f10x_gpio.c ****   
+ 364:FWLIB/src/stm32f10x_gpio.c ****   GPIOx->BSRR = GPIO_Pin;
+ 528              		.loc 1 364 0
+ 529 0000 0161     		str	r1, [r0, #16]
+ 530 0002 7047     		bx	lr
+ 531              		.cfi_endproc
+ 532              	.LFE37:
+ 534              		.section	.text.GPIO_ResetBits,"ax",%progbits
+ 535              		.align	2
+ 536              		.global	GPIO_ResetBits
+ 537              		.thumb
+ 538              		.thumb_func
+ 540              	GPIO_ResetBits:
+ 541              	.LFB38:
+ 365:FWLIB/src/stm32f10x_gpio.c **** }
+ 366:FWLIB/src/stm32f10x_gpio.c **** 
+ 367:FWLIB/src/stm32f10x_gpio.c **** /**
+ 368:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Clears the selected data port bits.
+ 369:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 370:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Pin: specifies the port bits to be written.
+ 371:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 372:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 373:FWLIB/src/stm32f10x_gpio.c ****   */
+ 374:FWLIB/src/stm32f10x_gpio.c **** void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 375:FWLIB/src/stm32f10x_gpio.c **** {
+ 542              		.loc 1 375 0
+ 543              		.cfi_startproc
+ 544              		@ args = 0, pretend = 0, frame = 0
+ 545              		@ frame_needed = 0, uses_anonymous_args = 0
+ 546              		@ link register save eliminated.
+ 547              	.LVL76:
+ 376:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 377:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 378:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 379:FWLIB/src/stm32f10x_gpio.c ****   
+ 380:FWLIB/src/stm32f10x_gpio.c ****   GPIOx->BRR = GPIO_Pin;
+ARM GAS  /tmp/ccOVGJZ7.s 			page 17
+
+
+ 548              		.loc 1 380 0
+ 549 0000 4161     		str	r1, [r0, #20]
+ 550 0002 7047     		bx	lr
+ 551              		.cfi_endproc
+ 552              	.LFE38:
+ 554              		.section	.text.GPIO_WriteBit,"ax",%progbits
+ 555              		.align	2
+ 556              		.global	GPIO_WriteBit
+ 557              		.thumb
+ 558              		.thumb_func
+ 560              	GPIO_WriteBit:
+ 561              	.LFB39:
+ 381:FWLIB/src/stm32f10x_gpio.c **** }
+ 382:FWLIB/src/stm32f10x_gpio.c **** 
+ 383:FWLIB/src/stm32f10x_gpio.c **** /**
+ 384:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Sets or clears the selected data port bit.
+ 385:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 386:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to be written.
+ 387:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be one of GPIO_Pin_x where x can be (0..15).
+ 388:FWLIB/src/stm32f10x_gpio.c ****   * @param  BitVal: specifies the value to be written to the selected bit.
+ 389:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be one of the BitAction enum values:
+ 390:FWLIB/src/stm32f10x_gpio.c ****   *     @arg Bit_RESET: to clear the port pin
+ 391:FWLIB/src/stm32f10x_gpio.c ****   *     @arg Bit_SET: to set the port pin
+ 392:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 393:FWLIB/src/stm32f10x_gpio.c ****   */
+ 394:FWLIB/src/stm32f10x_gpio.c **** void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
+ 395:FWLIB/src/stm32f10x_gpio.c **** {
+ 562              		.loc 1 395 0
+ 563              		.cfi_startproc
+ 564              		@ args = 0, pretend = 0, frame = 0
+ 565              		@ frame_needed = 0, uses_anonymous_args = 0
+ 566              		@ link register save eliminated.
+ 567              	.LVL77:
+ 396:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 397:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 398:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
+ 399:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_BIT_ACTION(BitVal)); 
+ 400:FWLIB/src/stm32f10x_gpio.c ****   
+ 401:FWLIB/src/stm32f10x_gpio.c ****   if (BitVal != Bit_RESET)
+ 568              		.loc 1 401 0
+ 569 0000 0AB1     		cbz	r2, .L39
+ 402:FWLIB/src/stm32f10x_gpio.c ****   {
+ 403:FWLIB/src/stm32f10x_gpio.c ****     GPIOx->BSRR = GPIO_Pin;
+ 570              		.loc 1 403 0
+ 571 0002 0161     		str	r1, [r0, #16]
+ 572 0004 7047     		bx	lr
+ 573              	.L39:
+ 404:FWLIB/src/stm32f10x_gpio.c ****   }
+ 405:FWLIB/src/stm32f10x_gpio.c ****   else
+ 406:FWLIB/src/stm32f10x_gpio.c ****   {
+ 407:FWLIB/src/stm32f10x_gpio.c ****     GPIOx->BRR = GPIO_Pin;
+ 574              		.loc 1 407 0
+ 575 0006 4161     		str	r1, [r0, #20]
+ 576 0008 7047     		bx	lr
+ 577              		.cfi_endproc
+ 578              	.LFE39:
+ 580 000a 00BF     		.section	.text.GPIO_Write,"ax",%progbits
+ARM GAS  /tmp/ccOVGJZ7.s 			page 18
+
+
+ 581              		.align	2
+ 582              		.global	GPIO_Write
+ 583              		.thumb
+ 584              		.thumb_func
+ 586              	GPIO_Write:
+ 587              	.LFB40:
+ 408:FWLIB/src/stm32f10x_gpio.c ****   }
+ 409:FWLIB/src/stm32f10x_gpio.c **** }
+ 410:FWLIB/src/stm32f10x_gpio.c **** 
+ 411:FWLIB/src/stm32f10x_gpio.c **** /**
+ 412:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Writes data to the specified GPIO data port.
+ 413:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 414:FWLIB/src/stm32f10x_gpio.c ****   * @param  PortVal: specifies the value to be written to the port output data register.
+ 415:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 416:FWLIB/src/stm32f10x_gpio.c ****   */
+ 417:FWLIB/src/stm32f10x_gpio.c **** void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal)
+ 418:FWLIB/src/stm32f10x_gpio.c **** {
+ 588              		.loc 1 418 0
+ 589              		.cfi_startproc
+ 590              		@ args = 0, pretend = 0, frame = 0
+ 591              		@ frame_needed = 0, uses_anonymous_args = 0
+ 592              		@ link register save eliminated.
+ 593              	.LVL78:
+ 419:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 420:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 421:FWLIB/src/stm32f10x_gpio.c ****   
+ 422:FWLIB/src/stm32f10x_gpio.c ****   GPIOx->ODR = PortVal;
+ 594              		.loc 1 422 0
+ 595 0000 C160     		str	r1, [r0, #12]
+ 596 0002 7047     		bx	lr
+ 597              		.cfi_endproc
+ 598              	.LFE40:
+ 600              		.section	.text.GPIO_PinLockConfig,"ax",%progbits
+ 601              		.align	2
+ 602              		.global	GPIO_PinLockConfig
+ 603              		.thumb
+ 604              		.thumb_func
+ 606              	GPIO_PinLockConfig:
+ 607              	.LFB41:
+ 423:FWLIB/src/stm32f10x_gpio.c **** }
+ 424:FWLIB/src/stm32f10x_gpio.c **** 
+ 425:FWLIB/src/stm32f10x_gpio.c **** /**
+ 426:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Locks GPIO Pins configuration registers.
+ 427:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIOx: where x can be (A..G) to select the GPIO peripheral.
+ 428:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to be written.
+ 429:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 430:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 431:FWLIB/src/stm32f10x_gpio.c ****   */
+ 432:FWLIB/src/stm32f10x_gpio.c **** void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 433:FWLIB/src/stm32f10x_gpio.c **** {
+ 608              		.loc 1 433 0
+ 609              		.cfi_startproc
+ 610              		@ args = 0, pretend = 0, frame = 0
+ 611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 612              		@ link register save eliminated.
+ 613              	.LVL79:
+ 434:FWLIB/src/stm32f10x_gpio.c ****   uint32_t tmp = 0x00010000;
+ARM GAS  /tmp/ccOVGJZ7.s 			page 19
+
+
+ 435:FWLIB/src/stm32f10x_gpio.c ****   
+ 436:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 437:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 438:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 439:FWLIB/src/stm32f10x_gpio.c ****   
+ 440:FWLIB/src/stm32f10x_gpio.c ****   tmp |= GPIO_Pin;
+ 614              		.loc 1 440 0
+ 615 0000 41F48033 		orr	r3, r1, #65536
+ 616              	.LVL80:
+ 441:FWLIB/src/stm32f10x_gpio.c ****   /* Set LCKK bit */
+ 442:FWLIB/src/stm32f10x_gpio.c ****   GPIOx->LCKR = tmp;
+ 617              		.loc 1 442 0
+ 618 0004 8361     		str	r3, [r0, #24]
+ 443:FWLIB/src/stm32f10x_gpio.c ****   /* Reset LCKK bit */
+ 444:FWLIB/src/stm32f10x_gpio.c ****   GPIOx->LCKR =  GPIO_Pin;
+ 619              		.loc 1 444 0
+ 620 0006 8161     		str	r1, [r0, #24]
+ 445:FWLIB/src/stm32f10x_gpio.c ****   /* Set LCKK bit */
+ 446:FWLIB/src/stm32f10x_gpio.c ****   GPIOx->LCKR = tmp;
+ 621              		.loc 1 446 0
+ 622 0008 8361     		str	r3, [r0, #24]
+ 447:FWLIB/src/stm32f10x_gpio.c ****   /* Read LCKK bit*/
+ 448:FWLIB/src/stm32f10x_gpio.c ****   tmp = GPIOx->LCKR;
+ 623              		.loc 1 448 0
+ 624 000a 8369     		ldr	r3, [r0, #24]
+ 625              	.LVL81:
+ 449:FWLIB/src/stm32f10x_gpio.c ****   /* Read LCKK bit*/
+ 450:FWLIB/src/stm32f10x_gpio.c ****   tmp = GPIOx->LCKR;
+ 626              		.loc 1 450 0
+ 627 000c 8369     		ldr	r3, [r0, #24]
+ 628 000e 7047     		bx	lr
+ 629              		.cfi_endproc
+ 630              	.LFE41:
+ 632              		.section	.text.GPIO_EventOutputConfig,"ax",%progbits
+ 633              		.align	2
+ 634              		.global	GPIO_EventOutputConfig
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	GPIO_EventOutputConfig:
+ 639              	.LFB42:
+ 451:FWLIB/src/stm32f10x_gpio.c **** }
+ 452:FWLIB/src/stm32f10x_gpio.c **** 
+ 453:FWLIB/src/stm32f10x_gpio.c **** /**
+ 454:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Selects the GPIO pin used as Event output.
+ 455:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_PortSource: selects the GPIO port to be used as source
+ 456:FWLIB/src/stm32f10x_gpio.c ****   *   for Event output.
+ 457:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be GPIO_PortSourceGPIOx where x can be (A..E).
+ 458:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_PinSource: specifies the pin for the Event output.
+ 459:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be GPIO_PinSourcex where x can be (0..15).
+ 460:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 461:FWLIB/src/stm32f10x_gpio.c ****   */
+ 462:FWLIB/src/stm32f10x_gpio.c **** void GPIO_EventOutputConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource)
+ 463:FWLIB/src/stm32f10x_gpio.c **** {
+ 640              		.loc 1 463 0
+ 641              		.cfi_startproc
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccOVGJZ7.s 			page 20
+
+
+ 644              		@ link register save eliminated.
+ 645              	.LVL82:
+ 464:FWLIB/src/stm32f10x_gpio.c ****   uint32_t tmpreg = 0x00;
+ 465:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 466:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_EVENTOUT_PORT_SOURCE(GPIO_PortSource));
+ 467:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_PIN_SOURCE(GPIO_PinSource));
+ 468:FWLIB/src/stm32f10x_gpio.c ****     
+ 469:FWLIB/src/stm32f10x_gpio.c ****   tmpreg = AFIO->EVCR;
+ 646              		.loc 1 469 0
+ 647 0000 054A     		ldr	r2, .L44
+ 648 0002 1368     		ldr	r3, [r2]
+ 649              	.LVL83:
+ 470:FWLIB/src/stm32f10x_gpio.c ****   /* Clear the PORT[6:4] and PIN[3:0] bits */
+ 471:FWLIB/src/stm32f10x_gpio.c ****   tmpreg &= EVCR_PORTPINCONFIG_MASK;
+ 650              		.loc 1 471 0
+ 651 0004 23F07F03 		bic	r3, r3, #127
+ 652              	.LVL84:
+ 653 0008 1B04     		lsls	r3, r3, #16
+ 654 000a 1B0C     		lsrs	r3, r3, #16
+ 655              	.LVL85:
+ 472:FWLIB/src/stm32f10x_gpio.c ****   tmpreg |= (uint32_t)GPIO_PortSource << 0x04;
+ 656              		.loc 1 472 0
+ 657 000c 43EA0010 		orr	r0, r3, r0, lsl #4
+ 658              	.LVL86:
+ 473:FWLIB/src/stm32f10x_gpio.c ****   tmpreg |= GPIO_PinSource;
+ 659              		.loc 1 473 0
+ 660 0010 0143     		orrs	r1, r1, r0
+ 661              	.LVL87:
+ 474:FWLIB/src/stm32f10x_gpio.c ****   AFIO->EVCR = tmpreg;
+ 662              		.loc 1 474 0
+ 663 0012 1160     		str	r1, [r2]
+ 664 0014 7047     		bx	lr
+ 665              	.L45:
+ 666 0016 00BF     		.align	2
+ 667              	.L44:
+ 668 0018 00000140 		.word	1073807360
+ 669              		.cfi_endproc
+ 670              	.LFE42:
+ 672              		.section	.text.GPIO_EventOutputCmd,"ax",%progbits
+ 673              		.align	2
+ 674              		.global	GPIO_EventOutputCmd
+ 675              		.thumb
+ 676              		.thumb_func
+ 678              	GPIO_EventOutputCmd:
+ 679              	.LFB43:
+ 475:FWLIB/src/stm32f10x_gpio.c **** }
+ 476:FWLIB/src/stm32f10x_gpio.c **** 
+ 477:FWLIB/src/stm32f10x_gpio.c **** /**
+ 478:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Enables or disables the Event Output.
+ 479:FWLIB/src/stm32f10x_gpio.c ****   * @param  NewState: new state of the Event output.
+ 480:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 481:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 482:FWLIB/src/stm32f10x_gpio.c ****   */
+ 483:FWLIB/src/stm32f10x_gpio.c **** void GPIO_EventOutputCmd(FunctionalState NewState)
+ 484:FWLIB/src/stm32f10x_gpio.c **** {
+ 680              		.loc 1 484 0
+ 681              		.cfi_startproc
+ARM GAS  /tmp/ccOVGJZ7.s 			page 21
+
+
+ 682              		@ args = 0, pretend = 0, frame = 0
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 684              		@ link register save eliminated.
+ 685              	.LVL88:
+ 485:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 486:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 487:FWLIB/src/stm32f10x_gpio.c ****   
+ 488:FWLIB/src/stm32f10x_gpio.c ****   *(__IO uint32_t *) EVCR_EVOE_BB = (uint32_t)NewState;
+ 686              		.loc 1 488 0
+ 687 0000 014B     		ldr	r3, .L47
+ 688 0002 1860     		str	r0, [r3]
+ 689 0004 7047     		bx	lr
+ 690              	.L48:
+ 691 0006 00BF     		.align	2
+ 692              	.L47:
+ 693 0008 1C002042 		.word	1109393436
+ 694              		.cfi_endproc
+ 695              	.LFE43:
+ 697              		.section	.text.GPIO_PinRemapConfig,"ax",%progbits
+ 698              		.align	2
+ 699              		.global	GPIO_PinRemapConfig
+ 700              		.thumb
+ 701              		.thumb_func
+ 703              	GPIO_PinRemapConfig:
+ 704              	.LFB44:
+ 489:FWLIB/src/stm32f10x_gpio.c **** }
+ 490:FWLIB/src/stm32f10x_gpio.c **** 
+ 491:FWLIB/src/stm32f10x_gpio.c **** /**
+ 492:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Changes the mapping of the specified pin.
+ 493:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_Remap: selects the pin to remap.
+ 494:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be one of the following values:
+ 495:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_SPI1             : SPI1 Alternate Function mapping
+ 496:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_I2C1             : I2C1 Alternate Function mapping
+ 497:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_USART1           : USART1 Alternate Function mapping
+ 498:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_USART2           : USART2 Alternate Function mapping
+ 499:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_PartialRemap_USART3    : USART3 Partial Alternate Function mapping
+ 500:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_FullRemap_USART3       : USART3 Full Alternate Function mapping
+ 501:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_PartialRemap_TIM1      : TIM1 Partial Alternate Function mapping
+ 502:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_FullRemap_TIM1         : TIM1 Full Alternate Function mapping
+ 503:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_PartialRemap1_TIM2     : TIM2 Partial1 Alternate Function mapping
+ 504:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_PartialRemap2_TIM2     : TIM2 Partial2 Alternate Function mapping
+ 505:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_FullRemap_TIM2         : TIM2 Full Alternate Function mapping
+ 506:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_PartialRemap_TIM3      : TIM3 Partial Alternate Function mapping
+ 507:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_FullRemap_TIM3         : TIM3 Full Alternate Function mapping
+ 508:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM4             : TIM4 Alternate Function mapping
+ 509:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap1_CAN1            : CAN1 Alternate Function mapping
+ 510:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap2_CAN1            : CAN1 Alternate Function mapping
+ 511:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_PD01             : PD01 Alternate Function mapping
+ 512:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM5CH4_LSI      : LSI connected to TIM5 Channel4 input capture for calibra
+ 513:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_ADC1_ETRGINJ     : ADC1 External Trigger Injected Conversion remapping
+ 514:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_ADC1_ETRGREG     : ADC1 External Trigger Regular Conversion remapping
+ 515:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_ADC2_ETRGINJ     : ADC2 External Trigger Injected Conversion remapping
+ 516:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_ADC2_ETRGREG     : ADC2 External Trigger Regular Conversion remapping
+ 517:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_ETH              : Ethernet remapping (only for Connectivity line devices)
+ 518:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_CAN2             : CAN2 remapping (only for Connectivity line devices)
+ 519:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_SWJ_NoJTRST      : Full SWJ Enabled (JTAG-DP + SW-DP) but without JTRST
+ 520:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_SWJ_JTAGDisable  : JTAG-DP Disabled and SW-DP Enabled
+ARM GAS  /tmp/ccOVGJZ7.s 			page 22
+
+
+ 521:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_SWJ_Disable      : Full SWJ Disabled (JTAG-DP + SW-DP)
+ 522:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_SPI3             : SPI3/I2S3 Alternate Function mapping (only for Connectiv
+ 523:FWLIB/src/stm32f10x_gpio.c ****   *                                        When the SPI3/I2S3 is remapped using this function, the 
+ 524:FWLIB/src/stm32f10x_gpio.c ****   *                                        to Full SWJ Enabled (JTAG-DP + SW-DP) but without JTRST.
+ 525:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM2ITR1_PTP_SOF : Ethernet PTP output or USB OTG SOF (Start of Frame) conn
+ 526:FWLIB/src/stm32f10x_gpio.c ****   *                                        to TIM2 Internal Trigger 1 for calibration (only for Con
+ 527:FWLIB/src/stm32f10x_gpio.c ****   *                                        If the GPIO_Remap_TIM2ITR1_PTP_SOF is enabled the TIM2 I
+ 528:FWLIB/src/stm32f10x_gpio.c ****   *                                        Ethernet PTP output. When Reset TIM2 ITR1 is connected t
+ 529:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_PTP_PPS          : Ethernet MAC PPS_PTS output on PB05 (only for Connectivi
+ 530:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM15            : TIM15 Alternate Function mapping (only for Value line de
+ 531:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM16            : TIM16 Alternate Function mapping (only for Value line de
+ 532:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM17            : TIM17 Alternate Function mapping (only for Value line de
+ 533:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_CEC              : CEC Alternate Function mapping (only for Value line devi
+ 534:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM1_DMA         : TIM1 DMA requests mapping (only for Value line devices)
+ 535:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM9             : TIM9 Alternate Function mapping (only for XL-density dev
+ 536:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM10            : TIM10 Alternate Function mapping (only for XL-density de
+ 537:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM11            : TIM11 Alternate Function mapping (only for XL-density de
+ 538:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM13            : TIM13 Alternate Function mapping (only for High density 
+ 539:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM14            : TIM14 Alternate Function mapping (only for High density 
+ 540:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_FSMC_NADV        : FSMC_NADV Alternate Function mapping (only for High dens
+ 541:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM67_DAC_DMA    : TIM6/TIM7 and DAC DMA requests remapping (only for High 
+ 542:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_TIM12            : TIM12 Alternate Function mapping (only for High density 
+ 543:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_Remap_MISC             : Miscellaneous Remap (DMA2 Channel5 Position and DAC Trig
+ 544:FWLIB/src/stm32f10x_gpio.c ****   *                                        only for High density Value line devices)     
+ 545:FWLIB/src/stm32f10x_gpio.c ****   * @param  NewState: new state of the port pin remapping.
+ 546:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 547:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 548:FWLIB/src/stm32f10x_gpio.c ****   */
+ 549:FWLIB/src/stm32f10x_gpio.c **** void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState)
+ 550:FWLIB/src/stm32f10x_gpio.c **** {
+ 705              		.loc 1 550 0
+ 706              		.cfi_startproc
+ 707              		@ args = 0, pretend = 0, frame = 0
+ 708              		@ frame_needed = 0, uses_anonymous_args = 0
+ 709              		@ link register save eliminated.
+ 710              	.LVL89:
+ 711 0000 30B4     		push	{r4, r5}
+ 712              	.LCFI3:
+ 713              		.cfi_def_cfa_offset 8
+ 714              		.cfi_offset 4, -8
+ 715              		.cfi_offset 5, -4
+ 716              	.LVL90:
+ 551:FWLIB/src/stm32f10x_gpio.c ****   uint32_t tmp = 0x00, tmp1 = 0x00, tmpreg = 0x00, tmpmask = 0x00;
+ 552:FWLIB/src/stm32f10x_gpio.c **** 
+ 553:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 554:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_REMAP(GPIO_Remap));
+ 555:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));  
+ 556:FWLIB/src/stm32f10x_gpio.c ****   
+ 557:FWLIB/src/stm32f10x_gpio.c ****   if((GPIO_Remap & 0x80000000) == 0x80000000)
+ 717              		.loc 1 557 0
+ 718 0002 0028     		cmp	r0, #0
+ 719 0004 02DA     		bge	.L50
+ 558:FWLIB/src/stm32f10x_gpio.c ****   {
+ 559:FWLIB/src/stm32f10x_gpio.c ****     tmpreg = AFIO->MAPR2;
+ 720              		.loc 1 559 0
+ 721 0006 1A4B     		ldr	r3, .L59
+ 722 0008 DB69     		ldr	r3, [r3, #28]
+ARM GAS  /tmp/ccOVGJZ7.s 			page 23
+
+
+ 723              	.LVL91:
+ 724 000a 01E0     		b	.L51
+ 725              	.LVL92:
+ 726              	.L50:
+ 560:FWLIB/src/stm32f10x_gpio.c ****   }
+ 561:FWLIB/src/stm32f10x_gpio.c ****   else
+ 562:FWLIB/src/stm32f10x_gpio.c ****   {
+ 563:FWLIB/src/stm32f10x_gpio.c ****     tmpreg = AFIO->MAPR;
+ 727              		.loc 1 563 0
+ 728 000c 184B     		ldr	r3, .L59
+ 729 000e 5B68     		ldr	r3, [r3, #4]
+ 730              	.LVL93:
+ 731              	.L51:
+ 564:FWLIB/src/stm32f10x_gpio.c ****   }
+ 565:FWLIB/src/stm32f10x_gpio.c **** 
+ 566:FWLIB/src/stm32f10x_gpio.c ****   tmpmask = (GPIO_Remap & DBGAFR_POSITION_MASK) >> 0x10;
+ 732              		.loc 1 566 0
+ 733 0010 C0F30345 		ubfx	r5, r0, #16, #4
+ 734              	.LVL94:
+ 567:FWLIB/src/stm32f10x_gpio.c ****   tmp = GPIO_Remap & LSB_MASK;
+ 735              		.loc 1 567 0
+ 736 0014 82B2     		uxth	r2, r0
+ 737              	.LVL95:
+ 568:FWLIB/src/stm32f10x_gpio.c **** 
+ 569:FWLIB/src/stm32f10x_gpio.c ****   if ((GPIO_Remap & (DBGAFR_LOCATION_MASK | DBGAFR_NUMBITS_MASK)) == (DBGAFR_LOCATION_MASK | DBGAFR
+ 738              		.loc 1 569 0
+ 739 0016 00F44014 		and	r4, r0, #3145728
+ 740 001a B4F5401F 		cmp	r4, #3145728
+ 741 001e 07D1     		bne	.L52
+ 570:FWLIB/src/stm32f10x_gpio.c ****   {
+ 571:FWLIB/src/stm32f10x_gpio.c ****     tmpreg &= DBGAFR_SWJCFG_MASK;
+ 742              		.loc 1 571 0
+ 743 0020 23F07063 		bic	r3, r3, #251658240
+ 744              	.LVL96:
+ 572:FWLIB/src/stm32f10x_gpio.c ****     AFIO->MAPR &= DBGAFR_SWJCFG_MASK;
+ 745              		.loc 1 572 0
+ 746 0024 124D     		ldr	r5, .L59
+ 747              	.LVL97:
+ 748 0026 6C68     		ldr	r4, [r5, #4]
+ 749 0028 24F07064 		bic	r4, r4, #251658240
+ 750 002c 6C60     		str	r4, [r5, #4]
+ 751 002e 11E0     		b	.L53
+ 752              	.LVL98:
+ 753              	.L52:
+ 573:FWLIB/src/stm32f10x_gpio.c ****   }
+ 574:FWLIB/src/stm32f10x_gpio.c ****   else if ((GPIO_Remap & DBGAFR_NUMBITS_MASK) == DBGAFR_NUMBITS_MASK)
+ 754              		.loc 1 574 0
+ 755 0030 10F4801F 		tst	r0, #1048576
+ 756 0034 06D0     		beq	.L54
+ 575:FWLIB/src/stm32f10x_gpio.c ****   {
+ 576:FWLIB/src/stm32f10x_gpio.c ****     tmp1 = ((uint32_t)0x03) << tmpmask;
+ 757              		.loc 1 576 0
+ 758 0036 0324     		movs	r4, #3
+ 759 0038 AC40     		lsls	r4, r4, r5
+ 760              	.LVL99:
+ 577:FWLIB/src/stm32f10x_gpio.c ****     tmpreg &= ~tmp1;
+ 761              		.loc 1 577 0
+ARM GAS  /tmp/ccOVGJZ7.s 			page 24
+
+
+ 762 003a 23EA0403 		bic	r3, r3, r4
+ 763              	.LVL100:
+ 578:FWLIB/src/stm32f10x_gpio.c ****     tmpreg |= ~DBGAFR_SWJCFG_MASK;
+ 764              		.loc 1 578 0
+ 765 003e 43F07063 		orr	r3, r3, #251658240
+ 766              	.LVL101:
+ 767 0042 07E0     		b	.L53
+ 768              	.LVL102:
+ 769              	.L54:
+ 579:FWLIB/src/stm32f10x_gpio.c ****   }
+ 580:FWLIB/src/stm32f10x_gpio.c ****   else
+ 581:FWLIB/src/stm32f10x_gpio.c ****   {
+ 582:FWLIB/src/stm32f10x_gpio.c ****     tmpreg &= ~(tmp << ((GPIO_Remap >> 0x15)*0x10));
+ 770              		.loc 1 582 0
+ 771 0044 440D     		lsrs	r4, r0, #21
+ 772 0046 2401     		lsls	r4, r4, #4
+ 773 0048 02FA04F4 		lsl	r4, r2, r4
+ 774 004c 23EA0403 		bic	r3, r3, r4
+ 775              	.LVL103:
+ 583:FWLIB/src/stm32f10x_gpio.c ****     tmpreg |= ~DBGAFR_SWJCFG_MASK;
+ 776              		.loc 1 583 0
+ 777 0050 43F07063 		orr	r3, r3, #251658240
+ 778              	.LVL104:
+ 779              	.L53:
+ 584:FWLIB/src/stm32f10x_gpio.c ****   }
+ 585:FWLIB/src/stm32f10x_gpio.c **** 
+ 586:FWLIB/src/stm32f10x_gpio.c ****   if (NewState != DISABLE)
+ 780              		.loc 1 586 0
+ 781 0054 19B1     		cbz	r1, .L55
+ 587:FWLIB/src/stm32f10x_gpio.c ****   {
+ 588:FWLIB/src/stm32f10x_gpio.c ****     tmpreg |= (tmp << ((GPIO_Remap >> 0x15)*0x10));
+ 782              		.loc 1 588 0
+ 783 0056 410D     		lsrs	r1, r0, #21
+ 784              	.LVL105:
+ 785 0058 0901     		lsls	r1, r1, #4
+ 786 005a 8A40     		lsls	r2, r2, r1
+ 787              	.LVL106:
+ 788 005c 1343     		orrs	r3, r3, r2
+ 789              	.LVL107:
+ 790              	.L55:
+ 589:FWLIB/src/stm32f10x_gpio.c ****   }
+ 590:FWLIB/src/stm32f10x_gpio.c **** 
+ 591:FWLIB/src/stm32f10x_gpio.c ****   if((GPIO_Remap & 0x80000000) == 0x80000000)
+ 791              		.loc 1 591 0
+ 792 005e 0028     		cmp	r0, #0
+ 793 0060 02DA     		bge	.L56
+ 592:FWLIB/src/stm32f10x_gpio.c ****   {
+ 593:FWLIB/src/stm32f10x_gpio.c ****     AFIO->MAPR2 = tmpreg;
+ 794              		.loc 1 593 0
+ 795 0062 034A     		ldr	r2, .L59
+ 796 0064 D361     		str	r3, [r2, #28]
+ 797 0066 01E0     		b	.L49
+ 798              	.L56:
+ 594:FWLIB/src/stm32f10x_gpio.c ****   }
+ 595:FWLIB/src/stm32f10x_gpio.c ****   else
+ 596:FWLIB/src/stm32f10x_gpio.c ****   {
+ 597:FWLIB/src/stm32f10x_gpio.c ****     AFIO->MAPR = tmpreg;
+ARM GAS  /tmp/ccOVGJZ7.s 			page 25
+
+
+ 799              		.loc 1 597 0
+ 800 0068 014A     		ldr	r2, .L59
+ 801 006a 5360     		str	r3, [r2, #4]
+ 802              	.L49:
+ 598:FWLIB/src/stm32f10x_gpio.c ****   }  
+ 599:FWLIB/src/stm32f10x_gpio.c **** }
+ 803              		.loc 1 599 0
+ 804 006c 30BC     		pop	{r4, r5}
+ 805              	.LCFI4:
+ 806              		.cfi_restore 5
+ 807              		.cfi_restore 4
+ 808              		.cfi_def_cfa_offset 0
+ 809 006e 7047     		bx	lr
+ 810              	.L60:
+ 811              		.align	2
+ 812              	.L59:
+ 813 0070 00000140 		.word	1073807360
+ 814              		.cfi_endproc
+ 815              	.LFE44:
+ 817              		.section	.text.GPIO_EXTILineConfig,"ax",%progbits
+ 818              		.align	2
+ 819              		.global	GPIO_EXTILineConfig
+ 820              		.thumb
+ 821              		.thumb_func
+ 823              	GPIO_EXTILineConfig:
+ 824              	.LFB45:
+ 600:FWLIB/src/stm32f10x_gpio.c **** 
+ 601:FWLIB/src/stm32f10x_gpio.c **** /**
+ 602:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Selects the GPIO pin used as EXTI Line.
+ 603:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_PortSource: selects the GPIO port to be used as source for EXTI lines.
+ 604:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be GPIO_PortSourceGPIOx where x can be (A..G).
+ 605:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_PinSource: specifies the EXTI line to be configured.
+ 606:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be GPIO_PinSourcex where x can be (0..15).
+ 607:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 608:FWLIB/src/stm32f10x_gpio.c ****   */
+ 609:FWLIB/src/stm32f10x_gpio.c **** void GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource)
+ 610:FWLIB/src/stm32f10x_gpio.c **** {
+ 825              		.loc 1 610 0
+ 826              		.cfi_startproc
+ 827              		@ args = 0, pretend = 0, frame = 0
+ 828              		@ frame_needed = 0, uses_anonymous_args = 0
+ 829              		@ link register save eliminated.
+ 830              	.LVL108:
+ 831 0000 30B4     		push	{r4, r5}
+ 832              	.LCFI5:
+ 833              		.cfi_def_cfa_offset 8
+ 834              		.cfi_offset 4, -8
+ 835              		.cfi_offset 5, -4
+ 836              	.LVL109:
+ 611:FWLIB/src/stm32f10x_gpio.c ****   uint32_t tmp = 0x00;
+ 612:FWLIB/src/stm32f10x_gpio.c ****   /* Check the parameters */
+ 613:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_EXTI_PORT_SOURCE(GPIO_PortSource));
+ 614:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_PIN_SOURCE(GPIO_PinSource));
+ 615:FWLIB/src/stm32f10x_gpio.c ****   
+ 616:FWLIB/src/stm32f10x_gpio.c ****   tmp = ((uint32_t)0x0F) << (0x04 * (GPIO_PinSource & (uint8_t)0x03));
+ 837              		.loc 1 616 0
+ 838 0002 01F00302 		and	r2, r1, #3
+ARM GAS  /tmp/ccOVGJZ7.s 			page 26
+
+
+ 839 0006 9200     		lsls	r2, r2, #2
+ 840 0008 0F24     		movs	r4, #15
+ 841 000a 9440     		lsls	r4, r4, r2
+ 842              	.LVL110:
+ 617:FWLIB/src/stm32f10x_gpio.c ****   AFIO->EXTICR[GPIO_PinSource >> 0x02] &= ~tmp;
+ 843              		.loc 1 617 0
+ 844 000c 8908     		lsrs	r1, r1, #2
+ 845              	.LVL111:
+ 846 000e 084B     		ldr	r3, .L63
+ 847 0010 0231     		adds	r1, r1, #2
+ 848 0012 53F82150 		ldr	r5, [r3, r1, lsl #2]
+ 849 0016 25EA0404 		bic	r4, r5, r4
+ 850              	.LVL112:
+ 851 001a 43F82140 		str	r4, [r3, r1, lsl #2]
+ 618:FWLIB/src/stm32f10x_gpio.c ****   AFIO->EXTICR[GPIO_PinSource >> 0x02] |= (((uint32_t)GPIO_PortSource) << (0x04 * (GPIO_PinSource &
+ 852              		.loc 1 618 0
+ 853 001e 53F82140 		ldr	r4, [r3, r1, lsl #2]
+ 854 0022 9040     		lsls	r0, r0, r2
+ 855              	.LVL113:
+ 856 0024 2043     		orrs	r0, r0, r4
+ 857 0026 43F82100 		str	r0, [r3, r1, lsl #2]
+ 619:FWLIB/src/stm32f10x_gpio.c **** }
+ 858              		.loc 1 619 0
+ 859 002a 30BC     		pop	{r4, r5}
+ 860              	.LCFI6:
+ 861              		.cfi_restore 5
+ 862              		.cfi_restore 4
+ 863              		.cfi_def_cfa_offset 0
+ 864 002c 7047     		bx	lr
+ 865              	.L64:
+ 866 002e 00BF     		.align	2
+ 867              	.L63:
+ 868 0030 00000140 		.word	1073807360
+ 869              		.cfi_endproc
+ 870              	.LFE45:
+ 872              		.section	.text.GPIO_ETH_MediaInterfaceConfig,"ax",%progbits
+ 873              		.align	2
+ 874              		.global	GPIO_ETH_MediaInterfaceConfig
+ 875              		.thumb
+ 876              		.thumb_func
+ 878              	GPIO_ETH_MediaInterfaceConfig:
+ 879              	.LFB46:
+ 620:FWLIB/src/stm32f10x_gpio.c **** 
+ 621:FWLIB/src/stm32f10x_gpio.c **** /**
+ 622:FWLIB/src/stm32f10x_gpio.c ****   * @brief  Selects the Ethernet media interface.
+ 623:FWLIB/src/stm32f10x_gpio.c ****   * @note   This function applies only to STM32 Connectivity line devices.  
+ 624:FWLIB/src/stm32f10x_gpio.c ****   * @param  GPIO_ETH_MediaInterface: specifies the Media Interface mode.
+ 625:FWLIB/src/stm32f10x_gpio.c ****   *   This parameter can be one of the following values:
+ 626:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_ETH_MediaInterface_MII: MII mode
+ 627:FWLIB/src/stm32f10x_gpio.c ****   *     @arg GPIO_ETH_MediaInterface_RMII: RMII mode    
+ 628:FWLIB/src/stm32f10x_gpio.c ****   * @retval None
+ 629:FWLIB/src/stm32f10x_gpio.c ****   */
+ 630:FWLIB/src/stm32f10x_gpio.c **** void GPIO_ETH_MediaInterfaceConfig(uint32_t GPIO_ETH_MediaInterface) 
+ 631:FWLIB/src/stm32f10x_gpio.c **** { 
+ 880              		.loc 1 631 0
+ 881              		.cfi_startproc
+ 882              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccOVGJZ7.s 			page 27
+
+
+ 883              		@ frame_needed = 0, uses_anonymous_args = 0
+ 884              		@ link register save eliminated.
+ 885              	.LVL114:
+ 632:FWLIB/src/stm32f10x_gpio.c ****   assert_param(IS_GPIO_ETH_MEDIA_INTERFACE(GPIO_ETH_MediaInterface)); 
+ 633:FWLIB/src/stm32f10x_gpio.c **** 
+ 634:FWLIB/src/stm32f10x_gpio.c ****   /* Configure MII_RMII selection bit */ 
+ 635:FWLIB/src/stm32f10x_gpio.c ****   *(__IO uint32_t *) MAPR_MII_RMII_SEL_BB = GPIO_ETH_MediaInterface; 
+ 886              		.loc 1 635 0
+ 887 0000 014B     		ldr	r3, .L66
+ 888 0002 1860     		str	r0, [r3]
+ 889 0004 7047     		bx	lr
+ 890              	.L67:
+ 891 0006 00BF     		.align	2
+ 892              	.L66:
+ 893 0008 DC002042 		.word	1109393628
+ 894              		.cfi_endproc
+ 895              	.LFE46:
+ 897              		.text
+ 898              	.Letext0:
+ 899              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 900              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 901              		.file 4 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+ 902              		.file 5 "FWLIB/inc/stm32f10x_gpio.h"
+ 903              		.file 6 "CMSIS/CM3/CoreSupport/core_cm3.h"
+ 904              		.file 7 "FWLIB/inc/stm32f10x_rcc.h"
+ARM GAS  /tmp/ccOVGJZ7.s 			page 28
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_gpio.c
+     /tmp/ccOVGJZ7.s:19     .text.GPIO_DeInit:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:24     .text.GPIO_DeInit:0000000000000000 GPIO_DeInit
+     /tmp/ccOVGJZ7.s:165    .text.GPIO_DeInit:00000000000000b0 $d
+     /tmp/ccOVGJZ7.s:176    .text.GPIO_AFIODeInit:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:181    .text.GPIO_AFIODeInit:0000000000000000 GPIO_AFIODeInit
+     /tmp/ccOVGJZ7.s:207    .text.GPIO_Init:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:212    .text.GPIO_Init:0000000000000000 GPIO_Init
+     /tmp/ccOVGJZ7.s:378    .text.GPIO_StructInit:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:383    .text.GPIO_StructInit:0000000000000000 GPIO_StructInit
+     /tmp/ccOVGJZ7.s:405    .text.GPIO_ReadInputDataBit:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:410    .text.GPIO_ReadInputDataBit:0000000000000000 GPIO_ReadInputDataBit
+     /tmp/ccOVGJZ7.s:437    .text.GPIO_ReadInputData:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:442    .text.GPIO_ReadInputData:0000000000000000 GPIO_ReadInputData
+     /tmp/ccOVGJZ7.s:460    .text.GPIO_ReadOutputDataBit:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:465    .text.GPIO_ReadOutputDataBit:0000000000000000 GPIO_ReadOutputDataBit
+     /tmp/ccOVGJZ7.s:492    .text.GPIO_ReadOutputData:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:497    .text.GPIO_ReadOutputData:0000000000000000 GPIO_ReadOutputData
+     /tmp/ccOVGJZ7.s:515    .text.GPIO_SetBits:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:520    .text.GPIO_SetBits:0000000000000000 GPIO_SetBits
+     /tmp/ccOVGJZ7.s:535    .text.GPIO_ResetBits:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:540    .text.GPIO_ResetBits:0000000000000000 GPIO_ResetBits
+     /tmp/ccOVGJZ7.s:555    .text.GPIO_WriteBit:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:560    .text.GPIO_WriteBit:0000000000000000 GPIO_WriteBit
+     /tmp/ccOVGJZ7.s:581    .text.GPIO_Write:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:586    .text.GPIO_Write:0000000000000000 GPIO_Write
+     /tmp/ccOVGJZ7.s:601    .text.GPIO_PinLockConfig:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:606    .text.GPIO_PinLockConfig:0000000000000000 GPIO_PinLockConfig
+     /tmp/ccOVGJZ7.s:633    .text.GPIO_EventOutputConfig:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:638    .text.GPIO_EventOutputConfig:0000000000000000 GPIO_EventOutputConfig
+     /tmp/ccOVGJZ7.s:668    .text.GPIO_EventOutputConfig:0000000000000018 $d
+     /tmp/ccOVGJZ7.s:673    .text.GPIO_EventOutputCmd:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:678    .text.GPIO_EventOutputCmd:0000000000000000 GPIO_EventOutputCmd
+     /tmp/ccOVGJZ7.s:693    .text.GPIO_EventOutputCmd:0000000000000008 $d
+     /tmp/ccOVGJZ7.s:698    .text.GPIO_PinRemapConfig:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:703    .text.GPIO_PinRemapConfig:0000000000000000 GPIO_PinRemapConfig
+     /tmp/ccOVGJZ7.s:813    .text.GPIO_PinRemapConfig:0000000000000070 $d
+     /tmp/ccOVGJZ7.s:818    .text.GPIO_EXTILineConfig:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:823    .text.GPIO_EXTILineConfig:0000000000000000 GPIO_EXTILineConfig
+     /tmp/ccOVGJZ7.s:868    .text.GPIO_EXTILineConfig:0000000000000030 $d
+     /tmp/ccOVGJZ7.s:873    .text.GPIO_ETH_MediaInterfaceConfig:0000000000000000 $t
+     /tmp/ccOVGJZ7.s:878    .text.GPIO_ETH_MediaInterfaceConfig:0000000000000000 GPIO_ETH_MediaInterfaceConfig
+     /tmp/ccOVGJZ7.s:893    .text.GPIO_ETH_MediaInterfaceConfig:0000000000000008 $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

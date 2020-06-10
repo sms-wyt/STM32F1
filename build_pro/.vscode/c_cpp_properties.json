@@ -1,0 +1,37 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/CMSIS/CM3/CoreSupport/*",
+                    "${workspaceFolder}/CMSIS/DeviceSupport/ST/STM32F10x/*",
+                    "${workspaceFolder}/FWLIB/inc/*",
+                    "${workspaceFolder}/DRIVER/inc/*",
+                    "${workspaceFolder}/USER/*",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/CMSIS/CM3/CoreSupport/*",
+                "${workspaceFolder}/CMSIS/DeviceSupport/ST/STM32F10x/*",
+                "${workspaceFolder}/FWLIB/inc/*",
+                "${workspaceFolder}/DRIVER/inc/*",
+                "${workspaceFolder}/USER/*",
+                "${workspaceFolder}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "USE_STDPERIPH_DRIVER",
+                "STM32F10X_HD"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

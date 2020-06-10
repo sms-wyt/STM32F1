@@ -1,0 +1,319 @@
+ARM GAS  /tmp/cctAwNim.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"stm32f10x_it.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.NMI_Handler,"ax",%progbits
+  19              		.align	2
+  20              		.global	NMI_Handler
+  21              		.thumb
+  22              		.thumb_func
+  24              	NMI_Handler:
+  25              	.LFB29:
+  26              		.file 1 "USER/stm32f10x_it.c"
+   1:USER/stm32f10x_it.c **** /**
+   2:USER/stm32f10x_it.c ****   ******************************************************************************
+   3:USER/stm32f10x_it.c ****   * @file    Project/STM32F10x_StdPeriph_Template/stm32f10x_it.c 
+   4:USER/stm32f10x_it.c ****   * @author  MCD Application Team
+   5:USER/stm32f10x_it.c ****   * @version V3.5.0
+   6:USER/stm32f10x_it.c ****   * @date    08-April-2011
+   7:USER/stm32f10x_it.c ****   * @brief   Main Interrupt Service Routines.
+   8:USER/stm32f10x_it.c ****   *          This file provides template for all exceptions handler and 
+   9:USER/stm32f10x_it.c ****   *          peripherals interrupt service routine.
+  10:USER/stm32f10x_it.c ****   ******************************************************************************
+  11:USER/stm32f10x_it.c ****   * @attention
+  12:USER/stm32f10x_it.c ****   *
+  13:USER/stm32f10x_it.c ****   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  14:USER/stm32f10x_it.c ****   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  15:USER/stm32f10x_it.c ****   * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  16:USER/stm32f10x_it.c ****   * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  17:USER/stm32f10x_it.c ****   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  18:USER/stm32f10x_it.c ****   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  19:USER/stm32f10x_it.c ****   *
+  20:USER/stm32f10x_it.c ****   * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  21:USER/stm32f10x_it.c ****   ******************************************************************************
+  22:USER/stm32f10x_it.c ****   */
+  23:USER/stm32f10x_it.c **** 
+  24:USER/stm32f10x_it.c **** /* Includes ------------------------------------------------------------------*/
+  25:USER/stm32f10x_it.c **** #include "stm32f10x_it.h"
+  26:USER/stm32f10x_it.c **** 
+  27:USER/stm32f10x_it.c **** /** @addtogroup STM32F10x_StdPeriph_Template
+  28:USER/stm32f10x_it.c ****   * @{
+  29:USER/stm32f10x_it.c ****   */
+  30:USER/stm32f10x_it.c **** 
+  31:USER/stm32f10x_it.c **** /* Private typedef -----------------------------------------------------------*/
+  32:USER/stm32f10x_it.c **** /* Private define ------------------------------------------------------------*/
+ARM GAS  /tmp/cctAwNim.s 			page 2
+
+
+  33:USER/stm32f10x_it.c **** /* Private macro -------------------------------------------------------------*/
+  34:USER/stm32f10x_it.c **** /* Private variables ---------------------------------------------------------*/
+  35:USER/stm32f10x_it.c **** /* Private function prototypes -----------------------------------------------*/
+  36:USER/stm32f10x_it.c **** /* Private functions ---------------------------------------------------------*/
+  37:USER/stm32f10x_it.c **** 
+  38:USER/stm32f10x_it.c **** /******************************************************************************/
+  39:USER/stm32f10x_it.c **** /*            Cortex-M3 Processor Exceptions Handlers                         */
+  40:USER/stm32f10x_it.c **** /******************************************************************************/
+  41:USER/stm32f10x_it.c **** 
+  42:USER/stm32f10x_it.c **** /**
+  43:USER/stm32f10x_it.c ****   * @brief  This function handles NMI exception.
+  44:USER/stm32f10x_it.c ****   * @param  None
+  45:USER/stm32f10x_it.c ****   * @retval None
+  46:USER/stm32f10x_it.c ****   */
+  47:USER/stm32f10x_it.c **** void NMI_Handler(void)
+  48:USER/stm32f10x_it.c **** {
+  27              		.loc 1 48 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE29:
+  36 0002 00BF     		.section	.text.HardFault_Handler,"ax",%progbits
+  37              		.align	2
+  38              		.global	HardFault_Handler
+  39              		.thumb
+  40              		.thumb_func
+  42              	HardFault_Handler:
+  43              	.LFB30:
+  49:USER/stm32f10x_it.c **** }
+  50:USER/stm32f10x_it.c **** 
+  51:USER/stm32f10x_it.c **** /**
+  52:USER/stm32f10x_it.c ****   * @brief  This function handles Hard Fault exception.
+  53:USER/stm32f10x_it.c ****   * @param  None
+  54:USER/stm32f10x_it.c ****   * @retval None
+  55:USER/stm32f10x_it.c ****   */
+  56:USER/stm32f10x_it.c **** void HardFault_Handler(void)
+  57:USER/stm32f10x_it.c **** {
+  44              		.loc 1 57 0
+  45              		.cfi_startproc
+  46              		@ Volatile: function does not return.
+  47              		@ args = 0, pretend = 0, frame = 0
+  48              		@ frame_needed = 0, uses_anonymous_args = 0
+  49              		@ link register save eliminated.
+  50              	.L3:
+  58:USER/stm32f10x_it.c ****   /* Go to infinite loop when Hard Fault exception occurs */
+  59:USER/stm32f10x_it.c ****   while (1)
+  60:USER/stm32f10x_it.c ****   {
+  61:USER/stm32f10x_it.c ****   }
+  51              		.loc 1 61 0 discriminator 1
+  52 0000 FEE7     		b	.L3
+  53              		.cfi_endproc
+  54              	.LFE30:
+  56 0002 00BF     		.section	.text.MemManage_Handler,"ax",%progbits
+  57              		.align	2
+ARM GAS  /tmp/cctAwNim.s 			page 3
+
+
+  58              		.global	MemManage_Handler
+  59              		.thumb
+  60              		.thumb_func
+  62              	MemManage_Handler:
+  63              	.LFB31:
+  62:USER/stm32f10x_it.c **** }
+  63:USER/stm32f10x_it.c **** 
+  64:USER/stm32f10x_it.c **** /**
+  65:USER/stm32f10x_it.c ****   * @brief  This function handles Memory Manage exception.
+  66:USER/stm32f10x_it.c ****   * @param  None
+  67:USER/stm32f10x_it.c ****   * @retval None
+  68:USER/stm32f10x_it.c ****   */
+  69:USER/stm32f10x_it.c **** void MemManage_Handler(void)
+  70:USER/stm32f10x_it.c **** {
+  64              		.loc 1 70 0
+  65              		.cfi_startproc
+  66              		@ Volatile: function does not return.
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70              	.L5:
+  71:USER/stm32f10x_it.c ****   /* Go to infinite loop when Memory Manage exception occurs */
+  72:USER/stm32f10x_it.c ****   while (1)
+  73:USER/stm32f10x_it.c ****   {
+  74:USER/stm32f10x_it.c ****   }
+  71              		.loc 1 74 0 discriminator 1
+  72 0000 FEE7     		b	.L5
+  73              		.cfi_endproc
+  74              	.LFE31:
+  76 0002 00BF     		.section	.text.BusFault_Handler,"ax",%progbits
+  77              		.align	2
+  78              		.global	BusFault_Handler
+  79              		.thumb
+  80              		.thumb_func
+  82              	BusFault_Handler:
+  83              	.LFB32:
+  75:USER/stm32f10x_it.c **** }
+  76:USER/stm32f10x_it.c **** 
+  77:USER/stm32f10x_it.c **** /**
+  78:USER/stm32f10x_it.c ****   * @brief  This function handles Bus Fault exception.
+  79:USER/stm32f10x_it.c ****   * @param  None
+  80:USER/stm32f10x_it.c ****   * @retval None
+  81:USER/stm32f10x_it.c ****   */
+  82:USER/stm32f10x_it.c **** void BusFault_Handler(void)
+  83:USER/stm32f10x_it.c **** {
+  84              		.loc 1 83 0
+  85              		.cfi_startproc
+  86              		@ Volatile: function does not return.
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89              		@ link register save eliminated.
+  90              	.L7:
+  84:USER/stm32f10x_it.c ****   /* Go to infinite loop when Bus Fault exception occurs */
+  85:USER/stm32f10x_it.c ****   while (1)
+  86:USER/stm32f10x_it.c ****   {
+  87:USER/stm32f10x_it.c ****   }
+  91              		.loc 1 87 0 discriminator 1
+ARM GAS  /tmp/cctAwNim.s 			page 4
+
+
+  92 0000 FEE7     		b	.L7
+  93              		.cfi_endproc
+  94              	.LFE32:
+  96 0002 00BF     		.section	.text.UsageFault_Handler,"ax",%progbits
+  97              		.align	2
+  98              		.global	UsageFault_Handler
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	UsageFault_Handler:
+ 103              	.LFB33:
+  88:USER/stm32f10x_it.c **** }
+  89:USER/stm32f10x_it.c **** 
+  90:USER/stm32f10x_it.c **** /**
+  91:USER/stm32f10x_it.c ****   * @brief  This function handles Usage Fault exception.
+  92:USER/stm32f10x_it.c ****   * @param  None
+  93:USER/stm32f10x_it.c ****   * @retval None
+  94:USER/stm32f10x_it.c ****   */
+  95:USER/stm32f10x_it.c **** void UsageFault_Handler(void)
+  96:USER/stm32f10x_it.c **** {
+ 104              		.loc 1 96 0
+ 105              		.cfi_startproc
+ 106              		@ Volatile: function does not return.
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 110              	.L9:
+  97:USER/stm32f10x_it.c ****   /* Go to infinite loop when Usage Fault exception occurs */
+  98:USER/stm32f10x_it.c ****   while (1)
+  99:USER/stm32f10x_it.c ****   {
+ 100:USER/stm32f10x_it.c ****   }
+ 111              		.loc 1 100 0 discriminator 1
+ 112 0000 FEE7     		b	.L9
+ 113              		.cfi_endproc
+ 114              	.LFE33:
+ 116 0002 00BF     		.section	.text.SVC_Handler,"ax",%progbits
+ 117              		.align	2
+ 118              		.global	SVC_Handler
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	SVC_Handler:
+ 123              	.LFB34:
+ 101:USER/stm32f10x_it.c **** }
+ 102:USER/stm32f10x_it.c **** 
+ 103:USER/stm32f10x_it.c **** /**
+ 104:USER/stm32f10x_it.c ****   * @brief  This function handles SVCall exception.
+ 105:USER/stm32f10x_it.c ****   * @param  None
+ 106:USER/stm32f10x_it.c ****   * @retval None
+ 107:USER/stm32f10x_it.c ****   */
+ 108:USER/stm32f10x_it.c **** void SVC_Handler(void)
+ 109:USER/stm32f10x_it.c **** {
+ 124              		.loc 1 109 0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              		@ link register save eliminated.
+ 129 0000 7047     		bx	lr
+ 130              		.cfi_endproc
+ARM GAS  /tmp/cctAwNim.s 			page 5
+
+
+ 131              	.LFE34:
+ 133 0002 00BF     		.section	.text.DebugMon_Handler,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	DebugMon_Handler
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	DebugMon_Handler:
+ 140              	.LFB35:
+ 110:USER/stm32f10x_it.c **** }
+ 111:USER/stm32f10x_it.c **** 
+ 112:USER/stm32f10x_it.c **** /**
+ 113:USER/stm32f10x_it.c ****   * @brief  This function handles Debug Monitor exception.
+ 114:USER/stm32f10x_it.c ****   * @param  None
+ 115:USER/stm32f10x_it.c ****   * @retval None
+ 116:USER/stm32f10x_it.c ****   */
+ 117:USER/stm32f10x_it.c **** void DebugMon_Handler(void)
+ 118:USER/stm32f10x_it.c **** {
+ 141              		.loc 1 118 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+ 146 0000 7047     		bx	lr
+ 147              		.cfi_endproc
+ 148              	.LFE35:
+ 150 0002 00BF     		.section	.text.PendSV_Handler,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	PendSV_Handler
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	PendSV_Handler:
+ 157              	.LFB36:
+ 119:USER/stm32f10x_it.c **** }
+ 120:USER/stm32f10x_it.c **** 
+ 121:USER/stm32f10x_it.c **** /**
+ 122:USER/stm32f10x_it.c ****   * @brief  This function handles PendSVC exception.
+ 123:USER/stm32f10x_it.c ****   * @param  None
+ 124:USER/stm32f10x_it.c ****   * @retval None
+ 125:USER/stm32f10x_it.c ****   */
+ 126:USER/stm32f10x_it.c **** void PendSV_Handler(void)
+ 127:USER/stm32f10x_it.c **** {
+ 158              		.loc 1 127 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 163 0000 7047     		bx	lr
+ 164              		.cfi_endproc
+ 165              	.LFE36:
+ 167 0002 00BF     		.text
+ 168              	.Letext0:
+ 169              		.file 2 "CMSIS/CM3/CoreSupport/core_cm3.h"
+ARM GAS  /tmp/cctAwNim.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f10x_it.c
+     /tmp/cctAwNim.s:19     .text.NMI_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:24     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/cctAwNim.s:37     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:42     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+     /tmp/cctAwNim.s:57     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:62     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/cctAwNim.s:77     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:82     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/cctAwNim.s:97     .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:102    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/cctAwNim.s:117    .text.SVC_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:122    .text.SVC_Handler:0000000000000000 SVC_Handler
+     /tmp/cctAwNim.s:134    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:139    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+     /tmp/cctAwNim.s:151    .text.PendSV_Handler:0000000000000000 $t
+     /tmp/cctAwNim.s:156    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+                     .debug_frame:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
