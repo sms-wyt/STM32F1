@@ -1,31 +1,32 @@
-ARM GAS  /tmp/ccKFdsaZ.s 			page 1
+ARM GAS  /tmp/ccUaXKyK.s 			page 1
 
 
-   1              		.syntax unified
-   2              		.cpu cortex-m3
-   3              		.fpu softvfp
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.thumb
-  14              		.file	"misc.c"
-  15              		.text
-  16              	.Ltext0:
-  17              		.cfi_sections	.debug_frame
-  18              		.section	.text.NVIC_PriorityGroupConfig,"ax",%progbits
-  19              		.align	2
-  20              		.global	NVIC_PriorityGroupConfig
-  21              		.thumb
-  22              		.thumb_func
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"misc.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.NVIC_PriorityGroupConfig,"ax",%progbits
+  16              		.align	1
+  17              		.global	NVIC_PriorityGroupConfig
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
   24              	NVIC_PriorityGroupConfig:
-  25              	.LFB29:
-  26              		.file 1 "FWLIB/src/misc.c"
+  25              	.LVL0:
+  26              	.LFB29:
+  27              		.file 1 "FWLIB/src/misc.c"
    1:FWLIB/src/misc.c **** /**
    2:FWLIB/src/misc.c ****   ******************************************************************************
    3:FWLIB/src/misc.c ****   * @file    misc.c
@@ -57,10 +58,10 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
   29:FWLIB/src/misc.c **** 
   30:FWLIB/src/misc.c **** /** @defgroup MISC 
   31:FWLIB/src/misc.c ****   * @brief MISC driver modules
+ARM GAS  /tmp/ccUaXKyK.s 			page 2
+
+
   32:FWLIB/src/misc.c ****   * @{
-ARM GAS  /tmp/ccKFdsaZ.s 			page 2
-
-
   33:FWLIB/src/misc.c ****   */
   34:FWLIB/src/misc.c **** 
   35:FWLIB/src/misc.c **** /** @defgroup MISC_Private_TypesDefinitions
@@ -117,10 +118,10 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
   86:FWLIB/src/misc.c ****   *     @arg NVIC_PriorityGroup_1: 1 bits for pre-emption priority
   87:FWLIB/src/misc.c ****   *                                3 bits for subpriority
   88:FWLIB/src/misc.c ****   *     @arg NVIC_PriorityGroup_2: 2 bits for pre-emption priority
+ARM GAS  /tmp/ccUaXKyK.s 			page 3
+
+
   89:FWLIB/src/misc.c ****   *                                2 bits for subpriority
-ARM GAS  /tmp/ccKFdsaZ.s 			page 3
-
-
   90:FWLIB/src/misc.c ****   *     @arg NVIC_PriorityGroup_3: 3 bits for pre-emption priority
   91:FWLIB/src/misc.c ****   *                                1 bits for subpriority
   92:FWLIB/src/misc.c ****   *     @arg NVIC_PriorityGroup_4: 4 bits for pre-emption priority
@@ -129,38 +130,45 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
   95:FWLIB/src/misc.c ****   */
   96:FWLIB/src/misc.c **** void NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup)
   97:FWLIB/src/misc.c **** {
-  27              		.loc 1 97 0
-  28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 0
-  30              		@ frame_needed = 0, uses_anonymous_args = 0
-  31              		@ link register save eliminated.
-  32              	.LVL0:
+  28              		.loc 1 97 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
   98:FWLIB/src/misc.c ****   /* Check the parameters */
   99:FWLIB/src/misc.c ****   assert_param(IS_NVIC_PRIORITY_GROUP(NVIC_PriorityGroup));
+  33              		.loc 1 99 3 view .LVU1
  100:FWLIB/src/misc.c ****   
  101:FWLIB/src/misc.c ****   /* Set the PRIGROUP[10:8] bits according to NVIC_PriorityGroup value */
  102:FWLIB/src/misc.c ****   SCB->AIRCR = AIRCR_VECTKEY_MASK | NVIC_PriorityGroup;
-  33              		.loc 1 102 0
-  34 0000 40F0BF60 		orr	r0, r0, #100139008
-  35              	.LVL1:
-  36 0004 40F40030 		orr	r0, r0, #131072
-  37 0008 014B     		ldr	r3, .L2
-  38 000a D860     		str	r0, [r3, #12]
-  39 000c 7047     		bx	lr
-  40              	.L3:
-  41 000e 00BF     		.align	2
-  42              	.L2:
-  43 0010 00ED00E0 		.word	-536810240
-  44              		.cfi_endproc
-  45              	.LFE29:
-  47              		.section	.text.NVIC_Init,"ax",%progbits
-  48              		.align	2
-  49              		.global	NVIC_Init
-  50              		.thumb
-  51              		.thumb_func
-  53              	NVIC_Init:
-  54              	.LFB30:
+  34              		.loc 1 102 3 view .LVU2
+  35              		.loc 1 102 35 is_stmt 0 view .LVU3
+  36 0000 40F0BF60 		orr	r0, r0, #100139008
+  37              	.LVL1:
+  38              		.loc 1 102 35 view .LVU4
+  39 0004 40F40030 		orr	r0, r0, #131072
+  40              		.loc 1 102 14 view .LVU5
+  41 0008 014B     		ldr	r3, .L2
+  42 000a D860     		str	r0, [r3, #12]
  103:FWLIB/src/misc.c **** }
+  43              		.loc 1 103 1 view .LVU6
+  44 000c 7047     		bx	lr
+  45              	.L3:
+  46 000e 00BF     		.align	2
+  47              	.L2:
+  48 0010 00ED00E0 		.word	-536810240
+  49              		.cfi_endproc
+  50              	.LFE29:
+  52              		.section	.text.NVIC_Init,"ax",%progbits
+  53              		.align	1
+  54              		.global	NVIC_Init
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu softvfp
+  60              	NVIC_Init:
+  61              	.LVL2:
+  62              	.LFB30:
  104:FWLIB/src/misc.c **** 
  105:FWLIB/src/misc.c **** /**
  106:FWLIB/src/misc.c ****   * @brief  Initializes the NVIC peripheral according to the specified
@@ -170,151 +178,161 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
  110:FWLIB/src/misc.c ****   * @retval None
  111:FWLIB/src/misc.c ****   */
  112:FWLIB/src/misc.c **** void NVIC_Init(NVIC_InitTypeDef* NVIC_InitStruct)
+ARM GAS  /tmp/ccUaXKyK.s 			page 4
+
+
  113:FWLIB/src/misc.c **** {
-  55              		.loc 1 113 0
-  56              		.cfi_startproc
-  57              		@ args = 0, pretend = 0, frame = 0
-  58              		@ frame_needed = 0, uses_anonymous_args = 0
-  59              		@ link register save eliminated.
-  60              	.LVL2:
+  63              		.loc 1 113 1 is_stmt 1 view -0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
  114:FWLIB/src/misc.c ****   uint32_t tmppriority = 0x00, tmppre = 0x00, tmpsub = 0x0F;
-ARM GAS  /tmp/ccKFdsaZ.s 			page 4
-
-
+  68              		.loc 1 114 3 view .LVU8
  115:FWLIB/src/misc.c ****   
  116:FWLIB/src/misc.c ****   /* Check the parameters */
  117:FWLIB/src/misc.c ****   assert_param(IS_FUNCTIONAL_STATE(NVIC_InitStruct->NVIC_IRQChannelCmd));
+  69              		.loc 1 117 3 view .LVU9
  118:FWLIB/src/misc.c ****   assert_param(IS_NVIC_PREEMPTION_PRIORITY(NVIC_InitStruct->NVIC_IRQChannelPreemptionPriority));  
+  70              		.loc 1 118 3 view .LVU10
  119:FWLIB/src/misc.c ****   assert_param(IS_NVIC_SUB_PRIORITY(NVIC_InitStruct->NVIC_IRQChannelSubPriority));
+  71              		.loc 1 119 3 view .LVU11
  120:FWLIB/src/misc.c ****     
  121:FWLIB/src/misc.c ****   if (NVIC_InitStruct->NVIC_IRQChannelCmd != DISABLE)
-  61              		.loc 1 121 0
-  62 0000 C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
-  63 0002 0BB3     		cbz	r3, .L5
- 113:FWLIB/src/misc.c ****   uint32_t tmppriority = 0x00, tmppre = 0x00, tmpsub = 0x0F;
-  64              		.loc 1 113 0
-  65 0004 10B4     		push	{r4}
-  66              	.LCFI0:
-  67              		.cfi_def_cfa_offset 4
-  68              		.cfi_offset 4, -4
+  72              		.loc 1 121 3 view .LVU12
+  73              		.loc 1 121 22 is_stmt 0 view .LVU13
+  74 0000 C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
+  75              		.loc 1 121 6 view .LVU14
+  76 0002 FBB1     		cbz	r3, .L5
  122:FWLIB/src/misc.c ****   {
  123:FWLIB/src/misc.c ****     /* Compute the Corresponding IRQ Priority --------------------------------*/    
  124:FWLIB/src/misc.c ****     tmppriority = (0x700 - ((SCB->AIRCR) & (uint32_t)0x700))>> 0x08;
-  69              		.loc 1 124 0
-  70 0006 184B     		ldr	r3, .L9
-  71 0008 DA68     		ldr	r2, [r3, #12]
-  72 000a D243     		mvns	r2, r2
-  73 000c C2F30222 		ubfx	r2, r2, #8, #3
-  74              	.LVL3:
+  77              		.loc 1 124 5 is_stmt 1 view .LVU15
+  78              		.loc 1 124 33 is_stmt 0 view .LVU16
+  79 0004 154B     		ldr	r3, .L7
+  80 0006 DA68     		ldr	r2, [r3, #12]
+  81              		.loc 1 124 26 view .LVU17
+  82 0008 D243     		mvns	r2, r2
+  83              		.loc 1 124 17 view .LVU18
+  84 000a C2F30222 		ubfx	r2, r2, #8, #3
+  85              	.LVL3:
  125:FWLIB/src/misc.c ****     tmppre = (0x4 - tmppriority);
-  75              		.loc 1 125 0
-  76 0010 C2F10404 		rsb	r4, r2, #4
-  77              	.LVL4:
+  86              		.loc 1 125 5 is_stmt 1 view .LVU19
+  87              		.loc 1 125 12 is_stmt 0 view .LVU20
+  88 000e C2F1040C 		rsb	ip, r2, #4
+  89              	.LVL4:
  126:FWLIB/src/misc.c ****     tmpsub = tmpsub >> tmppriority;
-  78              		.loc 1 126 0
-  79 0014 0F23     		movs	r3, #15
-  80 0016 23FA02F1 		lsr	r1, r3, r2
-  81              	.LVL5:
+  90              		.loc 1 126 5 is_stmt 1 view .LVU21
+  91              		.loc 1 126 12 is_stmt 0 view .LVU22
+  92 0012 0F23     		movs	r3, #15
+  93 0014 23FA02F2 		lsr	r2, r3, r2
+  94              	.LVL5:
  127:FWLIB/src/misc.c **** 
  128:FWLIB/src/misc.c ****     tmppriority = (uint32_t)NVIC_InitStruct->NVIC_IRQChannelPreemptionPriority << tmppre;
-  82              		.loc 1 128 0
-  83 001a 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
-  84 001c 03FA04F2 		lsl	r2, r3, r4
-  85              	.LVL6:
+  95              		.loc 1 128 5 is_stmt 1 view .LVU23
+  96              		.loc 1 128 44 is_stmt 0 view .LVU24
+  97 0018 4178     		ldrb	r1, [r0, #1]	@ zero_extendqisi2
+  98              		.loc 1 128 17 view .LVU25
+  99 001a 01FA0CF1 		lsl	r1, r1, ip
+ 100              	.LVL6:
  129:FWLIB/src/misc.c ****     tmppriority |=  NVIC_InitStruct->NVIC_IRQChannelSubPriority & tmpsub;
-  86              		.loc 1 129 0
-  87 0020 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
-  88 0022 0B40     		ands	r3, r3, r1
-  89 0024 1343     		orrs	r3, r3, r2
-  90              	.LVL7:
+ 101              		.loc 1 129 5 is_stmt 1 view .LVU26
+ 102              		.loc 1 129 36 is_stmt 0 view .LVU27
+ARM GAS  /tmp/ccUaXKyK.s 			page 5
+
+
+ 103 001e 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
+ 104              		.loc 1 129 65 view .LVU28
+ 105 0020 1340     		ands	r3, r3, r2
+ 106              		.loc 1 129 17 view .LVU29
+ 107 0022 0B43     		orrs	r3, r3, r1
+ 108              	.LVL7:
  130:FWLIB/src/misc.c ****     tmppriority = tmppriority << 0x04;
-  91              		.loc 1 130 0
-  92 0026 1B01     		lsls	r3, r3, #4
-  93              	.LVL8:
+ 109              		.loc 1 130 5 is_stmt 1 view .LVU30
+ 110              		.loc 1 130 17 is_stmt 0 view .LVU31
+ 111 0024 1B01     		lsls	r3, r3, #4
+ 112              	.LVL8:
  131:FWLIB/src/misc.c ****         
  132:FWLIB/src/misc.c ****     NVIC->IP[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
-  94              		.loc 1 132 0
-  95 0028 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
-  96 002a DBB2     		uxtb	r3, r3
-  97              	.LVL9:
-  98 002c 0F49     		ldr	r1, .L9+4
-ARM GAS  /tmp/ccKFdsaZ.s 			page 5
-
-
-  99              	.LVL10:
- 100 002e 0A44     		add	r2, r2, r1
- 101 0030 82F80033 		strb	r3, [r2, #768]
+ 113              		.loc 1 132 5 is_stmt 1 view .LVU32
+ 114              		.loc 1 132 29 is_stmt 0 view .LVU33
+ 115 0026 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 116              	.LVL9:
+ 117              		.loc 1 132 48 view .LVU34
+ 118 0028 DBB2     		uxtb	r3, r3
+ 119              	.LVL10:
+ 120              		.loc 1 132 48 view .LVU35
+ 121 002a 0D49     		ldr	r1, .L7+4
+ 122 002c 0A44     		add	r2, r2, r1
+ 123 002e 82F80033 		strb	r3, [r2, #768]
  133:FWLIB/src/misc.c ****     
  134:FWLIB/src/misc.c ****     /* Enable the Selected IRQ Channels --------------------------------------*/
  135:FWLIB/src/misc.c ****     NVIC->ISER[NVIC_InitStruct->NVIC_IRQChannel >> 0x05] =
- 102              		.loc 1 135 0
- 103 0034 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
- 104 0036 5809     		lsrs	r0, r3, #5
- 105              	.LVL11:
+ 124              		.loc 1 135 5 is_stmt 1 view .LVU36
  136:FWLIB/src/misc.c ****       (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
- 106              		.loc 1 136 0
- 107 0038 03F01F03 		and	r3, r3, #31
- 108 003c 0122     		movs	r2, #1
- 109 003e 02FA03F3 		lsl	r3, r2, r3
+ 125              		.loc 1 136 41 is_stmt 0 view .LVU37
+ 126 0032 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 127              		.loc 1 136 59 view .LVU38
+ 128 0034 03F01F00 		and	r0, r3, #31
+ 129              	.LVL11:
  135:FWLIB/src/misc.c ****       (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
- 110              		.loc 1 135 0
- 111 0042 41F82030 		str	r3, [r1, r0, lsl #2]
- 112 0046 0BE0     		b	.L4
- 113              	.LVL12:
- 114              	.L5:
- 115              	.LCFI1:
- 116              		.cfi_def_cfa_offset 0
- 117              		.cfi_restore 4
+ 130              		.loc 1 135 49 view .LVU39
+ 131 0038 5B09     		lsrs	r3, r3, #5
+ 132              		.loc 1 136 22 view .LVU40
+ 133 003a 0122     		movs	r2, #1
+ 134 003c 8240     		lsls	r2, r2, r0
+ 135:FWLIB/src/misc.c ****       (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
+ 135              		.loc 1 135 58 view .LVU41
+ 136 003e 41F82320 		str	r2, [r1, r3, lsl #2]
+ 137 0042 7047     		bx	lr
+ 138              	.LVL12:
+ 139              	.L5:
  137:FWLIB/src/misc.c ****   }
  138:FWLIB/src/misc.c ****   else
  139:FWLIB/src/misc.c ****   {
  140:FWLIB/src/misc.c ****     /* Disable the Selected IRQ Channels -------------------------------------*/
  141:FWLIB/src/misc.c ****     NVIC->ICER[NVIC_InitStruct->NVIC_IRQChannel >> 0x05] =
- 118              		.loc 1 141 0
- 119 0048 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
- 120 004a 5A09     		lsrs	r2, r3, #5
+ 140              		.loc 1 141 5 is_stmt 1 view .LVU42
  142:FWLIB/src/misc.c ****       (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
- 121              		.loc 1 142 0
- 122 004c 03F01F03 		and	r3, r3, #31
- 123 0050 0121     		movs	r1, #1
- 124 0052 9940     		lsls	r1, r1, r3
+ 141              		.loc 1 142 41 is_stmt 0 view .LVU43
+ 142 0044 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 143              		.loc 1 142 59 view .LVU44
+ 144 0046 03F01F01 		and	r1, r3, #31
+ARM GAS  /tmp/ccUaXKyK.s 			page 6
+
+
  141:FWLIB/src/misc.c ****       (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
- 125              		.loc 1 141 0
- 126 0054 02F12003 		add	r3, r2, #32
- 127 0058 044A     		ldr	r2, .L9+4
- 128 005a 42F82310 		str	r1, [r2, r3, lsl #2]
- 129 005e 7047     		bx	lr
- 130              	.LVL13:
- 131              	.L4:
- 132              	.LCFI2:
- 133              		.cfi_def_cfa_offset 4
- 134              		.cfi_offset 4, -4
+ 145              		.loc 1 141 49 view .LVU45
+ 146 004a 5B09     		lsrs	r3, r3, #5
+ 147              		.loc 1 142 22 view .LVU46
+ 148 004c 0122     		movs	r2, #1
+ 149 004e 8A40     		lsls	r2, r2, r1
+ 141:FWLIB/src/misc.c ****       (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
+ 150              		.loc 1 141 58 view .LVU47
+ 151 0050 2033     		adds	r3, r3, #32
+ 152 0052 0349     		ldr	r1, .L7+4
+ 153 0054 41F82320 		str	r2, [r1, r3, lsl #2]
  143:FWLIB/src/misc.c ****   }
  144:FWLIB/src/misc.c **** }
- 135              		.loc 1 144 0
- 136 0060 5DF8044B 		ldr	r4, [sp], #4
- 137              	.LCFI3:
- 138              		.cfi_restore 4
- 139              		.cfi_def_cfa_offset 0
- 140              	.LVL14:
- 141 0064 7047     		bx	lr
-ARM GAS  /tmp/ccKFdsaZ.s 			page 6
-
-
- 142              	.L10:
- 143 0066 00BF     		.align	2
- 144              	.L9:
- 145 0068 00ED00E0 		.word	-536810240
- 146 006c 00E100E0 		.word	-536813312
- 147              		.cfi_endproc
- 148              	.LFE30:
- 150              		.section	.text.NVIC_SetVectorTable,"ax",%progbits
- 151              		.align	2
- 152              		.global	NVIC_SetVectorTable
- 153              		.thumb
- 154              		.thumb_func
- 156              	NVIC_SetVectorTable:
- 157              	.LFB31:
+ 154              		.loc 1 144 1 view .LVU48
+ 155 0058 7047     		bx	lr
+ 156              	.L8:
+ 157 005a 00BF     		.align	2
+ 158              	.L7:
+ 159 005c 00ED00E0 		.word	-536810240
+ 160 0060 00E100E0 		.word	-536813312
+ 161              		.cfi_endproc
+ 162              	.LFE30:
+ 164              		.section	.text.NVIC_SetVectorTable,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	NVIC_SetVectorTable
+ 167              		.syntax unified
+ 168              		.thumb
+ 169              		.thumb_func
+ 170              		.fpu softvfp
+ 172              	NVIC_SetVectorTable:
+ 173              	.LVL13:
+ 174              	.LFB31:
  145:FWLIB/src/misc.c **** 
  146:FWLIB/src/misc.c **** /**
  147:FWLIB/src/misc.c ****   * @brief  Sets the vector table location and Offset.
@@ -328,43 +346,51 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
  155:FWLIB/src/misc.c ****   */
  156:FWLIB/src/misc.c **** void NVIC_SetVectorTable(uint32_t NVIC_VectTab, uint32_t Offset)
  157:FWLIB/src/misc.c **** { 
- 158              		.loc 1 157 0
- 159              		.cfi_startproc
- 160              		@ args = 0, pretend = 0, frame = 0
- 161              		@ frame_needed = 0, uses_anonymous_args = 0
- 162              		@ link register save eliminated.
- 163              	.LVL15:
+ 175              		.loc 1 157 1 is_stmt 1 view -0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179              		@ link register save eliminated.
  158:FWLIB/src/misc.c ****   /* Check the parameters */
  159:FWLIB/src/misc.c ****   assert_param(IS_NVIC_VECTTAB(NVIC_VectTab));
+ 180              		.loc 1 159 3 view .LVU50
  160:FWLIB/src/misc.c ****   assert_param(IS_NVIC_OFFSET(Offset));  
+ 181              		.loc 1 160 3 view .LVU51
  161:FWLIB/src/misc.c ****    
  162:FWLIB/src/misc.c ****   SCB->VTOR = NVIC_VectTab | (Offset & (uint32_t)0x1FFFFF80);
- 164              		.loc 1 162 0
- 165 0000 21F06041 		bic	r1, r1, #-536870912
- 166              	.LVL16:
- 167 0004 21F07F01 		bic	r1, r1, #127
- 168 0008 0843     		orrs	r0, r0, r1
- 169              	.LVL17:
- 170 000a 014B     		ldr	r3, .L12
- 171 000c 9860     		str	r0, [r3, #8]
- 172 000e 7047     		bx	lr
- 173              	.L13:
- 174              		.align	2
- 175              	.L12:
- 176 0010 00ED00E0 		.word	-536810240
- 177              		.cfi_endproc
- 178              	.LFE31:
- 180              		.section	.text.NVIC_SystemLPConfig,"ax",%progbits
- 181              		.align	2
- 182              		.global	NVIC_SystemLPConfig
- 183              		.thumb
-ARM GAS  /tmp/ccKFdsaZ.s 			page 7
+ARM GAS  /tmp/ccUaXKyK.s 			page 7
 
 
- 184              		.thumb_func
- 186              	NVIC_SystemLPConfig:
- 187              	.LFB32:
+ 182              		.loc 1 162 3 view .LVU52
+ 183              		.loc 1 162 38 is_stmt 0 view .LVU53
+ 184 0000 21F06041 		bic	r1, r1, #-536870912
+ 185              	.LVL14:
+ 186              		.loc 1 162 38 view .LVU54
+ 187 0004 21F07F01 		bic	r1, r1, #127
+ 188              		.loc 1 162 28 view .LVU55
+ 189 0008 0143     		orrs	r1, r1, r0
+ 190              		.loc 1 162 13 view .LVU56
+ 191 000a 014B     		ldr	r3, .L10
+ 192 000c 9960     		str	r1, [r3, #8]
  163:FWLIB/src/misc.c **** }
+ 193              		.loc 1 163 1 view .LVU57
+ 194 000e 7047     		bx	lr
+ 195              	.L11:
+ 196              		.align	2
+ 197              	.L10:
+ 198 0010 00ED00E0 		.word	-536810240
+ 199              		.cfi_endproc
+ 200              	.LFE31:
+ 202              		.section	.text.NVIC_SystemLPConfig,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	NVIC_SystemLPConfig
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 208              		.fpu softvfp
+ 210              	NVIC_SystemLPConfig:
+ 211              	.LVL15:
+ 212              	.LFB32:
  164:FWLIB/src/misc.c **** 
  165:FWLIB/src/misc.c **** /**
  166:FWLIB/src/misc.c ****   * @brief  Selects the condition for the system to enter low power mode.
@@ -378,59 +404,69 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
  174:FWLIB/src/misc.c ****   */
  175:FWLIB/src/misc.c **** void NVIC_SystemLPConfig(uint8_t LowPowerMode, FunctionalState NewState)
  176:FWLIB/src/misc.c **** {
- 188              		.loc 1 176 0
- 189              		.cfi_startproc
- 190              		@ args = 0, pretend = 0, frame = 0
- 191              		@ frame_needed = 0, uses_anonymous_args = 0
- 192              		@ link register save eliminated.
- 193              	.LVL18:
+ 213              		.loc 1 176 1 is_stmt 1 view -0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              		@ link register save eliminated.
  177:FWLIB/src/misc.c ****   /* Check the parameters */
  178:FWLIB/src/misc.c ****   assert_param(IS_NVIC_LP(LowPowerMode));
+ 218              		.loc 1 178 3 view .LVU59
  179:FWLIB/src/misc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));  
+ 219              		.loc 1 179 3 view .LVU60
  180:FWLIB/src/misc.c ****   
  181:FWLIB/src/misc.c ****   if (NewState != DISABLE)
- 194              		.loc 1 181 0
- 195 0000 21B1     		cbz	r1, .L15
+ 220              		.loc 1 181 3 view .LVU61
+ 221              		.loc 1 181 6 is_stmt 0 view .LVU62
+ARM GAS  /tmp/ccUaXKyK.s 			page 8
+
+
+ 222 0000 21B1     		cbz	r1, .L13
  182:FWLIB/src/misc.c ****   {
  183:FWLIB/src/misc.c ****     SCB->SCR |= LowPowerMode;
- 196              		.loc 1 183 0
- 197 0002 054B     		ldr	r3, .L17
- 198 0004 1A69     		ldr	r2, [r3, #16]
- 199 0006 1043     		orrs	r0, r0, r2
- 200              	.LVL19:
- 201 0008 1861     		str	r0, [r3, #16]
- 202 000a 7047     		bx	lr
- 203              	.LVL20:
- 204              	.L15:
+ 223              		.loc 1 183 5 is_stmt 1 view .LVU63
+ 224              		.loc 1 183 14 is_stmt 0 view .LVU64
+ 225 0002 054B     		ldr	r3, .L15
+ 226 0004 1A69     		ldr	r2, [r3, #16]
+ 227 0006 1043     		orrs	r0, r0, r2
+ 228              	.LVL16:
+ 229              		.loc 1 183 14 view .LVU65
+ 230 0008 1861     		str	r0, [r3, #16]
+ 231 000a 7047     		bx	lr
+ 232              	.LVL17:
+ 233              	.L13:
  184:FWLIB/src/misc.c ****   }
  185:FWLIB/src/misc.c ****   else
  186:FWLIB/src/misc.c ****   {
  187:FWLIB/src/misc.c ****     SCB->SCR &= (uint32_t)(~(uint32_t)LowPowerMode);
- 205              		.loc 1 187 0
- 206 000c 024A     		ldr	r2, .L17
- 207 000e 1369     		ldr	r3, [r2, #16]
- 208 0010 23EA0000 		bic	r0, r3, r0
- 209              	.LVL21:
- 210 0014 1061     		str	r0, [r2, #16]
- 211 0016 7047     		bx	lr
- 212              	.L18:
- 213              		.align	2
- 214              	.L17:
- 215 0018 00ED00E0 		.word	-536810240
- 216              		.cfi_endproc
-ARM GAS  /tmp/ccKFdsaZ.s 			page 8
-
-
- 217              	.LFE32:
- 219              		.section	.text.SysTick_CLKSourceConfig,"ax",%progbits
- 220              		.align	2
- 221              		.global	SysTick_CLKSourceConfig
- 222              		.thumb
- 223              		.thumb_func
- 225              	SysTick_CLKSourceConfig:
- 226              	.LFB33:
+ 234              		.loc 1 187 5 is_stmt 1 view .LVU66
+ 235              		.loc 1 187 14 is_stmt 0 view .LVU67
+ 236 000c 024A     		ldr	r2, .L15
+ 237 000e 1369     		ldr	r3, [r2, #16]
+ 238 0010 23EA0000 		bic	r0, r3, r0
+ 239              	.LVL18:
+ 240              		.loc 1 187 14 view .LVU68
+ 241 0014 1061     		str	r0, [r2, #16]
  188:FWLIB/src/misc.c ****   }
  189:FWLIB/src/misc.c **** }
+ 242              		.loc 1 189 1 view .LVU69
+ 243 0016 7047     		bx	lr
+ 244              	.L16:
+ 245              		.align	2
+ 246              	.L15:
+ 247 0018 00ED00E0 		.word	-536810240
+ 248              		.cfi_endproc
+ 249              	.LFE32:
+ 251              		.section	.text.SysTick_CLKSourceConfig,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	SysTick_CLKSourceConfig
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 257              		.fpu softvfp
+ 259              	SysTick_CLKSourceConfig:
+ 260              	.LVL19:
+ 261              	.LFB33:
  190:FWLIB/src/misc.c **** 
  191:FWLIB/src/misc.c **** /**
  192:FWLIB/src/misc.c ****   * @brief  Configures the SysTick clock source.
@@ -442,73 +478,74 @@ ARM GAS  /tmp/ccKFdsaZ.s 			page 1
  198:FWLIB/src/misc.c ****   */
  199:FWLIB/src/misc.c **** void SysTick_CLKSourceConfig(uint32_t SysTick_CLKSource)
  200:FWLIB/src/misc.c **** {
- 227              		.loc 1 200 0
- 228              		.cfi_startproc
- 229              		@ args = 0, pretend = 0, frame = 0
- 230              		@ frame_needed = 0, uses_anonymous_args = 0
- 231              		@ link register save eliminated.
- 232              	.LVL22:
+ARM GAS  /tmp/ccUaXKyK.s 			page 9
+
+
+ 262              		.loc 1 200 1 is_stmt 1 view -0
+ 263              		.cfi_startproc
+ 264              		@ args = 0, pretend = 0, frame = 0
+ 265              		@ frame_needed = 0, uses_anonymous_args = 0
+ 266              		@ link register save eliminated.
  201:FWLIB/src/misc.c ****   /* Check the parameters */
  202:FWLIB/src/misc.c ****   assert_param(IS_SYSTICK_CLK_SOURCE(SysTick_CLKSource));
+ 267              		.loc 1 202 3 view .LVU71
  203:FWLIB/src/misc.c ****   if (SysTick_CLKSource == SysTick_CLKSource_HCLK)
- 233              		.loc 1 203 0
- 234 0000 0428     		cmp	r0, #4
- 235 0002 05D1     		bne	.L20
+ 268              		.loc 1 203 3 view .LVU72
+ 269              		.loc 1 203 6 is_stmt 0 view .LVU73
+ 270 0000 0428     		cmp	r0, #4
+ 271 0002 06D0     		beq	.L20
  204:FWLIB/src/misc.c ****   {
  205:FWLIB/src/misc.c ****     SysTick->CTRL |= SysTick_CLKSource_HCLK;
- 236              		.loc 1 205 0
- 237 0004 054A     		ldr	r2, .L22
- 238 0006 1368     		ldr	r3, [r2]
- 239 0008 43F00403 		orr	r3, r3, #4
- 240 000c 1360     		str	r3, [r2]
- 241 000e 7047     		bx	lr
- 242              	.L20:
  206:FWLIB/src/misc.c ****   }
  207:FWLIB/src/misc.c ****   else
  208:FWLIB/src/misc.c ****   {
  209:FWLIB/src/misc.c ****     SysTick->CTRL &= SysTick_CLKSource_HCLK_Div8;
- 243              		.loc 1 209 0
- 244 0010 024A     		ldr	r2, .L22
- 245 0012 1368     		ldr	r3, [r2]
- 246 0014 23F00403 		bic	r3, r3, #4
- 247 0018 1360     		str	r3, [r2]
- 248 001a 7047     		bx	lr
- 249              	.L23:
- 250              		.align	2
- 251              	.L22:
- 252 001c 10E000E0 		.word	-536813552
- 253              		.cfi_endproc
-ARM GAS  /tmp/ccKFdsaZ.s 			page 9
-
-
- 254              	.LFE33:
- 256              		.text
- 257              	.Letext0:
- 258              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 259              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 260              		.file 4 "CMSIS/CM3/CoreSupport/core_cm3.h"
- 261              		.file 5 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
- 262              		.file 6 "FWLIB/inc/misc.h"
-ARM GAS  /tmp/ccKFdsaZ.s 			page 10
+ 272              		.loc 1 209 5 is_stmt 1 view .LVU74
+ 273              		.loc 1 209 19 is_stmt 0 view .LVU75
+ 274 0004 4FF0E022 		mov	r2, #-536813568
+ 275 0008 1369     		ldr	r3, [r2, #16]
+ 276 000a 23F00403 		bic	r3, r3, #4
+ 277 000e 1361     		str	r3, [r2, #16]
+ 210:FWLIB/src/misc.c ****   }
+ 211:FWLIB/src/misc.c **** }
+ 278              		.loc 1 211 1 view .LVU76
+ 279 0010 7047     		bx	lr
+ 280              	.L20:
+ 205:FWLIB/src/misc.c ****   }
+ 281              		.loc 1 205 5 is_stmt 1 view .LVU77
+ 205:FWLIB/src/misc.c ****   }
+ 282              		.loc 1 205 19 is_stmt 0 view .LVU78
+ 283 0012 4FF0E022 		mov	r2, #-536813568
+ 284 0016 1369     		ldr	r3, [r2, #16]
+ 285 0018 43F00403 		orr	r3, r3, #4
+ 286 001c 1361     		str	r3, [r2, #16]
+ 287 001e 7047     		bx	lr
+ 288              		.cfi_endproc
+ 289              	.LFE33:
+ 291              		.text
+ 292              	.Letext0:
+ 293              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 294              		.file 3 "CMSIS/CM3/CoreSupport/core_cm3.h"
+ 295              		.file 4 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+ 296              		.file 5 "FWLIB/inc/misc.h"
+ARM GAS  /tmp/ccUaXKyK.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 misc.c
-     /tmp/ccKFdsaZ.s:19     .text.NVIC_PriorityGroupConfig:0000000000000000 $t
-     /tmp/ccKFdsaZ.s:24     .text.NVIC_PriorityGroupConfig:0000000000000000 NVIC_PriorityGroupConfig
-     /tmp/ccKFdsaZ.s:43     .text.NVIC_PriorityGroupConfig:0000000000000010 $d
-     /tmp/ccKFdsaZ.s:48     .text.NVIC_Init:0000000000000000 $t
-     /tmp/ccKFdsaZ.s:53     .text.NVIC_Init:0000000000000000 NVIC_Init
-     /tmp/ccKFdsaZ.s:145    .text.NVIC_Init:0000000000000068 $d
-     /tmp/ccKFdsaZ.s:151    .text.NVIC_SetVectorTable:0000000000000000 $t
-     /tmp/ccKFdsaZ.s:156    .text.NVIC_SetVectorTable:0000000000000000 NVIC_SetVectorTable
-     /tmp/ccKFdsaZ.s:176    .text.NVIC_SetVectorTable:0000000000000010 $d
-     /tmp/ccKFdsaZ.s:181    .text.NVIC_SystemLPConfig:0000000000000000 $t
-     /tmp/ccKFdsaZ.s:186    .text.NVIC_SystemLPConfig:0000000000000000 NVIC_SystemLPConfig
-     /tmp/ccKFdsaZ.s:215    .text.NVIC_SystemLPConfig:0000000000000018 $d
-     /tmp/ccKFdsaZ.s:220    .text.SysTick_CLKSourceConfig:0000000000000000 $t
-     /tmp/ccKFdsaZ.s:225    .text.SysTick_CLKSourceConfig:0000000000000000 SysTick_CLKSourceConfig
-     /tmp/ccKFdsaZ.s:252    .text.SysTick_CLKSourceConfig:000000000000001c $d
-                     .debug_frame:0000000000000010 $d
+     /tmp/ccUaXKyK.s:16     .text.NVIC_PriorityGroupConfig:0000000000000000 $t
+     /tmp/ccUaXKyK.s:24     .text.NVIC_PriorityGroupConfig:0000000000000000 NVIC_PriorityGroupConfig
+     /tmp/ccUaXKyK.s:48     .text.NVIC_PriorityGroupConfig:0000000000000010 $d
+     /tmp/ccUaXKyK.s:53     .text.NVIC_Init:0000000000000000 $t
+     /tmp/ccUaXKyK.s:60     .text.NVIC_Init:0000000000000000 NVIC_Init
+     /tmp/ccUaXKyK.s:159    .text.NVIC_Init:000000000000005c $d
+     /tmp/ccUaXKyK.s:165    .text.NVIC_SetVectorTable:0000000000000000 $t
+     /tmp/ccUaXKyK.s:172    .text.NVIC_SetVectorTable:0000000000000000 NVIC_SetVectorTable
+     /tmp/ccUaXKyK.s:198    .text.NVIC_SetVectorTable:0000000000000010 $d
+     /tmp/ccUaXKyK.s:203    .text.NVIC_SystemLPConfig:0000000000000000 $t
+     /tmp/ccUaXKyK.s:210    .text.NVIC_SystemLPConfig:0000000000000000 NVIC_SystemLPConfig
+     /tmp/ccUaXKyK.s:247    .text.NVIC_SystemLPConfig:0000000000000018 $d
+     /tmp/ccUaXKyK.s:252    .text.SysTick_CLKSourceConfig:0000000000000000 $t
+     /tmp/ccUaXKyK.s:259    .text.SysTick_CLKSourceConfig:0000000000000000 SysTick_CLKSourceConfig
 
 NO UNDEFINED SYMBOLS
