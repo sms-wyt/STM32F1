@@ -1,37 +1,37 @@
-ARM GAS  /tmp/cct1d2H6.s 			page 1
+ARM GAS  /tmp/cctid6W5.s 			page 1
 
 
-   1              		.syntax unified
-   2              		.cpu cortex-m3
-   3              		.fpu softvfp
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.thumb
-  14              		.file	"uart.c"
-  15              		.text
-  16              	.Ltext0:
-  17              		.cfi_sections	.debug_frame
-  18              		.section	.text.uart1_init,"ax",%progbits
-  19              		.align	2
-  20              		.global	uart1_init
-  21              		.thumb
-  22              		.thumb_func
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"uart.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.uart1_init,"ax",%progbits
+  16              		.align	1
+  17              		.global	uart1_init
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
   24              	uart1_init:
-  25              	.LFB29:
+  25              	.LFB32:
   26              		.file 1 "DRIVER/src/uart.c"
    1:DRIVER/src/uart.c **** #include "uart.h"
    2:DRIVER/src/uart.c **** 
    3:DRIVER/src/uart.c **** //����1��ʼ������
    4:DRIVER/src/uart.c **** void uart1_init(void)
    5:DRIVER/src/uart.c **** {
-  27              		.loc 1 5 0
+  27              		.loc 1 5 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 24
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -45,290 +45,346 @@ ARM GAS  /tmp/cct1d2H6.s 			page 1
   38              	.LCFI1:
   39              		.cfi_def_cfa_offset 40
    6:DRIVER/src/uart.c ****     GPIO_InitTypeDef GPIO_InitStruct;//����GPIO�ṹ��
+  40              		.loc 1 6 5 view .LVU1
    7:DRIVER/src/uart.c ****     USART_InitTypeDef uart_struct;//����UART�ṹ��
+  41              		.loc 1 7 5 view .LVU2
    8:DRIVER/src/uart.c ****     
    9:DRIVER/src/uart.c ****     //ʹ������ʱ��
   10:DRIVER/src/uart.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);//ʹ��UART1����ʱ��
-  40              		.loc 1 10 0
-  41 0004 0420     		movs	r0, #4
-  42 0006 0121     		movs	r1, #1
-  43 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  44              	.LVL0:
+  42              		.loc 1 10 5 view .LVU3
+  43 0004 0121     		movs	r1, #1
+  44 0006 0420     		movs	r0, #4
+  45 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  46              	.LVL0:
   11:DRIVER/src/uart.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);//ʹ��UART1����ʱ��
-  45              		.loc 1 11 0
-  46 000c 4FF48040 		mov	r0, #16384
-  47 0010 0121     		movs	r1, #1
-ARM GAS  /tmp/cct1d2H6.s 			page 2
+  47              		.loc 1 11 5 view .LVU4
+ARM GAS  /tmp/cctid6W5.s 			page 2
 
 
-  48 0012 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  49              	.LVL1:
+  48 000c 0121     		movs	r1, #1
+  49 000e 4FF48040 		mov	r0, #16384
+  50 0012 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  51              	.LVL1:
   12:DRIVER/src/uart.c ****     
   13:DRIVER/src/uart.c ****     USART_DeInit(USART1);//��λ����1
-  50              		.loc 1 13 0
-  51 0016 1B4C     		ldr	r4, .L3
-  52 0018 2046     		mov	r0, r4
-  53 001a FFF7FEFF 		bl	USART_DeInit
-  54              	.LVL2:
+  52              		.loc 1 13 5 view .LVU5
+  53 0016 1B4C     		ldr	r4, .L3
+  54 0018 2046     		mov	r0, r4
+  55 001a FFF7FEFF 		bl	USART_DeInit
+  56              	.LVL2:
   14:DRIVER/src/uart.c ****     
   15:DRIVER/src/uart.c ****     //IO�˿ڸ��ù�������
   16:DRIVER/src/uart.c ****     GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9;
-  55              		.loc 1 16 0
-  56 001e 4FF40073 		mov	r3, #512
-  57 0022 ADF81430 		strh	r3, [sp, #20]	@ movhi
+  57              		.loc 1 16 5 view .LVU6
+  58              		.loc 1 16 30 is_stmt 0 view .LVU7
+  59 001e 4FF40073 		mov	r3, #512
+  60 0022 ADF81430 		strh	r3, [sp, #20]	@ movhi
   17:DRIVER/src/uart.c ****     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP; //���츴�������TX�����
-  58              		.loc 1 17 0
-  59 0026 1823     		movs	r3, #24
-  60 0028 8DF81730 		strb	r3, [sp, #23]
+  61              		.loc 1 17 5 is_stmt 1 view .LVU8
+  62              		.loc 1 17 31 is_stmt 0 view .LVU9
+  63 0026 1823     		movs	r3, #24
+  64 0028 8DF81730 		strb	r3, [sp, #23]
   18:DRIVER/src/uart.c ****     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-  61              		.loc 1 18 0
-  62 002c 0323     		movs	r3, #3
-  63 002e 8DF81630 		strb	r3, [sp, #22]
+  65              		.loc 1 18 5 is_stmt 1 view .LVU10
+  66              		.loc 1 18 32 is_stmt 0 view .LVU11
+  67 002c 0323     		movs	r3, #3
+  68 002e 8DF81630 		strb	r3, [sp, #22]
   19:DRIVER/src/uart.c ****     GPIO_Init(GPIOA, &GPIO_InitStruct);//��ʼ��PA9Ϊ���츴�����?
-  64              		.loc 1 19 0
-  65 0032 154D     		ldr	r5, .L3+4
-  66 0034 2846     		mov	r0, r5
-  67 0036 05A9     		add	r1, sp, #20
-  68 0038 FFF7FEFF 		bl	GPIO_Init
-  69              	.LVL3:
+  69              		.loc 1 19 5 is_stmt 1 view .LVU12
+  70 0032 154D     		ldr	r5, .L3+4
+  71 0034 05A9     		add	r1, sp, #20
+  72 0036 2846     		mov	r0, r5
+  73 0038 FFF7FEFF 		bl	GPIO_Init
+  74              	.LVL3:
   20:DRIVER/src/uart.c ****     
   21:DRIVER/src/uart.c ****     GPIO_InitStruct.GPIO_Pin = GPIO_Pin_10;
-  70              		.loc 1 21 0
-  71 003c 4FF48063 		mov	r3, #1024
-  72 0040 ADF81430 		strh	r3, [sp, #20]	@ movhi
+  75              		.loc 1 21 5 view .LVU13
+  76              		.loc 1 21 30 is_stmt 0 view .LVU14
+  77 003c 4FF48063 		mov	r3, #1024
+  78 0040 ADF81430 		strh	r3, [sp, #20]	@ movhi
   22:DRIVER/src/uart.c ****     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;//��������
-  73              		.loc 1 22 0
-  74 0044 0423     		movs	r3, #4
-  75 0046 8DF81730 		strb	r3, [sp, #23]
+  79              		.loc 1 22 5 is_stmt 1 view .LVU15
+  80              		.loc 1 22 31 is_stmt 0 view .LVU16
+  81 0044 0423     		movs	r3, #4
+  82 0046 8DF81730 		strb	r3, [sp, #23]
   23:DRIVER/src/uart.c ****     GPIO_Init(GPIOA, &GPIO_InitStruct);//��ʼ��PA10Ϊ��������
-  76              		.loc 1 23 0
-  77 004a 2846     		mov	r0, r5
-  78 004c 05A9     		add	r1, sp, #20
-  79 004e FFF7FEFF 		bl	GPIO_Init
-  80              	.LVL4:
+  83              		.loc 1 23 5 is_stmt 1 view .LVU17
+  84 004a 05A9     		add	r1, sp, #20
+  85 004c 2846     		mov	r0, r5
+  86 004e FFF7FEFF 		bl	GPIO_Init
+  87              	.LVL4:
   24:DRIVER/src/uart.c ****     
   25:DRIVER/src/uart.c ****     //���ڲ�������
   26:DRIVER/src/uart.c ****     uart_struct.USART_BaudRate = 115200;
-  81              		.loc 1 26 0
-  82 0052 4FF4E133 		mov	r3, #115200
-  83 0056 0193     		str	r3, [sp, #4]
+  88              		.loc 1 26 5 view .LVU18
+  89              		.loc 1 26 32 is_stmt 0 view .LVU19
+ARM GAS  /tmp/cctid6W5.s 			page 3
+
+
+  90 0052 4FF4E133 		mov	r3, #115200
+  91 0056 0193     		str	r3, [sp, #4]
   27:DRIVER/src/uart.c ****     uart_struct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-  84              		.loc 1 27 0
-  85 0058 0023     		movs	r3, #0
-  86 005a ADF81030 		strh	r3, [sp, #16]	@ movhi
+  92              		.loc 1 27 5 is_stmt 1 view .LVU20
+  93              		.loc 1 27 43 is_stmt 0 view .LVU21
+  94 0058 0023     		movs	r3, #0
+  95 005a ADF81030 		strh	r3, [sp, #16]	@ movhi
   28:DRIVER/src/uart.c ****     uart_struct.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
-  87              		.loc 1 28 0
-ARM GAS  /tmp/cct1d2H6.s 			page 3
-
-
-  88 005e 0C22     		movs	r2, #12
-  89 0060 ADF80E20 		strh	r2, [sp, #14]	@ movhi
+  96              		.loc 1 28 5 is_stmt 1 view .LVU22
+  97              		.loc 1 28 28 is_stmt 0 view .LVU23
+  98 005e 0C22     		movs	r2, #12
+  99 0060 ADF80E20 		strh	r2, [sp, #14]	@ movhi
   29:DRIVER/src/uart.c ****     uart_struct.USART_Parity = USART_Parity_No;
-  90              		.loc 1 29 0
-  91 0064 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 100              		.loc 1 29 5 is_stmt 1 view .LVU24
+ 101              		.loc 1 29 30 is_stmt 0 view .LVU25
+ 102 0064 ADF80C30 		strh	r3, [sp, #12]	@ movhi
   30:DRIVER/src/uart.c ****     uart_struct.USART_StopBits = USART_StopBits_1;
-  92              		.loc 1 30 0
-  93 0068 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+ 103              		.loc 1 30 5 is_stmt 1 view .LVU26
+ 104              		.loc 1 30 32 is_stmt 0 view .LVU27
+ 105 0068 ADF80A30 		strh	r3, [sp, #10]	@ movhi
   31:DRIVER/src/uart.c ****     uart_struct.USART_WordLength = USART_WordLength_8b;
-  94              		.loc 1 31 0
-  95 006c ADF80830 		strh	r3, [sp, #8]	@ movhi
+ 106              		.loc 1 31 5 is_stmt 1 view .LVU28
+ 107              		.loc 1 31 34 is_stmt 0 view .LVU29
+ 108 006c ADF80830 		strh	r3, [sp, #8]	@ movhi
   32:DRIVER/src/uart.c ****     USART_Init(USART1, &uart_struct);
-  96              		.loc 1 32 0
-  97 0070 2046     		mov	r0, r4
-  98 0072 01A9     		add	r1, sp, #4
-  99 0074 FFF7FEFF 		bl	USART_Init
- 100              	.LVL5:
+ 109              		.loc 1 32 5 is_stmt 1 view .LVU30
+ 110 0070 01A9     		add	r1, sp, #4
+ 111 0072 2046     		mov	r0, r4
+ 112 0074 FFF7FEFF 		bl	USART_Init
+ 113              	.LVL5:
   33:DRIVER/src/uart.c ****     
   34:DRIVER/src/uart.c ****     USART_Cmd(USART1,ENABLE);//ʹ�ܴ���1����
- 101              		.loc 1 34 0
- 102 0078 2046     		mov	r0, r4
- 103 007a 0121     		movs	r1, #1
- 104 007c FFF7FEFF 		bl	USART_Cmd
- 105              	.LVL6:
+ 114              		.loc 1 34 5 view .LVU31
+ 115 0078 0121     		movs	r1, #1
+ 116 007a 2046     		mov	r0, r4
+ 117 007c FFF7FEFF 		bl	USART_Cmd
+ 118              	.LVL6:
   35:DRIVER/src/uart.c **** }
- 106              		.loc 1 35 0
- 107 0080 07B0     		add	sp, sp, #28
- 108              	.LCFI2:
- 109              		.cfi_def_cfa_offset 12
- 110              		@ sp needed
- 111 0082 30BD     		pop	{r4, r5, pc}
- 112              	.L4:
- 113              		.align	2
- 114              	.L3:
- 115 0084 00380140 		.word	1073821696
- 116 0088 00080140 		.word	1073809408
- 117              		.cfi_endproc
- 118              	.LFE29:
- 120              		.section	.text.Uart_write,"ax",%progbits
- 121              		.align	2
- 122              		.global	Uart_write
- 123              		.thumb
- 124              		.thumb_func
- 126              	Uart_write:
- 127              	.LFB30:
+ 119              		.loc 1 35 1 is_stmt 0 view .LVU32
+ 120 0080 07B0     		add	sp, sp, #28
+ 121              	.LCFI2:
+ 122              		.cfi_def_cfa_offset 12
+ 123              		@ sp needed
+ 124 0082 30BD     		pop	{r4, r5, pc}
+ 125              	.L4:
+ 126              		.align	2
+ 127              	.L3:
+ 128 0084 00380140 		.word	1073821696
+ 129 0088 00080140 		.word	1073809408
+ 130              		.cfi_endproc
+ 131              	.LFE32:
+ 133              		.section	.text.Uart_write,"ax",%progbits
+ 134              		.align	1
+ 135              		.global	Uart_write
+ 136              		.syntax unified
+ 137              		.thumb
+ 138              		.thumb_func
+ARM GAS  /tmp/cctid6W5.s 			page 4
+
+
+ 139              		.fpu softvfp
+ 141              	Uart_write:
+ 142              	.LVL7:
+ 143              	.LFB33:
   36:DRIVER/src/uart.c **** 
   37:DRIVER/src/uart.c **** //���ڷ��ͺ���
   38:DRIVER/src/uart.c **** //ע�⣺STM32���ڷ��ͱ����ȼ��״̬�������һ���ֽ���
   39:DRIVER/src/uart.c **** //��һ���ȡSR�Ĵ������ڶ���дDR�Ĵ��� �պ������
   40:DRIVER/src/uart.c **** void Uart_write(u8 *pBuf,u8 ulLen)
   41:DRIVER/src/uart.c **** {
- 128              		.loc 1 41 0
- 129              		.cfi_startproc
- 130              		@ args = 0, pretend = 0, frame = 0
- 131              		@ frame_needed = 0, uses_anonymous_args = 0
- 132              	.LVL7:
- 133 0000 70B5     		push	{r4, r5, r6, lr}
-ARM GAS  /tmp/cct1d2H6.s 			page 4
-
-
- 134              	.LCFI3:
- 135              		.cfi_def_cfa_offset 16
- 136              		.cfi_offset 4, -16
- 137              		.cfi_offset 5, -12
- 138              		.cfi_offset 6, -8
- 139              		.cfi_offset 14, -4
- 140 0002 0546     		mov	r5, r0
- 141 0004 0E46     		mov	r6, r1
- 142              	.LVL8:
+ 144              		.loc 1 41 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		.loc 1 41 1 is_stmt 0 view .LVU34
+ 149 0000 70B5     		push	{r4, r5, r6, lr}
+ 150              	.LCFI3:
+ 151              		.cfi_def_cfa_offset 16
+ 152              		.cfi_offset 4, -16
+ 153              		.cfi_offset 5, -12
+ 154              		.cfi_offset 6, -8
+ 155              		.cfi_offset 14, -4
+ 156 0002 0546     		mov	r5, r0
+ 157 0004 0E46     		mov	r6, r1
   42:DRIVER/src/uart.c ****     u8 i = 0;
+ 158              		.loc 1 42 5 is_stmt 1 view .LVU35
+ 159              	.LVL8:
   43:DRIVER/src/uart.c ****     USART1->SR;//��ȡSR�Ĵ���
- 143              		.loc 1 43 0
- 144 0006 0A4B     		ldr	r3, .L10
- 145 0008 1B88     		ldrh	r3, [r3]
+ 160              		.loc 1 43 5 view .LVU36
+ 161              		.loc 1 43 11 is_stmt 0 view .LVU37
+ 162 0006 0A4B     		ldr	r3, .L10
+ 163 0008 1B88     		ldrh	r3, [r3]
   44:DRIVER/src/uart.c ****     for(i = 0; i < ulLen; i++)
- 146              		.loc 1 44 0
- 147 000a 0024     		movs	r4, #0
- 148 000c 0CE0     		b	.L6
- 149              	.LVL9:
- 150              	.L8:
+ 164              		.loc 1 44 5 is_stmt 1 view .LVU38
+ 165              		.loc 1 44 11 is_stmt 0 view .LVU39
+ 166 000a 0024     		movs	r4, #0
+ 167              		.loc 1 44 5 view .LVU40
+ 168 000c 0CE0     		b	.L6
+ 169              	.LVL9:
+ 170              	.L8:
   45:DRIVER/src/uart.c ****     { 
   46:DRIVER/src/uart.c ****        USART_SendData(USART1,*pBuf);//����һ���ֽ�
- 151              		.loc 1 46 0
- 152 000e 0848     		ldr	r0, .L10
- 153 0010 2978     		ldrb	r1, [r5]	@ zero_extendqisi2
- 154 0012 FFF7FEFF 		bl	USART_SendData
- 155              	.LVL10:
- 156              	.L7:
+ 171              		.loc 1 46 8 is_stmt 1 view .LVU41
+ 172 000e 2978     		ldrb	r1, [r5]	@ zero_extendqisi2
+ 173 0010 0748     		ldr	r0, .L10
+ 174 0012 FFF7FEFF 		bl	USART_SendData
+ 175              	.LVL10:
   47:DRIVER/src/uart.c ****        while(USART_GetFlagStatus(USART1,USART_FLAG_TC)==RESET); //����Ƿ������
- 157              		.loc 1 47 0 discriminator 1
- 158 0016 0648     		ldr	r0, .L10
- 159 0018 4021     		movs	r1, #64
- 160 001a FFF7FEFF 		bl	USART_GetFlagStatus
- 161              	.LVL11:
- 162 001e 0028     		cmp	r0, #0
- 163 0020 F9D0     		beq	.L7
+ 176              		.loc 1 47 8 view .LVU42
+ 177              	.L7:
+ 178              		.loc 1 47 63 discriminator 1 view .LVU43
+ 179              		.loc 1 47 13 discriminator 1 view .LVU44
+ 180              		.loc 1 47 14 is_stmt 0 discriminator 1 view .LVU45
+ 181 0016 4021     		movs	r1, #64
+ 182 0018 0548     		ldr	r0, .L10
+ 183 001a FFF7FEFF 		bl	USART_GetFlagStatus
+ 184              	.LVL11:
+ARM GAS  /tmp/cctid6W5.s 			page 5
+
+
+ 185              		.loc 1 47 13 discriminator 1 view .LVU46
+ 186 001e 0028     		cmp	r0, #0
+ 187 0020 F9D0     		beq	.L7
   48:DRIVER/src/uart.c ****        pBuf++; //����ָ��ָ����һ������
- 164              		.loc 1 48 0 discriminator 2
- 165 0022 0135     		adds	r5, r5, #1
- 166              	.LVL12:
+ 188              		.loc 1 48 8 is_stmt 1 discriminator 2 view .LVU47
+ 189              		.loc 1 48 12 is_stmt 0 discriminator 2 view .LVU48
+ 190 0022 0135     		adds	r5, r5, #1
+ 191              	.LVL12:
   44:DRIVER/src/uart.c ****     { 
- 167              		.loc 1 44 0 discriminator 2
- 168 0024 0134     		adds	r4, r4, #1
- 169              	.LVL13:
- 170 0026 E4B2     		uxtb	r4, r4
- 171              	.LVL14:
- 172              	.L6:
+ 192              		.loc 1 44 27 is_stmt 1 discriminator 2 view .LVU49
   44:DRIVER/src/uart.c ****     { 
- 173              		.loc 1 44 0 is_stmt 0 discriminator 1
- 174 0028 B442     		cmp	r4, r6
- 175 002a F0D3     		bcc	.L8
+ 193              		.loc 1 44 28 is_stmt 0 discriminator 2 view .LVU50
+ 194 0024 0134     		adds	r4, r4, #1
+ 195              	.LVL13:
+  44:DRIVER/src/uart.c ****     { 
+ 196              		.loc 1 44 28 discriminator 2 view .LVU51
+ 197 0026 E4B2     		uxtb	r4, r4
+ 198              	.LVL14:
+ 199              	.L6:
+  44:DRIVER/src/uart.c ****     { 
+ 200              		.loc 1 44 16 is_stmt 1 discriminator 1 view .LVU52
+  44:DRIVER/src/uart.c ****     { 
+ 201              		.loc 1 44 5 is_stmt 0 discriminator 1 view .LVU53
+ 202 0028 B442     		cmp	r4, r6
+ 203 002a F0D3     		bcc	.L8
   49:DRIVER/src/uart.c ****     }
   50:DRIVER/src/uart.c **** }
- 176              		.loc 1 50 0 is_stmt 1
- 177 002c 70BD     		pop	{r4, r5, r6, pc}
- 178              	.LVL15:
- 179              	.L11:
-ARM GAS  /tmp/cct1d2H6.s 			page 5
-
-
- 180 002e 00BF     		.align	2
- 181              	.L10:
- 182 0030 00380140 		.word	1073821696
- 183              		.cfi_endproc
- 184              	.LFE30:
- 186              		.section	.text.vprint,"ax",%progbits
- 187              		.align	2
- 188              		.global	vprint
- 189              		.thumb
- 190              		.thumb_func
- 192              	vprint:
- 193              	.LFB31:
+ 204              		.loc 1 50 1 view .LVU54
+ 205 002c 70BD     		pop	{r4, r5, r6, pc}
+ 206              	.LVL15:
+ 207              	.L11:
+ 208              		.loc 1 50 1 view .LVU55
+ 209 002e 00BF     		.align	2
+ 210              	.L10:
+ 211 0030 00380140 		.word	1073821696
+ 212              		.cfi_endproc
+ 213              	.LFE33:
+ 215              		.section	.text.vprint,"ax",%progbits
+ 216              		.align	1
+ 217              		.global	vprint
+ 218              		.syntax unified
+ 219              		.thumb
+ 220              		.thumb_func
+ 221              		.fpu softvfp
+ 223              	vprint:
+ 224              	.LVL16:
+ 225              	.LFB34:
   51:DRIVER/src/uart.c **** 
   52:DRIVER/src/uart.c **** void vprint(const char *fmt, va_list argp)
   53:DRIVER/src/uart.c **** {
- 194              		.loc 1 53 0
- 195              		.cfi_startproc
- 196              		@ args = 0, pretend = 0, frame = 200
- 197              		@ frame_needed = 0, uses_anonymous_args = 0
- 198              	.LVL16:
- 199 0000 00B5     		push	{lr}
- 200              	.LCFI4:
- 201              		.cfi_def_cfa_offset 4
- 202              		.cfi_offset 14, -4
- 203 0002 B3B0     		sub	sp, sp, #204
- 204              	.LCFI5:
- 205              		.cfi_def_cfa_offset 208
- 206 0004 0346     		mov	r3, r0
- 207 0006 0A46     		mov	r2, r1
+ 226              		.loc 1 53 1 is_stmt 1 view -0
+ 227              		.cfi_startproc
+ 228              		@ args = 0, pretend = 0, frame = 200
+ 229              		@ frame_needed = 0, uses_anonymous_args = 0
+ 230              		.loc 1 53 1 is_stmt 0 view .LVU57
+ 231 0000 00B5     		push	{lr}
+ 232              	.LCFI4:
+ARM GAS  /tmp/cctid6W5.s 			page 6
+
+
+ 233              		.cfi_def_cfa_offset 4
+ 234              		.cfi_offset 14, -4
+ 235 0002 B3B0     		sub	sp, sp, #204
+ 236              	.LCFI5:
+ 237              		.cfi_def_cfa_offset 208
+ 238 0004 0A46     		mov	r2, r1
   54:DRIVER/src/uart.c ****     char string[200];
+ 239              		.loc 1 54 5 is_stmt 1 view .LVU58
   55:DRIVER/src/uart.c ****     if(0 < vsprintf(string,fmt,argp)) // build string
- 208              		.loc 1 55 0
- 209 0008 6846     		mov	r0, sp
- 210              	.LVL17:
- 211 000a 1946     		mov	r1, r3
- 212              	.LVL18:
- 213 000c FFF7FEFF 		bl	vsprintf
- 214              	.LVL19:
- 215 0010 0028     		cmp	r0, #0
- 216 0012 06DD     		ble	.L12
+ 240              		.loc 1 55 5 view .LVU59
+ 241              		.loc 1 55 12 is_stmt 0 view .LVU60
+ 242 0006 0146     		mov	r1, r0
+ 243              	.LVL17:
+ 244              		.loc 1 55 12 view .LVU61
+ 245 0008 6846     		mov	r0, sp
+ 246              	.LVL18:
+ 247              		.loc 1 55 12 view .LVU62
+ 248 000a FFF7FEFF 		bl	vsprintf
+ 249              	.LVL19:
+ 250              		.loc 1 55 7 view .LVU63
+ 251 000e 0028     		cmp	r0, #0
+ 252 0010 02DC     		bgt	.L15
+ 253              	.L12:
   56:DRIVER/src/uart.c ****     {
   57:DRIVER/src/uart.c ****         Uart_write((u8*)string, strlen(string));
- 217              		.loc 1 57 0
- 218 0014 6846     		mov	r0, sp
- 219 0016 FFF7FEFF 		bl	strlen
- 220              	.LVL20:
- 221 001a C1B2     		uxtb	r1, r0
- 222 001c 6846     		mov	r0, sp
- 223 001e FFF7FEFF 		bl	Uart_write
- 224              	.LVL21:
- 225              	.L12:
   58:DRIVER/src/uart.c ****     }
   59:DRIVER/src/uart.c **** }
- 226              		.loc 1 59 0
- 227 0022 33B0     		add	sp, sp, #204
- 228              	.LCFI6:
- 229              		.cfi_def_cfa_offset 4
-ARM GAS  /tmp/cct1d2H6.s 			page 6
+ 254              		.loc 1 59 1 view .LVU64
+ 255 0012 33B0     		add	sp, sp, #204
+ 256              	.LCFI6:
+ 257              		.cfi_remember_state
+ 258              		.cfi_def_cfa_offset 4
+ 259              		@ sp needed
+ 260 0014 5DF804FB 		ldr	pc, [sp], #4
+ 261              	.L15:
+ 262              	.LCFI7:
+ 263              		.cfi_restore_state
+  57:DRIVER/src/uart.c ****     }
+ 264              		.loc 1 57 9 is_stmt 1 view .LVU65
+  57:DRIVER/src/uart.c ****     }
+ 265              		.loc 1 57 33 is_stmt 0 view .LVU66
+ 266 0018 6846     		mov	r0, sp
+ 267 001a FFF7FEFF 		bl	strlen
+ 268              	.LVL20:
+  57:DRIVER/src/uart.c ****     }
+ 269              		.loc 1 57 9 view .LVU67
+ 270 001e C1B2     		uxtb	r1, r0
+ 271 0020 6846     		mov	r0, sp
+ 272 0022 FFF7FEFF 		bl	Uart_write
+ 273              	.LVL21:
+ 274              		.loc 1 59 1 view .LVU68
+ 275 0026 F4E7     		b	.L12
+ 276              		.cfi_endproc
+ 277              	.LFE34:
+ 279              		.section	.text.printfs,"ax",%progbits
+ 280              		.align	1
+ 281              		.global	printfs
+ARM GAS  /tmp/cctid6W5.s 			page 7
 
 
- 230              		@ sp needed
- 231 0024 5DF804FB 		ldr	pc, [sp], #4
- 232              		.cfi_endproc
- 233              	.LFE31:
- 235              		.section	.text.printfs,"ax",%progbits
- 236              		.align	2
- 237              		.global	printfs
- 238              		.thumb
- 239              		.thumb_func
- 241              	printfs:
- 242              	.LFB32:
+ 282              		.syntax unified
+ 283              		.thumb
+ 284              		.thumb_func
+ 285              		.fpu softvfp
+ 287              	printfs:
+ 288              	.LVL22:
+ 289              	.LFB35:
   60:DRIVER/src/uart.c **** 
   61:DRIVER/src/uart.c **** //printf����
   62:DRIVER/src/uart.c **** void printfs(char*fmt,...)
   63:DRIVER/src/uart.c **** {  
- 243              		.loc 1 63 0
- 244              		.cfi_startproc
- 245              		@ args = 4, pretend = 16, frame = 0
- 246              		@ frame_needed = 0, uses_anonymous_args = 1
- 247              		@ link register save eliminated.
- 248              	.LVL22:
- 249 0000 0FB4     		push	{r0, r1, r2, r3}
- 250              	.LCFI7:
- 251              		.cfi_def_cfa_offset 16
- 252              		.cfi_offset 0, -16
- 253              		.cfi_offset 1, -12
- 254              		.cfi_offset 2, -8
- 255              		.cfi_offset 3, -4
+ 290              		.loc 1 63 1 is_stmt 1 view -0
+ 291              		.cfi_startproc
+ 292              		@ args = 4, pretend = 16, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 1
+ 294              		@ link register save eliminated.
+ 295              		.loc 1 63 1 is_stmt 0 view .LVU70
+ 296 0000 0FB4     		push	{r0, r1, r2, r3}
+ 297              	.LCFI8:
+ 298              		.cfi_def_cfa_offset 16
+ 299              		.cfi_offset 0, -16
+ 300              		.cfi_offset 1, -12
+ 301              		.cfi_offset 2, -8
+ 302              		.cfi_offset 3, -4
   64:DRIVER/src/uart.c ****     /*va_list argp;
   65:DRIVER/src/uart.c ****     va_start(argp, fmt);
   66:DRIVER/src/uart.c ****     vprint(fmt, argp);
@@ -336,50 +392,44 @@ ARM GAS  /tmp/cct1d2H6.s 			page 1
   68:DRIVER/src/uart.c ****     //printf("nn\n");
   69:DRIVER/src/uart.c ****     
   70:DRIVER/src/uart.c **** }	...
- 256              		.loc 1 70 0
- 257 0002 04B0     		add	sp, sp, #16
- 258              	.LCFI8:
- 259              		.cfi_restore 3
- 260              		.cfi_restore 2
- 261              		.cfi_restore 1
- 262              		.cfi_restore 0
- 263              		.cfi_def_cfa_offset 0
- 264 0004 7047     		bx	lr
- 265              		.cfi_endproc
- 266              	.LFE32:
- 268 0006 00BF     		.text
- 269              	.Letext0:
- 270              		.file 2 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h"
- 271              		.file 3 "/usr/include/newlib/machine/_default_types.h"
- 272              		.file 4 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h"
- 273              		.file 5 "/usr/include/newlib/sys/_stdint.h"
- 274              		.file 6 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
- 275              		.file 7 "FWLIB/inc/stm32f10x_gpio.h"
- 276              		.file 8 "FWLIB/inc/stm32f10x_usart.h"
- 277              		.file 9 "FWLIB/inc/stm32f10x_rcc.h"
- 278              		.file 10 "/usr/include/newlib/stdio.h"
-ARM GAS  /tmp/cct1d2H6.s 			page 7
-
-
- 279              		.file 11 "/usr/include/newlib/string.h"
- 280              		.file 12 "<built-in>"
- 281              		.file 13 "CMSIS/CM3/CoreSupport/core_cm3.h"
-ARM GAS  /tmp/cct1d2H6.s 			page 8
+ 303              		.loc 1 70 1 is_stmt 1 view .LVU71
+ 304 0002 04B0     		add	sp, sp, #16
+ 305              	.LCFI9:
+ 306              		.cfi_restore 3
+ 307              		.cfi_restore 2
+ 308              		.cfi_restore 1
+ 309              		.cfi_restore 0
+ 310              		.cfi_def_cfa_offset 0
+ 311 0004 7047     		bx	lr
+ 312              		.cfi_endproc
+ 313              	.LFE35:
+ 315              		.text
+ 316              	.Letext0:
+ 317              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 318              		.file 3 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 319              		.file 4 "/usr/include/newlib/stdio.h"
+ 320              		.file 5 "/usr/include/newlib/sys/_stdint.h"
+ 321              		.file 6 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+ 322              		.file 7 "FWLIB/inc/stm32f10x_gpio.h"
+ 323              		.file 8 "FWLIB/inc/stm32f10x_usart.h"
+ 324              		.file 9 "/usr/include/newlib/string.h"
+ 325              		.file 10 "FWLIB/inc/stm32f10x_rcc.h"
+ 326              		.file 11 "<built-in>"
+ARM GAS  /tmp/cctid6W5.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 uart.c
-     /tmp/cct1d2H6.s:19     .text.uart1_init:0000000000000000 $t
-     /tmp/cct1d2H6.s:24     .text.uart1_init:0000000000000000 uart1_init
-     /tmp/cct1d2H6.s:115    .text.uart1_init:0000000000000084 $d
-     /tmp/cct1d2H6.s:121    .text.Uart_write:0000000000000000 $t
-     /tmp/cct1d2H6.s:126    .text.Uart_write:0000000000000000 Uart_write
-     /tmp/cct1d2H6.s:182    .text.Uart_write:0000000000000030 $d
-     /tmp/cct1d2H6.s:187    .text.vprint:0000000000000000 $t
-     /tmp/cct1d2H6.s:192    .text.vprint:0000000000000000 vprint
-     /tmp/cct1d2H6.s:236    .text.printfs:0000000000000000 $t
-     /tmp/cct1d2H6.s:241    .text.printfs:0000000000000000 printfs
-                     .debug_frame:0000000000000010 $d
+     /tmp/cctid6W5.s:16     .text.uart1_init:0000000000000000 $t
+     /tmp/cctid6W5.s:24     .text.uart1_init:0000000000000000 uart1_init
+     /tmp/cctid6W5.s:128    .text.uart1_init:0000000000000084 $d
+     /tmp/cctid6W5.s:134    .text.Uart_write:0000000000000000 $t
+     /tmp/cctid6W5.s:141    .text.Uart_write:0000000000000000 Uart_write
+     /tmp/cctid6W5.s:211    .text.Uart_write:0000000000000030 $d
+     /tmp/cctid6W5.s:216    .text.vprint:0000000000000000 $t
+     /tmp/cctid6W5.s:223    .text.vprint:0000000000000000 vprint
+     /tmp/cctid6W5.s:280    .text.printfs:0000000000000000 $t
+     /tmp/cctid6W5.s:287    .text.printfs:0000000000000000 printfs
 
 UNDEFINED SYMBOLS
 RCC_APB2PeriphClockCmd

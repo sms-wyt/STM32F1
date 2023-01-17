@@ -1,27 +1,27 @@
-ARM GAS  /tmp/ccYdRrxK.s 			page 1
+ARM GAS  /tmp/ccC4p06v.s 			page 1
 
 
-   1              		.syntax unified
-   2              		.cpu cortex-m3
-   3              		.fpu softvfp
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.thumb
-  14              		.file	"system_stm32f10x.c"
-  15              		.text
-  16              	.Ltext0:
-  17              		.cfi_sections	.debug_frame
-  18              		.section	.text.SetSysClockTo72,"ax",%progbits
-  19              		.align	2
-  20              		.thumb
-  21              		.thumb_func
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"system_stm32f10x.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.SetSysClockTo72,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
   23              	SetSysClockTo72:
   24              	.LFB32:
   25              		.file 1 "CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
   31:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   *    add some code to deal with this issue inside the SetSysClock() function.
   32:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   *
   33:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   * 4. The default value of HSE crystal is set to 8 MHz (or 25 MHz, depedning on
-ARM GAS  /tmp/ccYdRrxK.s 			page 2
+ARM GAS  /tmp/ccC4p06v.s 			page 2
 
 
   34:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   *    the product used), refer to "HSE_VALUE" define in "stm32f10x.h" file. 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
   88:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****    1. After each device reset the HSI is used as System clock source.
   89:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
   90:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****    2. Please make sure that the selected System clock doesn't exceed your device's
-ARM GAS  /tmp/ccYdRrxK.s 			page 3
+ARM GAS  /tmp/ccC4p06v.s 			page 3
 
 
   91:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       maximum frequency.
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  145:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   * @{
  146:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   */
  147:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
-ARM GAS  /tmp/ccYdRrxK.s 			page 4
+ARM GAS  /tmp/ccC4p06v.s 			page 4
 
 
  148:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** /*******************************************************************************
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  202:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   */
  203:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
  204:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** /**
-ARM GAS  /tmp/ccYdRrxK.s 			page 5
+ARM GAS  /tmp/ccC4p06v.s 			page 5
 
 
  205:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   * @brief  Setup the microcontroller system
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  259:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
  260:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers */
  261:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* Configure the Flash Latency cycles and enable prefetch buffer */
-ARM GAS  /tmp/ccYdRrxK.s 			page 6
+ARM GAS  /tmp/ccC4p06v.s 			page 6
 
 
  262:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   SetSysClock();
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  316:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_LD_VL or STM32F10X_MD_VL or STM32F10X_HD_VL */
  317:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
  318:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* Get SYSCLK source -------------------------------------------------------*/
-ARM GAS  /tmp/ccYdRrxK.s 			page 7
+ARM GAS  /tmp/ccC4p06v.s 			page 7
 
 
  319:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  373:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       if (pllsource == 0x00)
  374:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       {
  375:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
-ARM GAS  /tmp/ccYdRrxK.s 			page 8
+ARM GAS  /tmp/ccC4p06v.s 			page 8
 
 
  376:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         SystemCoreClock = (HSI_VALUE >> 1) * pllmull;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  430:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   SetSysClockTo56();  
  431:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_72MHz
  432:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   SetSysClockTo72();
-ARM GAS  /tmp/ccYdRrxK.s 			page 9
+ARM GAS  /tmp/ccC4p06v.s 			page 9
 
 
  433:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  487:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   FSMC_Bank1->BTCR[4] = 0x00001011;
  488:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   FSMC_Bank1->BTCR[5] = 0x00000200;
  489:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** }
-ARM GAS  /tmp/ccYdRrxK.s 			page 10
+ARM GAS  /tmp/ccC4p06v.s 			page 10
 
 
  490:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* DATA_IN_ExtSRAM */
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  544:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 	}
  545:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_CL */
  546:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif
-ARM GAS  /tmp/ccYdRrxK.s 			page 11
+ARM GAS  /tmp/ccC4p06v.s 			page 11
 
 
  547:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****  
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  601:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }  
  602:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
  603:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
-ARM GAS  /tmp/ccYdRrxK.s 			page 12
+ARM GAS  /tmp/ccC4p06v.s 			page 12
 
 
  604:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   {
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  658:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
  659:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     }
  660:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
-ARM GAS  /tmp/ccYdRrxK.s 			page 13
+ARM GAS  /tmp/ccC4p06v.s 			page 13
 
 
  661:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Select PLL as system clock source */
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  715:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****  
  716:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* HCLK = SYSCLK */
  717:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
-ARM GAS  /tmp/ccYdRrxK.s 			page 14
+ARM GAS  /tmp/ccC4p06v.s 			page 14
 
 
  718:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  772:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
  773:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
  774:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   } 
-ARM GAS  /tmp/ccYdRrxK.s 			page 15
+ARM GAS  /tmp/ccC4p06v.s 			page 15
 
 
  775:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** }
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  829:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 5 = 8 MHz */
  830:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         
  831:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
-ARM GAS  /tmp/ccYdRrxK.s 			page 16
+ARM GAS  /tmp/ccC4p06v.s 			page 16
 
 
  832:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****                               RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  886:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** {
  887:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
  888:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   
-ARM GAS  /tmp/ccYdRrxK.s 			page 17
+ARM GAS  /tmp/ccC4p06v.s 			page 17
 
 
  889:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/   
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  943:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
  944:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****    
  945:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = PREDIV1 * 7 = 56 MHz */ 
-ARM GAS  /tmp/ccYdRrxK.s 			page 18
+ARM GAS  /tmp/ccC4p06v.s 			page 18
 
 
  946:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
@@ -1064,7 +1064,7 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
  986:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   */
  987:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** static void SetSysClockTo72(void)
  988:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** {
-  26              		.loc 1 988 0
+  26              		.loc 1 988 1 view -0
   27              		.cfi_startproc
   28              		@ args = 0, pretend = 0, frame = 8
   29              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1073,120 +1073,108 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
   32              	.LCFI0:
   33              		.cfi_def_cfa_offset 8
  989:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
-  34              		.loc 1 989 0
-  35 0002 0023     		movs	r3, #0
-  36 0004 0193     		str	r3, [sp, #4]
-  37 0006 0093     		str	r3, [sp]
+  34              		.loc 1 989 3 view .LVU1
+  35              		.loc 1 989 17 is_stmt 0 view .LVU2
+  36 0002 0023     		movs	r3, #0
+  37 0004 0193     		str	r3, [sp, #4]
+  38              		.loc 1 989 37 view .LVU3
+ARM GAS  /tmp/ccC4p06v.s 			page 19
+
+
+  39 0006 0093     		str	r3, [sp]
  990:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   
-ARM GAS  /tmp/ccYdRrxK.s 			page 19
-
-
  991:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
  992:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* Enable HSE */    
  993:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
-  38              		.loc 1 993 0
-  39 0008 2C4A     		ldr	r2, .L10
-  40 000a 1368     		ldr	r3, [r2]
-  41 000c 43F48033 		orr	r3, r3, #65536
-  42 0010 1360     		str	r3, [r2]
-  43              	.L3:
+  40              		.loc 1 993 3 is_stmt 1 view .LVU4
+  41              		.loc 1 993 11 is_stmt 0 view .LVU5
+  42 0008 2C4A     		ldr	r2, .L11
+  43 000a 1368     		ldr	r3, [r2]
+  44 000c 43F48033 		orr	r3, r3, #65536
+  45 0010 1360     		str	r3, [r2]
+  46              	.L3:
  994:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****  
  995:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
  996:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   do
+  47              		.loc 1 996 3 is_stmt 1 discriminator 2 view .LVU6
  997:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   {
  998:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
-  44              		.loc 1 998 0 discriminator 2
-  45 0012 2A4B     		ldr	r3, .L10
-  46 0014 1B68     		ldr	r3, [r3]
-  47 0016 03F40033 		and	r3, r3, #131072
-  48 001a 0093     		str	r3, [sp]
+  48              		.loc 1 998 5 discriminator 2 view .LVU7
+  49              		.loc 1 998 20 is_stmt 0 discriminator 2 view .LVU8
+  50 0012 2A4B     		ldr	r3, .L11
+  51 0014 1B68     		ldr	r3, [r3]
+  52              		.loc 1 998 25 discriminator 2 view .LVU9
+  53 0016 03F40033 		and	r3, r3, #131072
+  54              		.loc 1 998 15 discriminator 2 view .LVU10
+  55 001a 0093     		str	r3, [sp]
  999:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     StartUpCounter++;  
-  49              		.loc 1 999 0 discriminator 2
-  50 001c 019B     		ldr	r3, [sp, #4]
-  51 001e 0133     		adds	r3, r3, #1
-  52 0020 0193     		str	r3, [sp, #4]
+  56              		.loc 1 999 5 is_stmt 1 discriminator 2 view .LVU11
+  57              		.loc 1 999 19 is_stmt 0 discriminator 2 view .LVU12
+  58 001c 019B     		ldr	r3, [sp, #4]
+  59 001e 0133     		adds	r3, r3, #1
+  60 0020 0193     		str	r3, [sp, #4]
 1000:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
-  53              		.loc 1 1000 0 discriminator 2
-  54 0022 009B     		ldr	r3, [sp]
-  55 0024 1BB9     		cbnz	r3, .L2
-  56              		.loc 1 1000 0 is_stmt 0 discriminator 1
-  57 0026 019B     		ldr	r3, [sp, #4]
-  58 0028 B3F5A06F 		cmp	r3, #1280
-  59 002c F1D1     		bne	.L3
-  60              	.L2:
+  61              		.loc 1 1000 10 is_stmt 1 discriminator 2 view .LVU13
+  62              		.loc 1 1000 22 is_stmt 0 discriminator 2 view .LVU14
+  63 0022 009B     		ldr	r3, [sp]
+  64              		.loc 1 1000 3 discriminator 2 view .LVU15
+  65 0024 1BB9     		cbnz	r3, .L2
+  66              		.loc 1 1000 47 discriminator 1 view .LVU16
+  67 0026 019B     		ldr	r3, [sp, #4]
+  68              		.loc 1 1000 28 discriminator 1 view .LVU17
+  69 0028 B3F5A06F 		cmp	r3, #1280
+  70 002c F1D1     		bne	.L3
+  71              	.L2:
 1001:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1002:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
-  61              		.loc 1 1002 0 is_stmt 1
-  62 002e 234B     		ldr	r3, .L10
-  63 0030 1B68     		ldr	r3, [r3]
-  64 0032 13F4003F 		tst	r3, #131072
-  65 0036 02D0     		beq	.L4
+  72              		.loc 1 1002 3 is_stmt 1 view .LVU18
+  73              		.loc 1 1002 11 is_stmt 0 view .LVU19
+  74 002e 234B     		ldr	r3, .L11
+  75 0030 1B68     		ldr	r3, [r3]
+  76              		.loc 1 1002 6 view .LVU20
+  77 0032 13F4003F 		tst	r3, #131072
+  78 0036 06D0     		beq	.L4
 1003:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   {
 1004:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
-  66              		.loc 1 1004 0
-  67 0038 0123     		movs	r3, #1
-  68 003a 0093     		str	r3, [sp]
-  69 003c 01E0     		b	.L5
-  70              	.L4:
+  79              		.loc 1 1004 5 is_stmt 1 view .LVU21
+  80              		.loc 1 1004 15 is_stmt 0 view .LVU22
+ARM GAS  /tmp/ccC4p06v.s 			page 20
+
+
+  81 0038 0123     		movs	r3, #1
+  82 003a 0093     		str	r3, [sp]
+  83              	.L5:
 1005:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }
 1006:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   else
 1007:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   {
 1008:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
-  71              		.loc 1 1008 0
-  72 003e 0023     		movs	r3, #0
-  73 0040 0093     		str	r3, [sp]
-  74              	.L5:
 1009:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }  
 1010:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
-ARM GAS  /tmp/ccYdRrxK.s 			page 20
-
-
 1011:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
-  75              		.loc 1 1011 0
-  76 0042 009B     		ldr	r3, [sp]
-  77 0044 012B     		cmp	r3, #1
-  78 0046 36D1     		bne	.L1
+  84              		.loc 1 1011 3 is_stmt 1 view .LVU23
+  85              		.loc 1 1011 17 is_stmt 0 view .LVU24
+  86 003c 009B     		ldr	r3, [sp]
+  87              		.loc 1 1011 6 view .LVU25
+  88 003e 012B     		cmp	r3, #1
+  89 0040 04D0     		beq	.L10
+  90              	.L1:
 1012:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   {
 1013:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
 1014:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
-  79              		.loc 1 1014 0
-  80 0048 1D4B     		ldr	r3, .L10+4
-  81 004a 1A68     		ldr	r2, [r3]
-  82 004c 42F01002 		orr	r2, r2, #16
-  83 0050 1A60     		str	r2, [r3]
 1015:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1016:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Flash 2 wait state */
 1017:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
-  84              		.loc 1 1017 0
-  85 0052 1A68     		ldr	r2, [r3]
-  86 0054 22F00302 		bic	r2, r2, #3
-  87 0058 1A60     		str	r2, [r3]
 1018:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_2;    
-  88              		.loc 1 1018 0
-  89 005a 1A68     		ldr	r2, [r3]
-  90 005c 42F00202 		orr	r2, r2, #2
-  91 0060 1A60     		str	r2, [r3]
 1019:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1020:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****  
 1021:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* HCLK = SYSCLK */
 1022:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
-  92              		.loc 1 1022 0
-  93 0062 A3F58053 		sub	r3, r3, #4096
-  94 0066 5A68     		ldr	r2, [r3, #4]
-  95 0068 5A60     		str	r2, [r3, #4]
 1023:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
 1024:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* PCLK2 = HCLK */
 1025:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
-  96              		.loc 1 1025 0
-  97 006a 5A68     		ldr	r2, [r3, #4]
-  98 006c 5A60     		str	r2, [r3, #4]
 1026:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
 1027:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* PCLK1 = HCLK */
 1028:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2;
-  99              		.loc 1 1028 0
- 100 006e 5A68     		ldr	r2, [r3, #4]
- 101 0070 42F48062 		orr	r2, r2, #1024
- 102 0074 5A60     		str	r2, [r3, #4]
 1029:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1030:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #ifdef STM32F10X_CL
 1031:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Configure PLLs ------------------------------------------------------*/
@@ -1198,9 +1186,6 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
 1037:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | RCC_CFGR2_PLL2MUL8 |
 1038:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****                              RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV5);
 1039:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   
-ARM GAS  /tmp/ccYdRrxK.s 			page 21
-
-
 1040:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Enable PLL2 */
 1041:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLL2ON;
 1042:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Wait till PLL2 is ready */
@@ -1213,65 +1198,30 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
 1049:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
 1050:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
 1051:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****                             RCC_CFGR_PLLMULL9); 
+ARM GAS  /tmp/ccC4p06v.s 			page 21
+
+
 1052:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #else    
 1053:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /*  PLL configuration: PLLCLK = HSE * 9 = 72 MHz */
 1054:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE |
- 103              		.loc 1 1054 0
- 104 0076 5A68     		ldr	r2, [r3, #4]
- 105 0078 22F47C12 		bic	r2, r2, #4128768
- 106 007c 5A60     		str	r2, [r3, #4]
 1055:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****                                         RCC_CFGR_PLLMULL));
 1056:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL9);
- 107              		.loc 1 1056 0
- 108 007e 5A68     		ldr	r2, [r3, #4]
- 109 0080 42F4E812 		orr	r2, r2, #1900544
- 110 0084 5A60     		str	r2, [r3, #4]
 1057:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_CL */
 1058:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1059:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Enable PLL */
 1060:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLLON;
- 111              		.loc 1 1060 0
- 112 0086 1A68     		ldr	r2, [r3]
- 113 0088 42F08072 		orr	r2, r2, #16777216
- 114 008c 1A60     		str	r2, [r3]
- 115              	.L7:
 1061:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1062:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Wait till PLL is ready */
 1063:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
- 116              		.loc 1 1063 0 discriminator 1
- 117 008e 0B4B     		ldr	r3, .L10
- 118 0090 1B68     		ldr	r3, [r3]
- 119 0092 13F0007F 		tst	r3, #33554432
- 120 0096 FAD0     		beq	.L7
 1064:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
 1065:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     }
 1066:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
 1067:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Select PLL as system clock source */
 1068:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
- 121              		.loc 1 1068 0
- 122 0098 084B     		ldr	r3, .L10
- 123 009a 5A68     		ldr	r2, [r3, #4]
- 124 009c 22F00302 		bic	r2, r2, #3
- 125 00a0 5A60     		str	r2, [r3, #4]
 1069:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
- 126              		.loc 1 1069 0
- 127 00a2 5A68     		ldr	r2, [r3, #4]
- 128 00a4 42F00202 		orr	r2, r2, #2
- 129 00a8 5A60     		str	r2, [r3, #4]
-ARM GAS  /tmp/ccYdRrxK.s 			page 22
-
-
- 130              	.L8:
 1070:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
 1071:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     /* Wait till PLL is used as system clock source */
 1072:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
- 131              		.loc 1 1072 0 discriminator 1
- 132 00aa 044B     		ldr	r3, .L10
- 133 00ac 5B68     		ldr	r3, [r3, #4]
- 134 00ae 03F00C03 		and	r3, r3, #12
- 135 00b2 082B     		cmp	r3, #8
- 136 00b4 F9D1     		bne	.L8
- 137              	.L1:
 1073:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
 1074:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     }
 1075:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }
@@ -1280,317 +1230,522 @@ ARM GAS  /tmp/ccYdRrxK.s 			page 1
 1078:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
 1079:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }
 1080:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** }
- 138              		.loc 1 1080 0
- 139 00b6 02B0     		add	sp, sp, #8
- 140              	.LCFI1:
- 141              		.cfi_def_cfa_offset 0
- 142              		@ sp needed
- 143 00b8 7047     		bx	lr
- 144              	.L11:
- 145 00ba 00BF     		.align	2
- 146              	.L10:
- 147 00bc 00100240 		.word	1073876992
- 148 00c0 00200240 		.word	1073881088
- 149              		.cfi_endproc
- 150              	.LFE32:
- 152              		.section	.text.SetSysClock,"ax",%progbits
- 153              		.align	2
- 154              		.thumb
- 155              		.thumb_func
- 157              	SetSysClock:
- 158              	.LFB31:
+  91              		.loc 1 1080 1 view .LVU26
+  92 0042 02B0     		add	sp, sp, #8
+  93              	.LCFI1:
+  94              		.cfi_remember_state
+  95              		.cfi_def_cfa_offset 0
+  96              		@ sp needed
+  97 0044 7047     		bx	lr
+  98              	.L4:
+  99              	.LCFI2:
+ 100              		.cfi_restore_state
+1008:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }  
+ 101              		.loc 1 1008 5 is_stmt 1 view .LVU27
+1008:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }  
+ 102              		.loc 1 1008 15 is_stmt 0 view .LVU28
+ 103 0046 0023     		movs	r3, #0
+ 104 0048 0093     		str	r3, [sp]
+ 105 004a F7E7     		b	.L5
+ 106              	.L10:
+1014:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 107              		.loc 1 1014 5 is_stmt 1 view .LVU29
+1014:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 108              		.loc 1 1014 16 is_stmt 0 view .LVU30
+ 109 004c 1C4B     		ldr	r3, .L11+4
+ 110 004e 1A68     		ldr	r2, [r3]
+ 111 0050 42F01002 		orr	r2, r2, #16
+ 112 0054 1A60     		str	r2, [r3]
+1017:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_2;    
+ 113              		.loc 1 1017 5 is_stmt 1 view .LVU31
+ARM GAS  /tmp/ccC4p06v.s 			page 22
+
+
+1017:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_2;    
+ 114              		.loc 1 1017 16 is_stmt 0 view .LVU32
+ 115 0056 1A68     		ldr	r2, [r3]
+ 116 0058 22F00302 		bic	r2, r2, #3
+ 117 005c 1A60     		str	r2, [r3]
+1018:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 118              		.loc 1 1018 5 is_stmt 1 view .LVU33
+1018:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 119              		.loc 1 1018 16 is_stmt 0 view .LVU34
+ 120 005e 1A68     		ldr	r2, [r3]
+ 121 0060 42F00202 		orr	r2, r2, #2
+ 122 0064 1A60     		str	r2, [r3]
+1022:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ 123              		.loc 1 1022 5 is_stmt 1 view .LVU35
+1022:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ 124              		.loc 1 1022 15 is_stmt 0 view .LVU36
+ 125 0066 A3F58053 		sub	r3, r3, #4096
+ 126 006a 5A68     		ldr	r2, [r3, #4]
+ 127 006c 5A60     		str	r2, [r3, #4]
+1025:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
+ 128              		.loc 1 1025 5 is_stmt 1 view .LVU37
+1025:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
+ 129              		.loc 1 1025 15 is_stmt 0 view .LVU38
+ 130 006e 5A68     		ldr	r2, [r3, #4]
+ 131 0070 5A60     		str	r2, [r3, #4]
+1028:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 132              		.loc 1 1028 5 is_stmt 1 view .LVU39
+1028:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 133              		.loc 1 1028 15 is_stmt 0 view .LVU40
+ 134 0072 5A68     		ldr	r2, [r3, #4]
+ 135 0074 42F48062 		orr	r2, r2, #1024
+ 136 0078 5A60     		str	r2, [r3, #4]
+1054:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****                                         RCC_CFGR_PLLMULL));
+ 137              		.loc 1 1054 5 is_stmt 1 view .LVU41
+1054:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****                                         RCC_CFGR_PLLMULL));
+ 138              		.loc 1 1054 15 is_stmt 0 view .LVU42
+ 139 007a 5A68     		ldr	r2, [r3, #4]
+ 140 007c 22F47C12 		bic	r2, r2, #4128768
+ 141 0080 5A60     		str	r2, [r3, #4]
+1056:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 142              		.loc 1 1056 5 is_stmt 1 view .LVU43
+1056:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 143              		.loc 1 1056 15 is_stmt 0 view .LVU44
+ 144 0082 5A68     		ldr	r2, [r3, #4]
+ 145 0084 42F4E812 		orr	r2, r2, #1900544
+ 146 0088 5A60     		str	r2, [r3, #4]
+1060:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 147              		.loc 1 1060 5 is_stmt 1 view .LVU45
+1060:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 148              		.loc 1 1060 13 is_stmt 0 view .LVU46
+ 149 008a 1A68     		ldr	r2, [r3]
+ 150 008c 42F08072 		orr	r2, r2, #16777216
+ 151 0090 1A60     		str	r2, [r3]
+1063:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 152              		.loc 1 1063 5 is_stmt 1 view .LVU47
+ 153              	.L7:
+1065:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     
+ARM GAS  /tmp/ccC4p06v.s 			page 23
+
+
+ 154              		.loc 1 1065 5 discriminator 1 view .LVU48
+1063:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 155              		.loc 1 1063 10 discriminator 1 view .LVU49
+1063:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 156              		.loc 1 1063 15 is_stmt 0 discriminator 1 view .LVU50
+ 157 0092 0A4B     		ldr	r3, .L11
+ 158 0094 1B68     		ldr	r3, [r3]
+1063:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 159              		.loc 1 1063 10 discriminator 1 view .LVU51
+ 160 0096 13F0007F 		tst	r3, #33554432
+ 161 009a FAD0     		beq	.L7
+1068:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 162              		.loc 1 1068 5 is_stmt 1 view .LVU52
+1068:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 163              		.loc 1 1068 15 is_stmt 0 view .LVU53
+ 164 009c 074B     		ldr	r3, .L11
+ 165 009e 5A68     		ldr	r2, [r3, #4]
+ 166 00a0 22F00302 		bic	r2, r2, #3
+ 167 00a4 5A60     		str	r2, [r3, #4]
+1069:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 168              		.loc 1 1069 5 is_stmt 1 view .LVU54
+1069:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 169              		.loc 1 1069 15 is_stmt 0 view .LVU55
+ 170 00a6 5A68     		ldr	r2, [r3, #4]
+ 171 00a8 42F00202 		orr	r2, r2, #2
+ 172 00ac 5A60     		str	r2, [r3, #4]
+1072:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 173              		.loc 1 1072 5 is_stmt 1 view .LVU56
+ 174              	.L8:
+1074:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }
+ 175              		.loc 1 1074 5 discriminator 1 view .LVU57
+1072:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 176              		.loc 1 1072 11 discriminator 1 view .LVU58
+1072:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 177              		.loc 1 1072 16 is_stmt 0 discriminator 1 view .LVU59
+ 178 00ae 034B     		ldr	r3, .L11
+ 179 00b0 5B68     		ldr	r3, [r3, #4]
+1072:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 180              		.loc 1 1072 23 discriminator 1 view .LVU60
+ 181 00b2 03F00C03 		and	r3, r3, #12
+1072:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     {
+ 182              		.loc 1 1072 11 discriminator 1 view .LVU61
+ 183 00b6 082B     		cmp	r3, #8
+ 184 00b8 F9D1     		bne	.L8
+ 185 00ba C2E7     		b	.L1
+ 186              	.L12:
+ 187              		.align	2
+ 188              	.L11:
+ 189 00bc 00100240 		.word	1073876992
+ 190 00c0 00200240 		.word	1073881088
+ 191              		.cfi_endproc
+ 192              	.LFE32:
+ 194              		.section	.text.SetSysClock,"ax",%progbits
+ 195              		.align	1
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ARM GAS  /tmp/ccC4p06v.s 			page 24
+
+
+ 199              		.fpu softvfp
+ 201              	SetSysClock:
+ 202              	.LFB31:
  420:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #ifdef SYSCLK_FREQ_HSE
- 159              		.loc 1 420 0
- 160              		.cfi_startproc
- 161              		@ args = 0, pretend = 0, frame = 0
- 162              		@ frame_needed = 0, uses_anonymous_args = 0
- 163 0000 08B5     		push	{r3, lr}
- 164              	.LCFI2:
- 165              		.cfi_def_cfa_offset 8
- 166              		.cfi_offset 3, -8
- 167              		.cfi_offset 14, -4
+ 203              		.loc 1 420 1 is_stmt 1 view -0
+ 204              		.cfi_startproc
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 207 0000 08B5     		push	{r3, lr}
+ 208              	.LCFI3:
+ 209              		.cfi_def_cfa_offset 8
+ 210              		.cfi_offset 3, -8
+ 211              		.cfi_offset 14, -4
  432:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif
- 168              		.loc 1 432 0
- 169 0002 FFF7FEFF 		bl	SetSysClockTo72
- 170              	.LVL0:
- 171 0006 08BD     		pop	{r3, pc}
- 172              		.cfi_endproc
- 173              	.LFE31:
- 175              		.section	.text.SystemInit,"ax",%progbits
- 176              		.align	2
-ARM GAS  /tmp/ccYdRrxK.s 			page 23
-
-
- 177              		.global	SystemInit
- 178              		.thumb
- 179              		.thumb_func
- 181              	SystemInit:
- 182              	.LFB29:
+ 212              		.loc 1 432 3 view .LVU63
+ 213 0002 FFF7FEFF 		bl	SetSysClockTo72
+ 214              	.LVL0:
+ 437:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 215              		.loc 1 437 1 is_stmt 0 view .LVU64
+ 216 0006 08BD     		pop	{r3, pc}
+ 217              		.cfi_endproc
+ 218              	.LFE31:
+ 220              		.section	.text.SystemInit,"ax",%progbits
+ 221              		.align	1
+ 222              		.global	SystemInit
+ 223              		.syntax unified
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.fpu softvfp
+ 228              	SystemInit:
+ 229              	.LFB29:
  213:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
- 183              		.loc 1 213 0
- 184              		.cfi_startproc
- 185              		@ args = 0, pretend = 0, frame = 0
- 186              		@ frame_needed = 0, uses_anonymous_args = 0
- 187 0000 08B5     		push	{r3, lr}
- 188              	.LCFI3:
- 189              		.cfi_def_cfa_offset 8
- 190              		.cfi_offset 3, -8
- 191              		.cfi_offset 14, -4
+ 230              		.loc 1 213 1 is_stmt 1 view -0
+ 231              		.cfi_startproc
+ 232              		@ args = 0, pretend = 0, frame = 0
+ 233              		@ frame_needed = 0, uses_anonymous_args = 0
+ 234 0000 08B5     		push	{r3, lr}
+ 235              	.LCFI4:
+ 236              		.cfi_def_cfa_offset 8
+ 237              		.cfi_offset 3, -8
+ 238              		.cfi_offset 14, -4
  216:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
- 192              		.loc 1 216 0
- 193 0002 104B     		ldr	r3, .L16
- 194 0004 1A68     		ldr	r2, [r3]
- 195 0006 42F00102 		orr	r2, r2, #1
- 196 000a 1A60     		str	r2, [r3]
+ 239              		.loc 1 216 3 view .LVU66
+ 216:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 240              		.loc 1 216 11 is_stmt 0 view .LVU67
+ 241 0002 104B     		ldr	r3, .L17
+ 242 0004 1A68     		ldr	r2, [r3]
+ 243 0006 42F00102 		orr	r2, r2, #1
+ 244 000a 1A60     		str	r2, [r3]
  220:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #else
- 197              		.loc 1 220 0
- 198 000c 5968     		ldr	r1, [r3, #4]
- 199 000e 0E4A     		ldr	r2, .L16+4
- 200 0010 0A40     		ands	r2, r2, r1
- 201 0012 5A60     		str	r2, [r3, #4]
+ 245              		.loc 1 220 3 is_stmt 1 view .LVU68
+ 220:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #else
+ 246              		.loc 1 220 13 is_stmt 0 view .LVU69
+ 247 000c 5968     		ldr	r1, [r3, #4]
+ 248 000e 0E4A     		ldr	r2, .L17+4
+ 249 0010 0A40     		ands	r2, r2, r1
+ 250 0012 5A60     		str	r2, [r3, #4]
+ARM GAS  /tmp/ccC4p06v.s 			page 25
+
+
  226:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
- 202              		.loc 1 226 0
- 203 0014 1A68     		ldr	r2, [r3]
- 204 0016 22F08472 		bic	r2, r2, #17301504
- 205 001a 22F48032 		bic	r2, r2, #65536
- 206 001e 1A60     		str	r2, [r3]
+ 251              		.loc 1 226 3 is_stmt 1 view .LVU70
+ 226:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 252              		.loc 1 226 11 is_stmt 0 view .LVU71
+ 253 0014 1A68     		ldr	r2, [r3]
+ 254 0016 22F08472 		bic	r2, r2, #17301504
+ 255 001a 22F48032 		bic	r2, r2, #65536
+ 256 001e 1A60     		str	r2, [r3]
  229:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
- 207              		.loc 1 229 0
- 208 0020 1A68     		ldr	r2, [r3]
- 209 0022 22F48022 		bic	r2, r2, #262144
- 210 0026 1A60     		str	r2, [r3]
+ 257              		.loc 1 229 3 is_stmt 1 view .LVU72
+ 229:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 258              		.loc 1 229 11 is_stmt 0 view .LVU73
+ 259 0020 1A68     		ldr	r2, [r3]
+ 260 0022 22F48022 		bic	r2, r2, #262144
+ 261 0026 1A60     		str	r2, [r3]
  232:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
- 211              		.loc 1 232 0
- 212 0028 5A68     		ldr	r2, [r3, #4]
- 213 002a 22F4FE02 		bic	r2, r2, #8323072
- 214 002e 5A60     		str	r2, [r3, #4]
+ 262              		.loc 1 232 3 is_stmt 1 view .LVU74
+ 232:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 263              		.loc 1 232 13 is_stmt 0 view .LVU75
+ 264 0028 5A68     		ldr	r2, [r3, #4]
+ 265 002a 22F4FE02 		bic	r2, r2, #8323072
+ 266 002e 5A60     		str	r2, [r3, #4]
  251:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_CL */
- 215              		.loc 1 251 0
- 216 0030 4FF41F02 		mov	r2, #10420224
- 217 0034 9A60     		str	r2, [r3, #8]
+ 267              		.loc 1 251 3 is_stmt 1 view .LVU76
+ 251:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 268              		.loc 1 251 12 is_stmt 0 view .LVU77
+ 269 0030 4FF41F02 		mov	r2, #10420224
+ 270 0034 9A60     		str	r2, [r3, #8]
  262:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
- 218              		.loc 1 262 0
- 219 0036 FFF7FEFF 		bl	SetSysClock
- 220              	.LVL1:
+ 271              		.loc 1 262 3 is_stmt 1 view .LVU78
+ 272 0036 FFF7FEFF 		bl	SetSysClock
+ 273              	.LVL1:
  267:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif 
- 221              		.loc 1 267 0
- 222 003a 4FF00062 		mov	r2, #134217728
- 223 003e 034B     		ldr	r3, .L16+8
- 224 0040 9A60     		str	r2, [r3, #8]
- 225 0042 08BD     		pop	{r3, pc}
-ARM GAS  /tmp/ccYdRrxK.s 			page 24
+ 274              		.loc 1 267 3 view .LVU79
+ 267:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** #endif 
+ 275              		.loc 1 267 13 is_stmt 0 view .LVU80
+ 276 003a 044B     		ldr	r3, .L17+8
+ 277 003c 4FF00062 		mov	r2, #134217728
+ 278 0040 9A60     		str	r2, [r3, #8]
+ 269:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 279              		.loc 1 269 1 view .LVU81
+ 280 0042 08BD     		pop	{r3, pc}
+ 281              	.L18:
+ 282              		.align	2
+ 283              	.L17:
+ 284 0044 00100240 		.word	1073876992
+ 285 0048 0000FFF8 		.word	-117506048
+ 286 004c 00ED00E0 		.word	-536810240
+ 287              		.cfi_endproc
+ 288              	.LFE29:
+ 290              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	SystemCoreClockUpdate
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 296              		.fpu softvfp
+ARM GAS  /tmp/ccC4p06v.s 			page 26
 
 
- 226              	.L17:
- 227              		.align	2
- 228              	.L16:
- 229 0044 00100240 		.word	1073876992
- 230 0048 0000FFF8 		.word	-117506048
- 231 004c 00ED00E0 		.word	-536810240
- 232              		.cfi_endproc
- 233              	.LFE29:
- 235              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
- 236              		.align	2
- 237              		.global	SystemCoreClockUpdate
- 238              		.thumb
- 239              		.thumb_func
- 241              	SystemCoreClockUpdate:
- 242              	.LFB30:
+ 298              	SystemCoreClockUpdate:
+ 299              	.LFB30:
  307:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   uint32_t tmp = 0, pllmull = 0, pllsource = 0;
- 243              		.loc 1 307 0
- 244              		.cfi_startproc
- 245              		@ args = 0, pretend = 0, frame = 0
- 246              		@ frame_needed = 0, uses_anonymous_args = 0
- 247              		@ link register save eliminated.
- 248              	.LVL2:
+ 300              		.loc 1 307 1 is_stmt 1 view -0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		@ link register save eliminated.
+ 308:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 305              		.loc 1 308 3 view .LVU83
+ 306              	.LVL2:
  319:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   
- 249              		.loc 1 319 0
- 250 0000 1F4B     		ldr	r3, .L27
- 251 0002 5B68     		ldr	r3, [r3, #4]
- 252 0004 03F00C03 		and	r3, r3, #12
- 253              	.LVL3:
+ 307              		.loc 1 319 3 view .LVU84
+ 319:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   
+ 308              		.loc 1 319 12 is_stmt 0 view .LVU85
+ 309 0000 1F4B     		ldr	r3, .L27
+ 310 0002 5B68     		ldr	r3, [r3, #4]
+ 319:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   
+ 311              		.loc 1 319 7 view .LVU86
+ 312 0004 03F00C03 		and	r3, r3, #12
+ 313              	.LVL3:
  321:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   {
- 254              		.loc 1 321 0
- 255 0008 042B     		cmp	r3, #4
- 256 000a 06D0     		beq	.L20
- 257 000c 082B     		cmp	r3, #8
- 258 000e 08D0     		beq	.L21
- 259 0010 3BBB     		cbnz	r3, .L26
- 324:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
- 260              		.loc 1 324 0
- 261 0012 1C4A     		ldr	r2, .L27+4
- 262 0014 1C4B     		ldr	r3, .L27+8
- 263              	.LVL4:
- 264 0016 1A60     		str	r2, [r3]
- 325:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     case 0x04:  /* HSE used as system clock */
- 265              		.loc 1 325 0
- 266 0018 26E0     		b	.L23
- 267              	.LVL5:
- 268              	.L20:
- 327:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
- 269              		.loc 1 327 0
- 270 001a 1A4A     		ldr	r2, .L27+4
- 271 001c 1A4B     		ldr	r3, .L27+8
- 272              	.LVL6:
- 273 001e 1A60     		str	r2, [r3]
- 328:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     case 0x08:  /* PLL used as system clock */
- 274              		.loc 1 328 0
- 275 0020 22E0     		b	.L23
- 276              	.LVL7:
- 277              	.L21:
-ARM GAS  /tmp/ccYdRrxK.s 			page 25
-
-
- 332:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
- 278              		.loc 1 332 0
- 279 0022 174A     		ldr	r2, .L27
- 280 0024 5368     		ldr	r3, [r2, #4]
- 281              	.LVL8:
- 333:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
- 282              		.loc 1 333 0
- 283 0026 5268     		ldr	r2, [r2, #4]
- 284              	.LVL9:
- 336:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
- 285              		.loc 1 336 0
- 286 0028 C3F38343 		ubfx	r3, r3, #18, #4
- 287              	.LVL10:
- 288 002c 0233     		adds	r3, r3, #2
- 289              	.LVL11:
- 338:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       {
- 290              		.loc 1 338 0
- 291 002e 12F4803F 		tst	r2, #65536
- 292 0032 05D1     		bne	.L24
- 341:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       }
- 293              		.loc 1 341 0
- 294 0034 154A     		ldr	r2, .L27+12
- 295              	.LVL12:
- 296 0036 02FB03F3 		mul	r3, r2, r3
- 297              	.LVL13:
- 298 003a 134A     		ldr	r2, .L27+8
- 299 003c 1360     		str	r3, [r2]
- 300 003e 13E0     		b	.L23
- 301              	.LVL14:
- 302              	.L24:
- 351:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
- 303              		.loc 1 351 0
- 304 0040 0F4A     		ldr	r2, .L27
- 305              	.LVL15:
- 306 0042 5268     		ldr	r2, [r2, #4]
- 307 0044 12F4003F 		tst	r2, #131072
- 308 0048 05D0     		beq	.L25
- 353:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
- 309              		.loc 1 353 0
- 310 004a 104A     		ldr	r2, .L27+12
- 311 004c 02FB03F3 		mul	r3, r2, r3
- 312              	.LVL16:
- 313 0050 0D4A     		ldr	r2, .L27+8
- 314 0052 1360     		str	r3, [r2]
- 315 0054 08E0     		b	.L23
- 316              	.LVL17:
- 317              	.L25:
- 357:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
- 318              		.loc 1 357 0
- 319 0056 0B4A     		ldr	r2, .L27+4
- 320 0058 02FB03F3 		mul	r3, r2, r3
- 321              	.LVL18:
- 322 005c 0A4A     		ldr	r2, .L27+8
- 323 005e 1360     		str	r3, [r2]
- 324 0060 02E0     		b	.L23
- 325              	.LVL19:
- 326              	.L26:
-ARM GAS  /tmp/ccYdRrxK.s 			page 26
-
-
+ 314              		.loc 1 321 3 is_stmt 1 view .LVU87
+ 315 0008 042B     		cmp	r3, #4
+ 316 000a 15D0     		beq	.L20
+ 317 000c 082B     		cmp	r3, #8
+ 318 000e 17D0     		beq	.L21
+ 319 0010 1BB1     		cbz	r3, .L26
  403:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
- 327              		.loc 1 403 0
- 328 0062 084A     		ldr	r2, .L27+4
- 329 0064 084B     		ldr	r3, .L27+8
- 330              	.LVL20:
- 331 0066 1A60     		str	r2, [r3]
- 332              	.LVL21:
- 333              	.L23:
+ 320              		.loc 1 403 7 view .LVU88
+ 403:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 321              		.loc 1 403 23 is_stmt 0 view .LVU89
+ 322 0012 1C4B     		ldr	r3, .L27+4
+ 323              	.LVL4:
+ 403:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 324              		.loc 1 403 23 view .LVU90
+ 325 0014 1C4A     		ldr	r2, .L27+8
+ 326 0016 1A60     		str	r2, [r3]
+ 404:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   }
+ 327              		.loc 1 404 7 is_stmt 1 view .LVU91
+ 328 0018 02E0     		b	.L23
+ 329              	.LVL5:
+ 330              	.L26:
+ 324:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 331              		.loc 1 324 7 view .LVU92
+ 324:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 332              		.loc 1 324 23 is_stmt 0 view .LVU93
+ 333 001a 1A4B     		ldr	r3, .L27+4
+ 334              	.LVL6:
+ 324:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 335              		.loc 1 324 23 view .LVU94
+ 336 001c 1A4A     		ldr	r2, .L27+8
+ 337 001e 1A60     		str	r2, [r3]
+ 325:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     case 0x04:  /* HSE used as system clock */
+ 338              		.loc 1 325 7 is_stmt 1 view .LVU95
+ 339              	.LVL7:
+ 340              	.L23:
+ARM GAS  /tmp/ccC4p06v.s 			page 27
+
+
  409:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* HCLK clock frequency */
- 334              		.loc 1 409 0
- 335 0068 054B     		ldr	r3, .L27
- 336 006a 5B68     		ldr	r3, [r3, #4]
- 337 006c C3F30313 		ubfx	r3, r3, #4, #4
- 338 0070 074A     		ldr	r2, .L27+16
- 339 0072 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
- 340 0074 D2B2     		uxtb	r2, r2
- 341              	.LVL22:
+ 341              		.loc 1 409 3 view .LVU96
+ 409:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* HCLK clock frequency */
+ 342              		.loc 1 409 28 is_stmt 0 view .LVU97
+ 343 0020 174B     		ldr	r3, .L27
+ 344 0022 5B68     		ldr	r3, [r3, #4]
+ 409:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* HCLK clock frequency */
+ 345              		.loc 1 409 52 view .LVU98
+ 346 0024 C3F30313 		ubfx	r3, r3, #4, #4
+ 409:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****   /* HCLK clock frequency */
+ 347              		.loc 1 409 22 view .LVU99
+ 348 0028 184A     		ldr	r2, .L27+12
+ 349 002a D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 350 002c DAB2     		uxtb	r2, r3
+ 351              	.LVL8:
  411:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** }
- 342              		.loc 1 411 0
- 343 0076 0449     		ldr	r1, .L27+8
- 344 0078 0B68     		ldr	r3, [r1]
- 345 007a D340     		lsrs	r3, r3, r2
- 346 007c 0B60     		str	r3, [r1]
- 347 007e 7047     		bx	lr
- 348              	.L28:
- 349              		.align	2
- 350              	.L27:
- 351 0080 00100240 		.word	1073876992
- 352 0084 00127A00 		.word	8000000
- 353 0088 00000000 		.word	.LANCHOR0
- 354 008c 00093D00 		.word	4000000
- 355 0090 00000000 		.word	.LANCHOR1
- 356              		.cfi_endproc
- 357              	.LFE30:
- 359              		.global	AHBPrescTable
- 360              		.global	SystemCoreClock
- 361              		.section	.data.AHBPrescTable,"aw",%progbits
- 362              		.align	2
- 363              		.set	.LANCHOR1,. + 0
- 366              	AHBPrescTable:
- 367 0000 00       		.byte	0
- 368 0001 00       		.byte	0
- 369 0002 00       		.byte	0
- 370 0003 00       		.byte	0
- 371 0004 00       		.byte	0
- 372 0005 00       		.byte	0
- 373 0006 00       		.byte	0
- 374 0007 00       		.byte	0
- 375 0008 01       		.byte	1
- 376 0009 02       		.byte	2
- 377 000a 03       		.byte	3
- 378 000b 04       		.byte	4
- 379 000c 06       		.byte	6
- 380 000d 07       		.byte	7
- 381 000e 08       		.byte	8
- 382 000f 09       		.byte	9
- 383              		.section	.data.SystemCoreClock,"aw",%progbits
-ARM GAS  /tmp/ccYdRrxK.s 			page 27
+ 352              		.loc 1 411 3 is_stmt 1 view .LVU100
+ 411:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** }
+ 353              		.loc 1 411 19 is_stmt 0 view .LVU101
+ 354 002e 1549     		ldr	r1, .L27+4
+ 355 0030 0B68     		ldr	r3, [r1]
+ 356 0032 D340     		lsrs	r3, r3, r2
+ 357 0034 0B60     		str	r3, [r1]
+ 412:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c **** 
+ 358              		.loc 1 412 1 view .LVU102
+ 359 0036 7047     		bx	lr
+ 360              	.LVL9:
+ 361              	.L20:
+ 327:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 362              		.loc 1 327 7 is_stmt 1 view .LVU103
+ 327:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 363              		.loc 1 327 23 is_stmt 0 view .LVU104
+ 364 0038 124B     		ldr	r3, .L27+4
+ 365              	.LVL10:
+ 327:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       break;
+ 366              		.loc 1 327 23 view .LVU105
+ 367 003a 134A     		ldr	r2, .L27+8
+ 368 003c 1A60     		str	r2, [r3]
+ 328:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****     case 0x08:  /* PLL used as system clock */
+ 369              		.loc 1 328 7 is_stmt 1 view .LVU106
+ 370 003e EFE7     		b	.L23
+ 371              	.LVL11:
+ 372              	.L21:
+ 332:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
+ 373              		.loc 1 332 7 view .LVU107
+ 332:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
+ 374              		.loc 1 332 20 is_stmt 0 view .LVU108
+ 375 0040 0F4A     		ldr	r2, .L27
+ 376 0042 5368     		ldr	r3, [r2, #4]
+ 377              	.LVL12:
+ 333:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ 378              		.loc 1 333 7 is_stmt 1 view .LVU109
+ 333:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ 379              		.loc 1 333 22 is_stmt 0 view .LVU110
+ 380 0044 5268     		ldr	r2, [r2, #4]
+ 381              	.LVL13:
+ 336:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ARM GAS  /tmp/ccC4p06v.s 			page 28
 
 
- 384              		.align	2
- 385              		.set	.LANCHOR0,. + 0
- 388              	SystemCoreClock:
- 389 0000 00A24A04 		.word	72000000
- 390              		.text
- 391              	.Letext0:
- 392              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 393              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 394              		.file 4 "CMSIS/CM3/CoreSupport/core_cm3.h"
- 395              		.file 5 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
-ARM GAS  /tmp/ccYdRrxK.s 			page 28
+ 382              		.loc 1 336 7 is_stmt 1 view .LVU111
+ 336:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ 383              		.loc 1 336 27 is_stmt 0 view .LVU112
+ 384 0046 C3F38343 		ubfx	r3, r3, #18, #4
+ 385              	.LVL14:
+ 336:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       
+ 386              		.loc 1 336 15 view .LVU113
+ 387 004a 0233     		adds	r3, r3, #2
+ 388              	.LVL15:
+ 338:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       {
+ 389              		.loc 1 338 7 is_stmt 1 view .LVU114
+ 338:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       {
+ 390              		.loc 1 338 10 is_stmt 0 view .LVU115
+ 391 004c 12F4803F 		tst	r2, #65536
+ 392 0050 05D1     		bne	.L24
+ 341:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       }
+ 393              		.loc 1 341 9 is_stmt 1 view .LVU116
+ 341:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       }
+ 394              		.loc 1 341 44 is_stmt 0 view .LVU117
+ 395 0052 0F4A     		ldr	r2, .L27+16
+ 396              	.LVL16:
+ 341:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       }
+ 397              		.loc 1 341 44 view .LVU118
+ 398 0054 02FB03F3 		mul	r3, r2, r3
+ 399              	.LVL17:
+ 341:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****       }
+ 400              		.loc 1 341 25 view .LVU119
+ 401 0058 0A4A     		ldr	r2, .L27+4
+ 402 005a 1360     		str	r3, [r2]
+ 403 005c E0E7     		b	.L23
+ 404              	.LVL18:
+ 405              	.L24:
+ 351:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 406              		.loc 1 351 9 is_stmt 1 view .LVU120
+ 351:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 407              		.loc 1 351 17 is_stmt 0 view .LVU121
+ 408 005e 084A     		ldr	r2, .L27
+ 409              	.LVL19:
+ 351:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 410              		.loc 1 351 17 view .LVU122
+ 411 0060 5268     		ldr	r2, [r2, #4]
+ 351:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 412              		.loc 1 351 12 view .LVU123
+ 413 0062 12F4003F 		tst	r2, #131072
+ 414 0066 05D0     		beq	.L25
+ 353:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
+ 415              		.loc 1 353 11 is_stmt 1 view .LVU124
+ 353:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
+ 416              		.loc 1 353 46 is_stmt 0 view .LVU125
+ 417 0068 094A     		ldr	r2, .L27+16
+ 418 006a 02FB03F3 		mul	r3, r2, r3
+ 419              	.LVL20:
+ 353:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
+ 420              		.loc 1 353 27 view .LVU126
+ 421 006e 054A     		ldr	r2, .L27+4
+ 422 0070 1360     		str	r3, [r2]
+ 423 0072 D5E7     		b	.L23
+ARM GAS  /tmp/ccC4p06v.s 			page 29
+
+
+ 424              	.LVL21:
+ 425              	.L25:
+ 357:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
+ 426              		.loc 1 357 11 is_stmt 1 view .LVU127
+ 357:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
+ 427              		.loc 1 357 39 is_stmt 0 view .LVU128
+ 428 0074 044A     		ldr	r2, .L27+8
+ 429 0076 02FB03F3 		mul	r3, r2, r3
+ 430              	.LVL22:
+ 357:CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ****         }
+ 431              		.loc 1 357 27 view .LVU129
+ 432 007a 024A     		ldr	r2, .L27+4
+ 433 007c 1360     		str	r3, [r2]
+ 434 007e CFE7     		b	.L23
+ 435              	.L28:
+ 436              		.align	2
+ 437              	.L27:
+ 438 0080 00100240 		.word	1073876992
+ 439 0084 00000000 		.word	.LANCHOR0
+ 440 0088 00127A00 		.word	8000000
+ 441 008c 00000000 		.word	.LANCHOR1
+ 442 0090 00093D00 		.word	4000000
+ 443              		.cfi_endproc
+ 444              	.LFE30:
+ 446              		.global	AHBPrescTable
+ 447              		.global	SystemCoreClock
+ 448              		.section	.data.AHBPrescTable,"aw"
+ 449              		.align	2
+ 450              		.set	.LANCHOR1,. + 0
+ 453              	AHBPrescTable:
+ 454 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 454      00000000 
+ 454      01020304 
+ 454      06
+ 455 000d 070809   		.ascii	"\007\010\011"
+ 456              		.section	.data.SystemCoreClock,"aw"
+ 457              		.align	2
+ 458              		.set	.LANCHOR0,. + 0
+ 461              	SystemCoreClock:
+ 462 0000 00A24A04 		.word	72000000
+ 463              		.text
+ 464              	.Letext0:
+ 465              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 466              		.file 3 "CMSIS/CM3/CoreSupport/core_cm3.h"
+ 467              		.file 4 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+ 468              		.file 5 "CMSIS/DeviceSupport/ST/STM32F10x/system_stm32f10x.h"
+ARM GAS  /tmp/ccC4p06v.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 system_stm32f10x.c
-     /tmp/ccYdRrxK.s:19     .text.SetSysClockTo72:0000000000000000 $t
-     /tmp/ccYdRrxK.s:23     .text.SetSysClockTo72:0000000000000000 SetSysClockTo72
-     /tmp/ccYdRrxK.s:147    .text.SetSysClockTo72:00000000000000bc $d
-     /tmp/ccYdRrxK.s:153    .text.SetSysClock:0000000000000000 $t
-     /tmp/ccYdRrxK.s:157    .text.SetSysClock:0000000000000000 SetSysClock
-     /tmp/ccYdRrxK.s:176    .text.SystemInit:0000000000000000 $t
-     /tmp/ccYdRrxK.s:181    .text.SystemInit:0000000000000000 SystemInit
-     /tmp/ccYdRrxK.s:229    .text.SystemInit:0000000000000044 $d
-     /tmp/ccYdRrxK.s:236    .text.SystemCoreClockUpdate:0000000000000000 $t
-     /tmp/ccYdRrxK.s:241    .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
-     /tmp/ccYdRrxK.s:351    .text.SystemCoreClockUpdate:0000000000000080 $d
-     /tmp/ccYdRrxK.s:366    .data.AHBPrescTable:0000000000000000 AHBPrescTable
-     /tmp/ccYdRrxK.s:388    .data.SystemCoreClock:0000000000000000 SystemCoreClock
-     /tmp/ccYdRrxK.s:362    .data.AHBPrescTable:0000000000000000 $d
-     /tmp/ccYdRrxK.s:384    .data.SystemCoreClock:0000000000000000 $d
-                     .debug_frame:0000000000000010 $d
+     /tmp/ccC4p06v.s:16     .text.SetSysClockTo72:0000000000000000 $t
+     /tmp/ccC4p06v.s:23     .text.SetSysClockTo72:0000000000000000 SetSysClockTo72
+     /tmp/ccC4p06v.s:189    .text.SetSysClockTo72:00000000000000bc $d
+     /tmp/ccC4p06v.s:195    .text.SetSysClock:0000000000000000 $t
+     /tmp/ccC4p06v.s:201    .text.SetSysClock:0000000000000000 SetSysClock
+     /tmp/ccC4p06v.s:221    .text.SystemInit:0000000000000000 $t
+     /tmp/ccC4p06v.s:228    .text.SystemInit:0000000000000000 SystemInit
+     /tmp/ccC4p06v.s:284    .text.SystemInit:0000000000000044 $d
+     /tmp/ccC4p06v.s:291    .text.SystemCoreClockUpdate:0000000000000000 $t
+     /tmp/ccC4p06v.s:298    .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+     /tmp/ccC4p06v.s:438    .text.SystemCoreClockUpdate:0000000000000080 $d
+     /tmp/ccC4p06v.s:453    .data.AHBPrescTable:0000000000000000 AHBPrescTable
+     /tmp/ccC4p06v.s:461    .data.SystemCoreClock:0000000000000000 SystemCoreClock
+     /tmp/ccC4p06v.s:449    .data.AHBPrescTable:0000000000000000 $d
+     /tmp/ccC4p06v.s:457    .data.SystemCoreClock:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

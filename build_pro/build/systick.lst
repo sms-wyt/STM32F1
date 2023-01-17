@@ -1,28 +1,28 @@
-ARM GAS  /tmp/ccaw1hg7.s 			page 1
+ARM GAS  /tmp/ccphBgSS.s 			page 1
 
 
-   1              		.syntax unified
-   2              		.cpu cortex-m3
-   3              		.fpu softvfp
-   4              		.eabi_attribute 20, 1
-   5              		.eabi_attribute 21, 1
-   6              		.eabi_attribute 23, 3
-   7              		.eabi_attribute 24, 1
-   8              		.eabi_attribute 25, 1
-   9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
-  11              		.eabi_attribute 34, 1
-  12              		.eabi_attribute 18, 4
-  13              		.thumb
-  14              		.file	"systick.c"
-  15              		.text
-  16              	.Ltext0:
-  17              		.cfi_sections	.debug_frame
-  18              		.section	.text.delay_config,"ax",%progbits
-  19              		.align	2
-  20              		.global	delay_config
-  21              		.thumb
-  22              		.thumb_func
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"systick.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.delay_config,"ax",%progbits
+  16              		.align	1
+  17              		.global	delay_config
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
   24              	delay_config:
   25              	.LFB29:
   26              		.file 1 "DRIVER/src/systick.c"
@@ -32,15 +32,20 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
    4:DRIVER/src/systick.c **** 
    5:DRIVER/src/systick.c **** void delay_config(void)
    6:DRIVER/src/systick.c **** {
-  27              		.loc 1 6 0
+  27              		.loc 1 6 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
   31              		@ link register save eliminated.
-  32              	.LVL0:
-  33              	.LBB8:
-  34              	.LBB9:
-  35              		.file 2 "CMSIS/CM3/CoreSupport/core_cm3.h"
+   7:DRIVER/src/systick.c ****     //�ж�ʱ��72000*��1/72000000��= 1us��
+   8:DRIVER/src/systick.c ****     while(SysTick_Config(72) == 1);
+  32              		.loc 1 8 5 view .LVU1
+  33              		.loc 1 8 35 view .LVU2
+  34              		.loc 1 8 10 view .LVU3
+  35              	.LVL0:
+  36              	.LBB8:
+  37              	.LBI8:
+  38              		.file 2 "CMSIS/CM3/CoreSupport/core_cm3.h"
    1:CMSIS/CM3/CoreSupport/core_cm3.h **** /**************************************************************************//**
    2:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @file     core_cm3.h
    3:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief    CMSIS Cortex-M3 Core Peripheral Access Layer Header File
@@ -53,14 +58,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
   10:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @par
   11:CMSIS/CM3/CoreSupport/core_cm3.h ****  * ARM Limited (ARM) is supplying this software for use with Cortex-M 
   12:CMSIS/CM3/CoreSupport/core_cm3.h ****  * processor based microcontrollers.  This file can be freely distributed 
+ARM GAS  /tmp/ccphBgSS.s 			page 2
+
+
   13:CMSIS/CM3/CoreSupport/core_cm3.h ****  * within development tools that are supporting such ARM based processors. 
   14:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
   15:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @par
   16:CMSIS/CM3/CoreSupport/core_cm3.h ****  * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
   17:CMSIS/CM3/CoreSupport/core_cm3.h ****  * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
-ARM GAS  /tmp/ccaw1hg7.s 			page 2
-
-
   18:CMSIS/CM3/CoreSupport/core_cm3.h ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
   19:CMSIS/CM3/CoreSupport/core_cm3.h ****  * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
   20:CMSIS/CM3/CoreSupport/core_cm3.h ****  * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
@@ -113,14 +118,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
   67:CMSIS/CM3/CoreSupport/core_cm3.h **** /*lint -e750 */
   68:CMSIS/CM3/CoreSupport/core_cm3.h **** /*lint -e528 */
   69:CMSIS/CM3/CoreSupport/core_cm3.h **** /*lint -e751 */
+ARM GAS  /tmp/ccphBgSS.s 			page 3
+
+
   70:CMSIS/CM3/CoreSupport/core_cm3.h **** 
   71:CMSIS/CM3/CoreSupport/core_cm3.h **** 
   72:CMSIS/CM3/CoreSupport/core_cm3.h **** /** @addtogroup CMSIS_CM3_core_definitions CM3 Core Definitions
   73:CMSIS/CM3/CoreSupport/core_cm3.h ****   This file defines all structures and symbols for CMSIS core:
   74:CMSIS/CM3/CoreSupport/core_cm3.h ****     - CMSIS version number
-ARM GAS  /tmp/ccaw1hg7.s 			page 3
-
-
   75:CMSIS/CM3/CoreSupport/core_cm3.h ****     - Cortex-M core registers and bitfields
   76:CMSIS/CM3/CoreSupport/core_cm3.h ****     - Cortex-M core peripheral base address
   77:CMSIS/CM3/CoreSupport/core_cm3.h ****   @{
@@ -173,14 +178,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  124:CMSIS/CM3/CoreSupport/core_cm3.h ****  @{
  125:CMSIS/CM3/CoreSupport/core_cm3.h **** */
  126:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 4
+
+
  127:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  128:CMSIS/CM3/CoreSupport/core_cm3.h **** /** @addtogroup CMSIS_CM3_NVIC CMSIS CM3 NVIC
  129:CMSIS/CM3/CoreSupport/core_cm3.h ****   memory mapped structure for Nested Vectored Interrupt Controller (NVIC)
  130:CMSIS/CM3/CoreSupport/core_cm3.h ****   @{
  131:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
-ARM GAS  /tmp/ccaw1hg7.s 			page 4
-
-
  132:CMSIS/CM3/CoreSupport/core_cm3.h **** typedef struct
  133:CMSIS/CM3/CoreSupport/core_cm3.h **** {
  134:CMSIS/CM3/CoreSupport/core_cm3.h ****   __IO uint32_t ISER[8];                      /*!< Offset: 0x000  Interrupt Set Enable Register    
@@ -233,14 +238,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  181:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  182:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_CPUID_VARIANT_Pos              20                                             /*!< SCB 
  183:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_CPUID_VARIANT_Msk              (0xFul << SCB_CPUID_VARIANT_Pos)               /*!< SCB 
+ARM GAS  /tmp/ccphBgSS.s 			page 5
+
+
  184:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  185:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_CPUID_PARTNO_Pos                4                                             /*!< SCB 
  186:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_CPUID_PARTNO_Msk               (0xFFFul << SCB_CPUID_PARTNO_Pos)              /*!< SCB 
  187:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  188:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_CPUID_REVISION_Pos              0                                             /*!< SCB 
-ARM GAS  /tmp/ccaw1hg7.s 			page 5
-
-
  189:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_CPUID_REVISION_Msk             (0xFul << SCB_CPUID_REVISION_Pos)              /*!< SCB 
  190:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  191:CMSIS/CM3/CoreSupport/core_cm3.h **** /* SCB Interrupt Control State Register Definitions */
@@ -293,14 +298,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  238:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  239:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_PRIGROUP_Pos              8                                             /*!< SCB 
  240:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_PRIGROUP_Msk             (7ul << SCB_AIRCR_PRIGROUP_Pos)                /*!< SCB 
+ARM GAS  /tmp/ccphBgSS.s 			page 6
+
+
  241:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  242:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_SYSRESETREQ_Pos           2                                             /*!< SCB 
  243:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_SYSRESETREQ_Msk          (1ul << SCB_AIRCR_SYSRESETREQ_Pos)             /*!< SCB 
  244:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  245:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_VECTCLRACTIVE_Pos         1                                             /*!< SCB 
-ARM GAS  /tmp/ccaw1hg7.s 			page 6
-
-
  246:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_VECTCLRACTIVE_Msk        (1ul << SCB_AIRCR_VECTCLRACTIVE_Pos)           /*!< SCB 
  247:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  248:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_AIRCR_VECTRESET_Pos             0                                             /*!< SCB 
@@ -353,14 +358,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  295:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  296:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_MEMFAULTPENDED_Pos       13                                             /*!< SCB 
  297:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_MEMFAULTPENDED_Msk       (1ul << SCB_SHCSR_MEMFAULTPENDED_Pos)          /*!< SCB 
+ARM GAS  /tmp/ccphBgSS.s 			page 7
+
+
  298:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  299:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_USGFAULTPENDED_Pos       12                                             /*!< SCB 
  300:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_USGFAULTPENDED_Msk       (1ul << SCB_SHCSR_USGFAULTPENDED_Pos)          /*!< SCB 
  301:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  302:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_SYSTICKACT_Pos           11                                             /*!< SCB 
-ARM GAS  /tmp/ccaw1hg7.s 			page 7
-
-
  303:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_SYSTICKACT_Msk           (1ul << SCB_SHCSR_SYSTICKACT_Pos)              /*!< SCB 
  304:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  305:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_SHCSR_PENDSVACT_Pos            10                                             /*!< SCB 
@@ -413,14 +418,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  352:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  353:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_DFSR_BKPT_Pos                   1                                             /*!< SCB 
  354:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_DFSR_BKPT_Msk                  (1ul << SCB_DFSR_BKPT_Pos)                     /*!< SCB 
+ARM GAS  /tmp/ccphBgSS.s 			page 8
+
+
  355:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  356:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_DFSR_HALTED_Pos                 0                                             /*!< SCB 
  357:CMSIS/CM3/CoreSupport/core_cm3.h **** #define SCB_DFSR_HALTED_Msk                (1ul << SCB_DFSR_HALTED_Pos)                   /*!< SCB 
  358:CMSIS/CM3/CoreSupport/core_cm3.h **** /*@}*/ /* end of group CMSIS_CM3_SCB */
  359:CMSIS/CM3/CoreSupport/core_cm3.h **** 
-ARM GAS  /tmp/ccaw1hg7.s 			page 8
-
-
  360:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  361:CMSIS/CM3/CoreSupport/core_cm3.h **** /** @addtogroup CMSIS_CM3_SysTick CMSIS CM3 SysTick
  362:CMSIS/CM3/CoreSupport/core_cm3.h ****   memory mapped structure for SysTick
@@ -473,14 +478,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  409:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
  410:CMSIS/CM3/CoreSupport/core_cm3.h **** typedef struct
  411:CMSIS/CM3/CoreSupport/core_cm3.h **** {
+ARM GAS  /tmp/ccphBgSS.s 			page 9
+
+
  412:CMSIS/CM3/CoreSupport/core_cm3.h ****   __O  union  
  413:CMSIS/CM3/CoreSupport/core_cm3.h ****   {
  414:CMSIS/CM3/CoreSupport/core_cm3.h ****     __O  uint8_t    u8;                       /*!< Offset:       ITM Stimulus Port 8-bit           
  415:CMSIS/CM3/CoreSupport/core_cm3.h ****     __O  uint16_t   u16;                      /*!< Offset:       ITM Stimulus Port 16-bit          
  416:CMSIS/CM3/CoreSupport/core_cm3.h ****     __O  uint32_t   u32;                      /*!< Offset:       ITM Stimulus Port 32-bit          
-ARM GAS  /tmp/ccaw1hg7.s 			page 9
-
-
  417:CMSIS/CM3/CoreSupport/core_cm3.h ****   }  PORT [32];                               /*!< Offset: 0x00  ITM Stimulus Port Registers       
  418:CMSIS/CM3/CoreSupport/core_cm3.h ****        uint32_t RESERVED0[864];                                 
  419:CMSIS/CM3/CoreSupport/core_cm3.h ****   __IO uint32_t TER;                          /*!< Offset:       ITM Trace Enable Register         
@@ -533,14 +538,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  466:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_TCR_SYNCENA_Pos                 2                                             /*!< ITM 
  467:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_TCR_SYNCENA_Msk                (1ul << ITM_TCR_SYNCENA_Pos)                   /*!< ITM 
  468:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 10
+
+
  469:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_TCR_TSENA_Pos                   1                                             /*!< ITM 
  470:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_TCR_TSENA_Msk                  (1ul << ITM_TCR_TSENA_Pos)                     /*!< ITM 
  471:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  472:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_TCR_ITMENA_Pos                  0                                             /*!< ITM 
  473:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_TCR_ITMENA_Msk                 (1ul << ITM_TCR_ITMENA_Pos)                    /*!< ITM 
-ARM GAS  /tmp/ccaw1hg7.s 			page 10
-
-
  474:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  475:CMSIS/CM3/CoreSupport/core_cm3.h **** /* ITM Integration Write Register Definitions */
  476:CMSIS/CM3/CoreSupport/core_cm3.h **** #define ITM_IWR_ATVALIDM_Pos                0                                             /*!< ITM 
@@ -593,14 +598,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  523:CMSIS/CM3/CoreSupport/core_cm3.h **** #define InterruptType_ACTLR_DISDEFWBUF_Msk (1ul << InterruptType_ACTLR_DISDEFWBUF_Pos)    /*!< Inte
  524:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  525:CMSIS/CM3/CoreSupport/core_cm3.h **** #define InterruptType_ACTLR_DISMCYCINT_Pos  0                                             /*!< Inte
+ARM GAS  /tmp/ccphBgSS.s 			page 11
+
+
  526:CMSIS/CM3/CoreSupport/core_cm3.h **** #define InterruptType_ACTLR_DISMCYCINT_Msk (1ul << InterruptType_ACTLR_DISMCYCINT_Pos)    /*!< Inte
  527:CMSIS/CM3/CoreSupport/core_cm3.h **** /*@}*/ /* end of group CMSIS_CM3_InterruptType */
  528:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  529:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  530:CMSIS/CM3/CoreSupport/core_cm3.h **** #if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1)
-ARM GAS  /tmp/ccaw1hg7.s 			page 11
-
-
  531:CMSIS/CM3/CoreSupport/core_cm3.h **** /** @addtogroup CMSIS_CM3_MPU CMSIS CM3 MPU
  532:CMSIS/CM3/CoreSupport/core_cm3.h ****   memory mapped structure for Memory Protection Unit (MPU)
  533:CMSIS/CM3/CoreSupport/core_cm3.h ****   @{
@@ -653,14 +658,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  580:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  581:CMSIS/CM3/CoreSupport/core_cm3.h **** #define MPU_RBAR_REGION_Pos                 0                                             /*!< MPU 
  582:CMSIS/CM3/CoreSupport/core_cm3.h **** #define MPU_RBAR_REGION_Msk                (0xFul << MPU_RBAR_REGION_Pos)                 /*!< MPU 
+ARM GAS  /tmp/ccphBgSS.s 			page 12
+
+
  583:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  584:CMSIS/CM3/CoreSupport/core_cm3.h **** /* MPU Region Attribute and Size Register */
  585:CMSIS/CM3/CoreSupport/core_cm3.h **** #define MPU_RASR_XN_Pos                    28                                             /*!< MPU 
  586:CMSIS/CM3/CoreSupport/core_cm3.h **** #define MPU_RASR_XN_Msk                    (1ul << MPU_RASR_XN_Pos)                       /*!< MPU 
  587:CMSIS/CM3/CoreSupport/core_cm3.h **** 
-ARM GAS  /tmp/ccaw1hg7.s 			page 12
-
-
  588:CMSIS/CM3/CoreSupport/core_cm3.h **** #define MPU_RASR_AP_Pos                    24                                             /*!< MPU 
  589:CMSIS/CM3/CoreSupport/core_cm3.h **** #define MPU_RASR_AP_Msk                    (7ul << MPU_RASR_AP_Pos)                       /*!< MPU 
  590:CMSIS/CM3/CoreSupport/core_cm3.h **** 
@@ -713,14 +718,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  637:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  638:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_LOCKUP_Pos       19                                             /*!< Core
  639:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_LOCKUP_Msk       (1ul << CoreDebug_DHCSR_S_LOCKUP_Pos)          /*!< Core
+ARM GAS  /tmp/ccphBgSS.s 			page 13
+
+
  640:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  641:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_SLEEP_Pos        18                                             /*!< Core
  642:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_SLEEP_Msk        (1ul << CoreDebug_DHCSR_S_SLEEP_Pos)           /*!< Core
  643:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  644:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_HALT_Pos         17                                             /*!< Core
-ARM GAS  /tmp/ccaw1hg7.s 			page 13
-
-
  645:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_HALT_Msk         (1ul << CoreDebug_DHCSR_S_HALT_Pos)            /*!< Core
  646:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  647:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DHCSR_S_REGRDY_Pos       16                                             /*!< Core
@@ -773,14 +778,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  694:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_BUSERR_Pos       8                                             /*!< Core
  695:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_BUSERR_Msk      (1ul << CoreDebug_DEMCR_VC_BUSERR_Pos)         /*!< Core
  696:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 14
+
+
  697:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_STATERR_Pos      7                                             /*!< Core
  698:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_STATERR_Msk     (1ul << CoreDebug_DEMCR_VC_STATERR_Pos)        /*!< Core
  699:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  700:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_CHKERR_Pos       6                                             /*!< Core
  701:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_CHKERR_Msk      (1ul << CoreDebug_DEMCR_VC_CHKERR_Pos)         /*!< Core
-ARM GAS  /tmp/ccaw1hg7.s 			page 14
-
-
  702:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  703:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_NOCPERR_Pos      5                                             /*!< Core
  704:CMSIS/CM3/CoreSupport/core_cm3.h **** #define CoreDebug_DEMCR_VC_NOCPERR_Msk     (1ul << CoreDebug_DEMCR_VC_NOCPERR_Pos)        /*!< Core
@@ -833,14 +838,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  751:CMSIS/CM3/CoreSupport/core_cm3.h ****   #define __INLINE         inline                                     /*!< inline keyword for GNU C
  752:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  753:CMSIS/CM3/CoreSupport/core_cm3.h **** #elif defined   (  __TASKING__  )
+ARM GAS  /tmp/ccphBgSS.s 			page 15
+
+
  754:CMSIS/CM3/CoreSupport/core_cm3.h ****   #define __ASM            __asm                                      /*!< asm keyword for TASKING 
  755:CMSIS/CM3/CoreSupport/core_cm3.h ****   #define __INLINE         inline                                     /*!< inline keyword for TASKI
  756:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  757:CMSIS/CM3/CoreSupport/core_cm3.h **** #endif
  758:CMSIS/CM3/CoreSupport/core_cm3.h **** 
-ARM GAS  /tmp/ccaw1hg7.s 			page 15
-
-
  759:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  760:CMSIS/CM3/CoreSupport/core_cm3.h **** /* ###################  Compiler specific Intrinsics  ########################### */
  761:CMSIS/CM3/CoreSupport/core_cm3.h **** 
@@ -893,14 +898,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  808:CMSIS/CM3/CoreSupport/core_cm3.h **** extern void __set_PSP(uint32_t topOfProcStack);
  809:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  810:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
+ARM GAS  /tmp/ccphBgSS.s 			page 16
+
+
  811:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Return the Main Stack Pointer
  812:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  813:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @return Main Stack Pointer
  814:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  815:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Return the current value of the MSP (main stack pointer)
-ARM GAS  /tmp/ccaw1hg7.s 			page 16
-
-
  816:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Cortex processor register
  817:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
  818:CMSIS/CM3/CoreSupport/core_cm3.h **** extern uint32_t __get_MSP(void);
@@ -953,14 +958,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  865:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Return the content of the base priority register
  866:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
  867:CMSIS/CM3/CoreSupport/core_cm3.h **** extern uint32_t __get_BASEPRI(void);
+ARM GAS  /tmp/ccphBgSS.s 			page 17
+
+
  868:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  869:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
  870:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Set the Base Priority value
  871:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  872:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  basePri  BasePriority
-ARM GAS  /tmp/ccaw1hg7.s 			page 17
-
-
  873:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  874:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Set the base priority register
  875:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
@@ -1013,14 +1018,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  922:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  923:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
  924:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Set the Control Register value
+ARM GAS  /tmp/ccphBgSS.s 			page 18
+
+
  925:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  926:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  control  Control value
  927:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  928:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Set the control register
  929:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
-ARM GAS  /tmp/ccaw1hg7.s 			page 18
-
-
  930:CMSIS/CM3/CoreSupport/core_cm3.h **** extern void __set_CONTROL(uint32_t control);
  931:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  932:CMSIS/CM3/CoreSupport/core_cm3.h **** #else  /* (__ARMCC_VERSION >= 400000)  */
@@ -1073,14 +1078,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
  979:CMSIS/CM3/CoreSupport/core_cm3.h **** 
  980:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
  981:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Set the Priority Mask value
+ARM GAS  /tmp/ccphBgSS.s 			page 19
+
+
  982:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  983:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  priMask  PriMask
  984:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
  985:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Set the priority mask bit in the priority mask register
  986:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
-ARM GAS  /tmp/ccaw1hg7.s 			page 19
-
-
  987:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __set_PRIMASK(uint32_t priMask)
  988:CMSIS/CM3/CoreSupport/core_cm3.h **** {
  989:CMSIS/CM3/CoreSupport/core_cm3.h ****   register uint32_t __regPriMask         __ASM("primask");
@@ -1133,14 +1138,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1036:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1037:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Set the control register
 1038:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
+ARM GAS  /tmp/ccphBgSS.s 			page 20
+
+
 1039:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __set_CONTROL(uint32_t control)
 1040:CMSIS/CM3/CoreSupport/core_cm3.h **** {
 1041:CMSIS/CM3/CoreSupport/core_cm3.h ****   register uint32_t __regControl         __ASM("control");
 1042:CMSIS/CM3/CoreSupport/core_cm3.h ****   __regControl = control;
 1043:CMSIS/CM3/CoreSupport/core_cm3.h **** }
-ARM GAS  /tmp/ccaw1hg7.s 			page 20
-
-
 1044:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1045:CMSIS/CM3/CoreSupport/core_cm3.h **** #endif /* __ARMCC_VERSION  */ 
 1046:CMSIS/CM3/CoreSupport/core_cm3.h **** 
@@ -1193,14 +1198,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1093:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1094:CMSIS/CM3/CoreSupport/core_cm3.h **** extern void __set_PSP(uint32_t topOfProcStack);
 1095:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 21
+
+
 1096:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
 1097:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Return the Main Stack Pointer
 1098:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1099:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @return Main Stack Pointer
 1100:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
-ARM GAS  /tmp/ccaw1hg7.s 			page 21
-
-
 1101:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Return the current value of the MSP (main stack pointer)
 1102:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Cortex processor register
 1103:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
@@ -1253,14 +1258,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1150:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @return        value of (*address)
 1151:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1152:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Exclusive LDR command for 16 bit values
+ARM GAS  /tmp/ccphBgSS.s 			page 22
+
+
 1153:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1154:CMSIS/CM3/CoreSupport/core_cm3.h **** extern uint16_t __LDREXH(uint16_t *addr);
 1155:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1156:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
 1157:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  LDR Exclusive (32 bit)
-ARM GAS  /tmp/ccaw1hg7.s 			page 22
-
-
 1158:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1159:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  *addr  address pointer
 1160:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @return        value of (*address)
@@ -1313,14 +1318,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1207:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __enable_fault_irq()         { __ASM volatile ("cpsie f"); }
 1208:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __disable_fault_irq()        { __ASM volatile ("cpsid f"); }
 1209:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 23
+
+
 1210:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __NOP()                      { __ASM volatile ("nop"); }
 1211:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __WFI()                      { __ASM volatile ("wfi"); }
 1212:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __WFE()                      { __ASM volatile ("wfe"); }
 1213:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __SEV()                      { __ASM volatile ("sev"); }
 1214:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __ISB()                      { __ASM volatile ("isb"); }
-ARM GAS  /tmp/ccaw1hg7.s 			page 23
-
-
 1215:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __DSB()                      { __ASM volatile ("dsb"); }
 1216:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __DMB()                      { __ASM volatile ("dmb"); }
 1217:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void __CLREX()                    { __ASM volatile ("clrex"); }
@@ -1373,14 +1378,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1264:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Return the content of the base priority register
 1265:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1266:CMSIS/CM3/CoreSupport/core_cm3.h **** extern uint32_t __get_BASEPRI(void);
+ARM GAS  /tmp/ccphBgSS.s 			page 24
+
+
 1267:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1268:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
 1269:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Set the Base Priority value
 1270:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1271:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  basePri  BasePriority
-ARM GAS  /tmp/ccaw1hg7.s 			page 24
-
-
 1272:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1273:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Set the base priority register
 1274:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
@@ -1433,14 +1438,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1321:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1322:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
 1323:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Set the Control Register value
+ARM GAS  /tmp/ccphBgSS.s 			page 25
+
+
 1324:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1325:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  control  Control value
 1326:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1327:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Set the control register
 1328:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
-ARM GAS  /tmp/ccaw1hg7.s 			page 25
-
-
 1329:CMSIS/CM3/CoreSupport/core_cm3.h **** extern void __set_CONTROL(uint32_t control);
 1330:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1331:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
@@ -1493,14 +1498,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1378:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1379:CMSIS/CM3/CoreSupport/core_cm3.h **** extern uint8_t __LDREXB(uint8_t *addr);
 1380:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 26
+
+
 1381:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
 1382:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  LDR Exclusive (16 bit)
 1383:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1384:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  *addr  address pointer
 1385:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @return        value of (*address)
-ARM GAS  /tmp/ccaw1hg7.s 			page 26
-
-
 1386:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1387:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Exclusive LDR command for 16 bit values
 1388:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
@@ -1553,14 +1558,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1435:CMSIS/CM3/CoreSupport/core_cm3.h **** #elif (defined (__TASKING__)) /*------------------ TASKING Compiler ---------------------*/
 1436:CMSIS/CM3/CoreSupport/core_cm3.h **** /* TASKING carm specific functions */
 1437:CMSIS/CM3/CoreSupport/core_cm3.h **** 
+ARM GAS  /tmp/ccphBgSS.s 			page 27
+
+
 1438:CMSIS/CM3/CoreSupport/core_cm3.h **** /*
 1439:CMSIS/CM3/CoreSupport/core_cm3.h ****  * The CMSIS functions have been implemented as intrinsics in the compiler.
 1440:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Please use "carm -?i" to get an up to date list of all instrinsics,
 1441:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Including the CMSIS ones.
 1442:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
-ARM GAS  /tmp/ccaw1hg7.s 			page 27
-
-
 1443:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1444:CMSIS/CM3/CoreSupport/core_cm3.h **** #endif
 1445:CMSIS/CM3/CoreSupport/core_cm3.h **** 
@@ -1613,14 +1618,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1492:CMSIS/CM3/CoreSupport/core_cm3.h **** }
 1493:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1494:CMSIS/CM3/CoreSupport/core_cm3.h **** /**
+ARM GAS  /tmp/ccphBgSS.s 			page 28
+
+
 1495:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @brief  Enable Interrupt in NVIC Interrupt Controller
 1496:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1497:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  IRQn   The positive number of the external interrupt to enable
 1498:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1499:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Enable a device specific interupt in the NVIC interrupt controller.
-ARM GAS  /tmp/ccaw1hg7.s 			page 28
-
-
 1500:CMSIS/CM3/CoreSupport/core_cm3.h ****  * The interrupt number cannot be a negative value.
 1501:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1502:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void NVIC_EnableIRQ(IRQn_Type IRQn)
@@ -1673,14 +1678,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1549:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1550:CMSIS/CM3/CoreSupport/core_cm3.h ****  * @param  IRQn    The number of the interrupt for clear pending
 1551:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
+ARM GAS  /tmp/ccphBgSS.s 			page 29
+
+
 1552:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Clear the pending bit for the specified interrupt. 
 1553:CMSIS/CM3/CoreSupport/core_cm3.h ****  * The interrupt number cannot be a negative value.
 1554:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1555:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void NVIC_ClearPendingIRQ(IRQn_Type IRQn)
 1556:CMSIS/CM3/CoreSupport/core_cm3.h **** {
-ARM GAS  /tmp/ccaw1hg7.s 			page 29
-
-
 1557:CMSIS/CM3/CoreSupport/core_cm3.h ****   NVIC->ICPR[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F)); /* Clear pending interrup
 1558:CMSIS/CM3/CoreSupport/core_cm3.h **** }
 1559:CMSIS/CM3/CoreSupport/core_cm3.h **** 
@@ -1733,14 +1738,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1606:CMSIS/CM3/CoreSupport/core_cm3.h ****  *
 1607:CMSIS/CM3/CoreSupport/core_cm3.h ****  * Note: The priority cannot be set for every core interrupt.
 1608:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
+ARM GAS  /tmp/ccphBgSS.s 			page 30
+
+
 1609:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE uint32_t NVIC_GetPriority(IRQn_Type IRQn)
 1610:CMSIS/CM3/CoreSupport/core_cm3.h **** {
 1611:CMSIS/CM3/CoreSupport/core_cm3.h **** 
 1612:CMSIS/CM3/CoreSupport/core_cm3.h ****   if(IRQn < 0) {
 1613:CMSIS/CM3/CoreSupport/core_cm3.h ****     return((uint32_t)(SCB->SHP[((uint32_t)(IRQn) & 0xF)-4] >> (8 - __NVIC_PRIO_BITS)));  } /* get p
-ARM GAS  /tmp/ccaw1hg7.s 			page 30
-
-
 1614:CMSIS/CM3/CoreSupport/core_cm3.h ****   else {
 1615:CMSIS/CM3/CoreSupport/core_cm3.h ****     return((uint32_t)(NVIC->IP[(uint32_t)(IRQn)]           >> (8 - __NVIC_PRIO_BITS)));  } /* get p
 1616:CMSIS/CM3/CoreSupport/core_cm3.h **** }
@@ -1793,14 +1798,14 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1663:CMSIS/CM3/CoreSupport/core_cm3.h ****  * The priority value can be retrieved with NVIC_GetPriority(...) function
 1664:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1665:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGroup, uint32_t* pPre
+ARM GAS  /tmp/ccphBgSS.s 			page 31
+
+
 1666:CMSIS/CM3/CoreSupport/core_cm3.h **** {
 1667:CMSIS/CM3/CoreSupport/core_cm3.h ****   uint32_t PriorityGroupTmp = (PriorityGroup & 0x07);          /* only values 0..7 are used        
 1668:CMSIS/CM3/CoreSupport/core_cm3.h ****   uint32_t PreemptPriorityBits;
 1669:CMSIS/CM3/CoreSupport/core_cm3.h ****   uint32_t SubPriorityBits;
 1670:CMSIS/CM3/CoreSupport/core_cm3.h **** 
-ARM GAS  /tmp/ccaw1hg7.s 			page 31
-
-
 1671:CMSIS/CM3/CoreSupport/core_cm3.h ****   PreemptPriorityBits = ((7 - PriorityGroupTmp) > __NVIC_PRIO_BITS) ? __NVIC_PRIO_BITS : 7 - Priori
 1672:CMSIS/CM3/CoreSupport/core_cm3.h ****   SubPriorityBits     = ((PriorityGroupTmp + __NVIC_PRIO_BITS) < 7) ? 0 : PriorityGroupTmp - 7 + __
 1673:CMSIS/CM3/CoreSupport/core_cm3.h ****   
@@ -1825,184 +1830,228 @@ ARM GAS  /tmp/ccaw1hg7.s 			page 1
 1692:CMSIS/CM3/CoreSupport/core_cm3.h ****  * periodical interrupts.
 1693:CMSIS/CM3/CoreSupport/core_cm3.h ****  */
 1694:CMSIS/CM3/CoreSupport/core_cm3.h **** static __INLINE uint32_t SysTick_Config(uint32_t ticks)
+  39              		.loc 2 1694 26 view .LVU4
+  40              	.LBB9:
 1695:CMSIS/CM3/CoreSupport/core_cm3.h **** { 
 1696:CMSIS/CM3/CoreSupport/core_cm3.h ****   if (ticks > SysTick_LOAD_RELOAD_Msk)  return (1);            /* Reload value impossible */
+  41              		.loc 2 1696 3 view .LVU5
 1697:CMSIS/CM3/CoreSupport/core_cm3.h ****                                                                
 1698:CMSIS/CM3/CoreSupport/core_cm3.h ****   SysTick->LOAD  = (ticks & SysTick_LOAD_RELOAD_Msk) - 1;      /* set reload register */
-  36              		.loc 2 1698 0
-  37 0000 054B     		ldr	r3, .L2
-  38 0002 4722     		movs	r2, #71
-  39 0004 5A60     		str	r2, [r3, #4]
-  40              	.LVL1:
-  41              	.LBB10:
-  42              	.LBB11:
-1589:CMSIS/CM3/CoreSupport/core_cm3.h ****   else {
-  43              		.loc 2 1589 0
-  44 0006 F021     		movs	r1, #240
-  45 0008 044A     		ldr	r2, .L2+4
-  46 000a 82F82310 		strb	r1, [r2, #35]
-  47              	.LBE11:
-  48              	.LBE10:
+  42              		.loc 2 1698 3 view .LVU6
+  43              		.loc 2 1698 18 is_stmt 0 view .LVU7
+  44 0000 4FF0E023 		mov	r3, #-536813568
+  45 0004 4722     		movs	r2, #71
+  46 0006 5A61     		str	r2, [r3, #20]
 1699:CMSIS/CM3/CoreSupport/core_cm3.h ****   NVIC_SetPriority (SysTick_IRQn, (1<<__NVIC_PRIO_BITS) - 1);  /* set Priority for Cortex-M0 System
+  47              		.loc 2 1699 3 is_stmt 1 view .LVU8
+  48              	.LVL1:
+  49              	.LBB10:
+  50              	.LBI10:
+1586:CMSIS/CM3/CoreSupport/core_cm3.h **** {
+  51              		.loc 2 1586 22 view .LVU9
+  52              	.LBB11:
+1588:CMSIS/CM3/CoreSupport/core_cm3.h ****     SCB->SHP[((uint32_t)(IRQn) & 0xF)-4] = ((priority << (8 - __NVIC_PRIO_BITS)) & 0xff); } /* set 
+  53              		.loc 2 1588 3 view .LVU10
+1589:CMSIS/CM3/CoreSupport/core_cm3.h ****   else {
+  54              		.loc 2 1589 5 view .LVU11
+1589:CMSIS/CM3/CoreSupport/core_cm3.h ****   else {
+  55              		.loc 2 1589 42 is_stmt 0 view .LVU12
+  56 0008 044A     		ldr	r2, .L2
+  57 000a F021     		movs	r1, #240
+ARM GAS  /tmp/ccphBgSS.s 			page 32
+
+
+  58 000c 82F82310 		strb	r1, [r2, #35]
+  59              	.LVL2:
+1589:CMSIS/CM3/CoreSupport/core_cm3.h ****   else {
+  60              		.loc 2 1589 42 view .LVU13
+  61              	.LBE11:
+  62              	.LBE10:
 1700:CMSIS/CM3/CoreSupport/core_cm3.h ****   SysTick->VAL   = 0;                                          /* Load the SysTick Counter Value */
-  49              		.loc 2 1700 0
-  50 000e 0022     		movs	r2, #0
-  51 0010 9A60     		str	r2, [r3, #8]
+  63              		.loc 2 1700 3 is_stmt 1 view .LVU14
+  64              		.loc 2 1700 18 is_stmt 0 view .LVU15
+  65 0010 0022     		movs	r2, #0
+  66 0012 9A61     		str	r2, [r3, #24]
 1701:CMSIS/CM3/CoreSupport/core_cm3.h ****   SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | 
-  52              		.loc 2 1701 0
-  53 0012 0722     		movs	r2, #7
-  54 0014 1A60     		str	r2, [r3]
-  55 0016 7047     		bx	lr
-  56              	.L3:
-  57              		.align	2
-  58              	.L2:
-  59 0018 10E000E0 		.word	-536813552
-  60 001c 00ED00E0 		.word	-536810240
-ARM GAS  /tmp/ccaw1hg7.s 			page 32
-
-
-  61              	.LBE9:
-  62              	.LBE8:
-  63              		.cfi_endproc
-  64              	.LFE29:
-  66              		.section	.text.SysTick_Handler,"ax",%progbits
-  67              		.align	2
-  68              		.global	SysTick_Handler
-  69              		.thumb
-  70              		.thumb_func
-  72              	SysTick_Handler:
-  73              	.LFB30:
-   7:DRIVER/src/systick.c ****     //�ж�ʱ��72000*��1/72000000��= 1us��
-   8:DRIVER/src/systick.c ****     while(SysTick_Config(72) == 1);
+  67              		.loc 2 1701 3 is_stmt 1 view .LVU16
+  68              		.loc 2 1701 18 is_stmt 0 view .LVU17
+  69 0014 0722     		movs	r2, #7
+  70 0016 1A61     		str	r2, [r3, #16]
+1702:CMSIS/CM3/CoreSupport/core_cm3.h ****                    SysTick_CTRL_TICKINT_Msk   | 
+1703:CMSIS/CM3/CoreSupport/core_cm3.h ****                    SysTick_CTRL_ENABLE_Msk;                    /* Enable SysTick IRQ and SysTick Ti
+1704:CMSIS/CM3/CoreSupport/core_cm3.h ****   return (0);                                                  /* Function successful */
+  71              		.loc 2 1704 3 is_stmt 1 view .LVU18
+  72              	.LVL3:
+  73              		.loc 2 1704 3 is_stmt 0 view .LVU19
+  74              	.LBE9:
+  75              	.LBE8:
    9:DRIVER/src/systick.c **** }
+  76              		.loc 1 9 1 view .LVU20
+  77 0018 7047     		bx	lr
+  78              	.L3:
+  79 001a 00BF     		.align	2
+  80              	.L2:
+  81 001c 00ED00E0 		.word	-536810240
+  82              		.cfi_endproc
+  83              	.LFE29:
+  85              		.section	.text.SysTick_Handler,"ax",%progbits
+  86              		.align	1
+  87              		.global	SysTick_Handler
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  91              		.fpu softvfp
+  93              	SysTick_Handler:
+  94              	.LFB30:
   10:DRIVER/src/systick.c **** 
   11:DRIVER/src/systick.c **** void SysTick_Handler(void)
   12:DRIVER/src/systick.c **** {
-  74              		.loc 1 12 0
-  75              		.cfi_startproc
-  76              		@ args = 0, pretend = 0, frame = 0
-  77              		@ frame_needed = 0, uses_anonymous_args = 0
-  78              		@ link register save eliminated.
+  95              		.loc 1 12 1 is_stmt 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		@ link register save eliminated.
   13:DRIVER/src/systick.c ****     if(delay_num-- != 0);
-  79              		.loc 1 13 0
-  80 0000 024A     		ldr	r2, .L5
-  81 0002 1368     		ldr	r3, [r2]
-  82 0004 013B     		subs	r3, r3, #1
-  83 0006 1360     		str	r3, [r2]
-  84 0008 7047     		bx	lr
-  85              	.L6:
-  86 000a 00BF     		.align	2
-  87              	.L5:
-  88 000c 00000000 		.word	delay_num
-  89              		.cfi_endproc
-  90              	.LFE30:
-  92              		.section	.text.delay_ms,"ax",%progbits
-  93              		.align	2
-  94              		.global	delay_ms
-  95              		.thumb
-  96              		.thumb_func
-  98              	delay_ms:
-  99              	.LFB31:
+ 100              		.loc 1 13 5 view .LVU22
+ 101              		.loc 1 13 17 is_stmt 0 view .LVU23
+ 102 0000 024A     		ldr	r2, .L5
+ 103 0002 1368     		ldr	r3, [r2]
+ 104 0004 013B     		subs	r3, r3, #1
+ 105 0006 1360     		str	r3, [r2]
+ARM GAS  /tmp/ccphBgSS.s 			page 33
+
+
   14:DRIVER/src/systick.c **** }
+ 106              		.loc 1 14 1 view .LVU24
+ 107 0008 7047     		bx	lr
+ 108              	.L6:
+ 109 000a 00BF     		.align	2
+ 110              	.L5:
+ 111 000c 00000000 		.word	.LANCHOR0
+ 112              		.cfi_endproc
+ 113              	.LFE30:
+ 115              		.section	.text.delay_ms,"ax",%progbits
+ 116              		.align	1
+ 117              		.global	delay_ms
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 121              		.fpu softvfp
+ 123              	delay_ms:
+ 124              	.LVL4:
+ 125              	.LFB31:
   15:DRIVER/src/systick.c **** 
   16:DRIVER/src/systick.c **** void delay_ms(u16 ms)
   17:DRIVER/src/systick.c **** {
- 100              		.loc 1 17 0
- 101              		.cfi_startproc
- 102              		@ args = 0, pretend = 0, frame = 0
- 103              		@ frame_needed = 0, uses_anonymous_args = 0
- 104              		@ link register save eliminated.
- 105              	.LVL2:
+ 126              		.loc 1 17 1 is_stmt 1 view -0
+ 127              		.cfi_startproc
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
   18:DRIVER/src/systick.c ****   delay_num = ms*1000;
- 106              		.loc 1 18 0
- 107 0000 4FF47A73 		mov	r3, #1000
- 108 0004 03FB00F0 		mul	r0, r3, r0
- 109              	.LVL3:
-ARM GAS  /tmp/ccaw1hg7.s 			page 33
-
-
- 110 0008 034B     		ldr	r3, .L9
- 111 000a 1860     		str	r0, [r3]
- 112              	.L8:
+ 131              		.loc 1 18 3 view .LVU26
+ 132              		.loc 1 18 17 is_stmt 0 view .LVU27
+ 133 0000 4FF47A73 		mov	r3, #1000
+ 134 0004 03FB00F0 		mul	r0, r3, r0
+ 135              	.LVL5:
+ 136              		.loc 1 18 13 view .LVU28
+ 137 0008 034B     		ldr	r3, .L9
+ 138 000a 1860     		str	r0, [r3]
   19:DRIVER/src/systick.c ****   while(delay_num != 0);
- 113              		.loc 1 19 0 discriminator 1
- 114 000c 024B     		ldr	r3, .L9
- 115 000e 1B68     		ldr	r3, [r3]
- 116 0010 002B     		cmp	r3, #0
- 117 0012 FBD1     		bne	.L8
+ 139              		.loc 1 19 3 is_stmt 1 view .LVU29
+ 140              	.L8:
+ 141              		.loc 1 19 24 discriminator 1 view .LVU30
+ 142              		.loc 1 19 8 discriminator 1 view .LVU31
+ 143              		.loc 1 19 19 is_stmt 0 discriminator 1 view .LVU32
+ 144 000c 024B     		ldr	r3, .L9
+ 145 000e 1B68     		ldr	r3, [r3]
+ 146              		.loc 1 19 8 discriminator 1 view .LVU33
+ 147 0010 002B     		cmp	r3, #0
+ 148 0012 FBD1     		bne	.L8
   20:DRIVER/src/systick.c **** }
- 118              		.loc 1 20 0
- 119 0014 7047     		bx	lr
- 120              	.L10:
- 121 0016 00BF     		.align	2
- 122              	.L9:
- 123 0018 00000000 		.word	delay_num
- 124              		.cfi_endproc
- 125              	.LFE31:
- 127              		.section	.text.delay_us,"ax",%progbits
- 128              		.align	2
- 129              		.global	delay_us
- 130              		.thumb
- 131              		.thumb_func
- 133              	delay_us:
- 134              	.LFB32:
+ 149              		.loc 1 20 1 view .LVU34
+ 150 0014 7047     		bx	lr
+ 151              	.L10:
+ 152 0016 00BF     		.align	2
+ 153              	.L9:
+ 154 0018 00000000 		.word	.LANCHOR0
+ 155              		.cfi_endproc
+ 156              	.LFE31:
+ 158              		.section	.text.delay_us,"ax",%progbits
+ARM GAS  /tmp/ccphBgSS.s 			page 34
+
+
+ 159              		.align	1
+ 160              		.global	delay_us
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.fpu softvfp
+ 166              	delay_us:
+ 167              	.LVL6:
+ 168              	.LFB32:
   21:DRIVER/src/systick.c **** 
   22:DRIVER/src/systick.c **** 
   23:DRIVER/src/systick.c **** void delay_us(u16 us)
   24:DRIVER/src/systick.c **** {
- 135              		.loc 1 24 0
- 136              		.cfi_startproc
- 137              		@ args = 0, pretend = 0, frame = 0
- 138              		@ frame_needed = 0, uses_anonymous_args = 0
- 139              		@ link register save eliminated.
- 140              	.LVL4:
+ 169              		.loc 1 24 1 is_stmt 1 view -0
+ 170              		.cfi_startproc
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
   25:DRIVER/src/systick.c ****   delay_num = us;
- 141              		.loc 1 25 0
- 142 0000 034B     		ldr	r3, .L13
- 143 0002 1860     		str	r0, [r3]
- 144              	.L12:
+ 174              		.loc 1 25 3 view .LVU36
+ 175              		.loc 1 25 13 is_stmt 0 view .LVU37
+ 176 0000 034B     		ldr	r3, .L13
+ 177 0002 1860     		str	r0, [r3]
   26:DRIVER/src/systick.c ****   while(delay_num != 0);
- 145              		.loc 1 26 0 discriminator 1
- 146 0004 024B     		ldr	r3, .L13
- 147 0006 1B68     		ldr	r3, [r3]
- 148 0008 002B     		cmp	r3, #0
- 149 000a FBD1     		bne	.L12
+ 178              		.loc 1 26 3 is_stmt 1 view .LVU38
+ 179              	.L12:
+ 180              		.loc 1 26 24 discriminator 1 view .LVU39
+ 181              		.loc 1 26 8 discriminator 1 view .LVU40
+ 182              		.loc 1 26 19 is_stmt 0 discriminator 1 view .LVU41
+ 183 0004 024B     		ldr	r3, .L13
+ 184 0006 1B68     		ldr	r3, [r3]
+ 185              		.loc 1 26 8 discriminator 1 view .LVU42
+ 186 0008 002B     		cmp	r3, #0
+ 187 000a FBD1     		bne	.L12
   27:DRIVER/src/systick.c **** }...
- 150              		.loc 1 27 0
- 151 000c 7047     		bx	lr
- 152              	.L14:
- 153 000e 00BF     		.align	2
- 154              	.L13:
- 155 0010 00000000 		.word	delay_num
- 156              		.cfi_endproc
- 157              	.LFE32:
- 159              		.comm	delay_num,4,4
- 160              		.text
-ARM GAS  /tmp/ccaw1hg7.s 			page 34
-
-
- 161              	.Letext0:
- 162              		.file 3 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
- 163              		.file 4 "/usr/include/newlib/machine/_default_types.h"
- 164              		.file 5 "/usr/include/newlib/sys/_stdint.h"
-ARM GAS  /tmp/ccaw1hg7.s 			page 35
+ 188              		.loc 1 27 1 view .LVU43
+ 189 000c 7047     		bx	lr
+ 190              	.L14:
+ 191 000e 00BF     		.align	2
+ 192              	.L13:
+ 193 0010 00000000 		.word	.LANCHOR0
+ 194              		.cfi_endproc
+ 195              	.LFE32:
+ 197              		.global	delay_num
+ 198              		.section	.bss.delay_num,"aw",%nobits
+ 199              		.align	2
+ 200              		.set	.LANCHOR0,. + 0
+ 203              	delay_num:
+ 204 0000 00000000 		.space	4
+ 205              		.text
+ 206              	.Letext0:
+ 207              		.file 3 "CMSIS/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+ 208              		.file 4 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ARM GAS  /tmp/ccphBgSS.s 			page 35
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 systick.c
-     /tmp/ccaw1hg7.s:19     .text.delay_config:0000000000000000 $t
-     /tmp/ccaw1hg7.s:24     .text.delay_config:0000000000000000 delay_config
-     /tmp/ccaw1hg7.s:59     .text.delay_config:0000000000000018 $d
-     /tmp/ccaw1hg7.s:67     .text.SysTick_Handler:0000000000000000 $t
-     /tmp/ccaw1hg7.s:72     .text.SysTick_Handler:0000000000000000 SysTick_Handler
-     /tmp/ccaw1hg7.s:88     .text.SysTick_Handler:000000000000000c $d
-                            *COM*:0000000000000004 delay_num
-     /tmp/ccaw1hg7.s:93     .text.delay_ms:0000000000000000 $t
-     /tmp/ccaw1hg7.s:98     .text.delay_ms:0000000000000000 delay_ms
-     /tmp/ccaw1hg7.s:123    .text.delay_ms:0000000000000018 $d
-     /tmp/ccaw1hg7.s:128    .text.delay_us:0000000000000000 $t
-     /tmp/ccaw1hg7.s:133    .text.delay_us:0000000000000000 delay_us
-     /tmp/ccaw1hg7.s:155    .text.delay_us:0000000000000010 $d
-                     .debug_frame:0000000000000010 $d
+     /tmp/ccphBgSS.s:16     .text.delay_config:0000000000000000 $t
+     /tmp/ccphBgSS.s:24     .text.delay_config:0000000000000000 delay_config
+     /tmp/ccphBgSS.s:81     .text.delay_config:000000000000001c $d
+     /tmp/ccphBgSS.s:86     .text.SysTick_Handler:0000000000000000 $t
+     /tmp/ccphBgSS.s:93     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/ccphBgSS.s:111    .text.SysTick_Handler:000000000000000c $d
+     /tmp/ccphBgSS.s:116    .text.delay_ms:0000000000000000 $t
+     /tmp/ccphBgSS.s:123    .text.delay_ms:0000000000000000 delay_ms
+     /tmp/ccphBgSS.s:154    .text.delay_ms:0000000000000018 $d
+     /tmp/ccphBgSS.s:159    .text.delay_us:0000000000000000 $t
+     /tmp/ccphBgSS.s:166    .text.delay_us:0000000000000000 delay_us
+     /tmp/ccphBgSS.s:193    .text.delay_us:0000000000000010 $d
+     /tmp/ccphBgSS.s:203    .bss.delay_num:0000000000000000 delay_num
+     /tmp/ccphBgSS.s:199    .bss.delay_num:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS
